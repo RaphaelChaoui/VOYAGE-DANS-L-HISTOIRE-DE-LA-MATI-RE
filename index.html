@@ -1,0 +1,5226 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Voyage dans l'histoire de la matière — Chronologie des Découvertes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #09090b;
+      --bg-subtle: #0e0e12;
+      --surface: #121216;
+      --surface-hover: #18181d;
+      --border: rgba(255, 255, 255, 0.08);
+      --border-strong: rgba(255, 255, 255, 0.16);
+      --text: #f4f4f5;
+      --text-secondary: #a1a1aa;
+      --text-muted: #71717a;
+      --accent: #38bdf8;
+      --accent-muted: rgba(56, 189, 248, 0.12);
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-mono: 'JetBrains Mono', Consolas, monospace;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Scrollbars */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--bg);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #27272a;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #3f3f46;
+    }
+
+    /* ── Header ── */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(9, 9, 11, 0.88);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      height: 64px;
+    }
+
+    .header-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      height: 100%;
+      padding: 0 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+    .brand-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 12px var(--accent);
+    }
+    .brand-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--text);
+      transition: color 0.15s;
+    }
+    .brand:hover .brand-title {
+      color: #ffffff;
+    }
+
+    .header-nav {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .header-nav-link {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      text-decoration: none;
+      padding: 6px 14px;
+      border-radius: 8px;
+      transition: all 0.15s ease;
+      cursor: pointer;
+    }
+    .header-nav-link:hover {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .event-counter {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      font-variant-numeric: tabular-nums;
+      margin-right: 4px;
+    }
+
+    .nav-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--text-secondary);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .nav-btn:hover {
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.08);
+      border-color: var(--border-strong);
+    }
+
+    /* ── Landing Page / Hero ── */
+    .landing-section {
+      min-height: calc(100vh - 64px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 80px 24px 70px;
+      position: relative;
+      background: 
+        radial-gradient(circle at 50% 15%, rgba(56, 189, 248, 0.09) 0%, transparent 55%),
+        radial-gradient(circle at 80% 50%, rgba(99, 102, 241, 0.07) 0%, transparent 45%),
+        radial-gradient(circle at 20% 70%, rgba(168, 85, 247, 0.06) 0%, transparent 50%),
+        var(--bg);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .landing-hero {
+      max-width: 1100px;
+      width: 100%;
+      margin: 0 auto;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.76rem;
+      font-weight: 500;
+      color: var(--accent);
+      background: var(--accent-muted);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      padding: 5px 14px;
+      border-radius: 9999px;
+      margin-bottom: 24px;
+      letter-spacing: 0.02em;
+    }
+    .hero-tag-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 8px var(--accent);
+      animation: badgeGlow 2s infinite ease-in-out;
+    }
+
+    .hero-title {
+      font-size: clamp(2.4rem, 6vw, 4.3rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1.15;
+      color: #ffffff;
+      margin-bottom: 36px;
+      max-width: 950px;
+    }
+    .hero-highlight {
+      background: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 0;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #ffffff;
+      color: #09090b;
+      font-size: 0.9rem;
+      font-weight: 600;
+      padding: 12px 26px;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 4px 20px rgba(255, 255, 255, 0.15);
+      cursor: pointer;
+    }
+    .btn-primary:hover {
+      background: #f4f4f5;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(255, 255, 255, 0.25);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--surface);
+      color: var(--text);
+      border: 1px solid var(--border);
+      font-size: 0.9rem;
+      font-weight: 500;
+      padding: 12px 24px;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+    .btn-secondary:hover {
+      background: var(--surface-hover);
+      border-color: var(--border-strong);
+      color: #ffffff;
+      transform: translateY(-2px);
+    }
+
+    /* Stats Grid */
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      width: 100%;
+      max-width: 900px;
+      margin-bottom: 60px;
+    }
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+    .stat-card:hover {
+      border-color: var(--border-strong);
+      transform: translateY(-2px);
+    }
+    .stat-num {
+      font-size: 1.85rem;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: -0.02em;
+    }
+    .stat-label {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* 3 Pillars */
+    .pillars-container {
+      width: 100%;
+      max-width: 1040px;
+      margin-top: 10px;
+    }
+    .pillars-header {
+      margin-bottom: 24px;
+      text-align: center;
+    }
+    .pillars-tag {
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+    }
+    .pillars-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-top: 6px;
+      letter-spacing: -0.02em;
+    }
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      text-align: left;
+    }
+    .pillar-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.2s ease;
+    }
+    .pillar-card:hover {
+      border-color: var(--border-strong);
+      background: var(--surface-hover);
+      transform: translateY(-2px);
+    }
+    .pillar-num {
+      font-size: 0.76rem;
+      font-weight: 700;
+      font-family: var(--font-mono);
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+    .pillar-heading {
+      font-size: 1.08rem;
+      font-weight: 600;
+      color: #ffffff;
+      margin-bottom: 8px;
+    }
+    .pillar-desc {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 16px;
+      flex: 1;
+    }
+    .pillar-author {
+      font-size: 0.74rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* ── Timeline Section & Sticky Arrow ── */
+    .timeline-section {
+      position: relative;
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+    }
+
+    .arrow-container {
+      position: sticky;
+      top: 64px;
+      z-index: 50;
+      background: rgba(9, 9, 11, 0.9);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 24px;
+    }
+
+    .arrow {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      max-width: 1360px;
+      margin: 0 auto;
+    }
+
+    .arrow-tail {
+      width: 14px;
+      height: 46px;
+      background: #18181b;
+      border: 1px solid var(--border-strong);
+      border-right: none;
+      border-radius: 8px 0 0 8px;
+      flex-shrink: 0;
+    }
+
+    .arrow-shaft {
+      flex: 1;
+      height: 46px;
+      background: #18181b;
+      border-top: 1px solid var(--border-strong);
+      border-bottom: 1px solid var(--border-strong);
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      padding: 0 10px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      gap: 4px;
+    }
+    .arrow-shaft::-webkit-scrollbar {
+      display: none;
+    }
+
+    .arrow-head {
+      width: 0;
+      height: 0;
+      border-top: 23px solid transparent;
+      border-bottom: 23px solid transparent;
+      border-left: 28px solid #18181b;
+      flex-shrink: 0;
+      position: relative;
+      filter: drop-shadow(1px 0 0 rgba(255, 255, 255, 0.16));
+      margin-left: -1px;
+    }
+
+    .arrow-event {
+      color: var(--text-secondary);
+      font-family: var(--font-sans);
+      font-size: 0.76rem;
+      font-weight: 500;
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      white-space: nowrap;
+      text-decoration: none;
+    }
+    .arrow-event:hover {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.08);
+    }
+    .arrow-event.active {
+      color: #09090b;
+      background: #ffffff;
+      font-weight: 600;
+      box-shadow: 0 2px 10px rgba(255, 255, 255, 0.2);
+    }
+
+    /* Event List (Horizontal viewport) */
+    .events {
+      list-style: none;
+      display: flex;
+      flex-direction: row;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      scroll-snap-type: x mandatory;
+      min-height: calc(100vh - 138px);
+    }
+
+    .event {
+      min-width: 100vw;
+      flex-shrink: 0;
+      scroll-snap-align: start;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 52px 36px;
+      position: relative;
+      border-right: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .event-container {
+      max-width: 1260px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 490px;
+      gap: 52px;
+      align-items: center;
+    }
+
+    /* Left Column: Context & Narrative */
+    .event-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .event-meta-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.74rem;
+      font-weight: 500;
+      color: var(--accent);
+      background: var(--accent-muted);
+      border: 1px solid rgba(56, 189, 248, 0.22);
+      padding: 4px 12px;
+      border-radius: 9999px;
+      margin-bottom: 14px;
+      align-self: flex-start;
+      letter-spacing: 0.02em;
+    }
+
+    .event-title {
+      font-size: 2.35rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.18;
+      color: #ffffff;
+      margin-bottom: 8px;
+    }
+
+    .event-subtitle {
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      margin-bottom: 24px;
+    }
+
+    .event-bubbles {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .event-bubble {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px 22px;
+      color: var(--text);
+      font-size: 0.925rem;
+      line-height: 1.7;
+      transition: all 0.2s ease;
+    }
+    .event-bubble:hover {
+      border-color: var(--border-strong);
+      background: var(--surface-hover);
+      transform: translateY(-1px);
+    }
+    .event-bubble strong {
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    /* Key Words & Definitions Glossary on each slide */
+    .event-glossary {
+      margin-top: 18px;
+      background: rgba(18, 18, 22, 0.78);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px 18px;
+    }
+    .glossary-heading {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+    .glossary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 10px 16px;
+    }
+    .glossary-item {
+      font-size: 0.82rem;
+      line-height: 1.5;
+      color: var(--text-secondary);
+      border-left: 2px solid rgba(56, 189, 248, 0.35);
+      padding-left: 10px;
+    }
+    .glossary-term {
+      display: block;
+      font-weight: 600;
+      color: #ffffff;
+      margin-bottom: 2px;
+      font-size: 0.84rem;
+    }
+
+    /* Right Column: Media Stage (Animation / Photos) */
+    .media-stage {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6);
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Media Header / Switcher Tabs */
+    .media-header {
+      padding: 10px 14px;
+      background: rgba(0, 0, 0, 0.3);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .media-segmented {
+      display: inline-flex;
+      background: #09090b;
+      padding: 3px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      gap: 3px;
+    }
+
+    .media-tab-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      font-weight: 500;
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .media-tab-btn:hover {
+      color: var(--text);
+    }
+    .media-tab-btn.active {
+      background: #27272a;
+      color: #ffffff;
+      font-weight: 600;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    .media-static-title {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .media-count-tag {
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
+      padding: 2px 8px;
+      border-radius: 6px;
+    }
+
+    /* Animation Styles */
+    .anim-view {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .anim-header {
+      padding: 10px 14px;
+      background: rgba(0, 0, 0, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .anim-title {
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .anim-badge {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 8px var(--accent);
+      display: inline-block;
+      animation: badgeGlow 2s infinite ease-in-out;
+    }
+
+    @keyframes badgeGlow {
+      0%, 100% { opacity: 0.6; transform: scale(0.9); }
+      50% { opacity: 1; transform: scale(1.2); }
+    }
+
+    .anim-tag {
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
+      padding: 2px 8px;
+      border-radius: 6px;
+    }
+
+    .anim-stage {
+      background: #000000;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .anim-stage canvas {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: 280px;
+    }
+
+    .anim-controls {
+      padding: 10px 12px;
+      background: #0d0d10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 6px;
+      border-top: 1px solid var(--border);
+    }
+
+    .anim-btn {
+      background: #18181b;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--text-secondary);
+      font-size: 0.74rem;
+      font-weight: 500;
+      padding: 6px 12px;
+      border-radius: 7px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      user-select: none;
+    }
+    .anim-btn:hover {
+      background: #27272a;
+      color: #ffffff;
+      border-color: var(--border-strong);
+    }
+    .anim-btn.active {
+      background: #ffffff;
+      color: #09090b;
+      border-color: #ffffff;
+      font-weight: 600;
+      box-shadow: 0 2px 8px rgba(255, 255, 255, 0.15);
+    }
+
+    .anim-caption {
+      padding: 12px 16px;
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+      text-align: center;
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+    }
+    .anim-caption strong {
+      color: #ffffff;
+    }
+
+    /* Photo Gallery View */
+    .gallery-view {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .gallery-viewer {
+      position: relative;
+      height: 285px;
+      background: #000000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      cursor: zoom-in;
+    }
+
+    .gallery-main-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      transition: transform 0.25s ease;
+    }
+    .gallery-viewer:hover .gallery-main-img {
+      transform: scale(1.02);
+    }
+
+    .gallery-zoom-hint {
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #e4e4e7;
+      font-size: 0.72rem;
+      padding: 4px 9px;
+      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+    .gallery-viewer:hover .gallery-zoom-hint {
+      opacity: 1;
+    }
+
+    .gallery-counter {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #e4e4e7;
+      font-size: 0.7rem;
+      font-weight: 500;
+      padding: 3px 8px;
+      border-radius: 9999px;
+    }
+
+    .gallery-nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      transition: opacity 0.2s ease, background 0.15s ease;
+      user-select: none;
+    }
+    .gallery-viewer:hover .gallery-nav-btn {
+      opacity: 1;
+    }
+    .gallery-nav-btn:hover {
+      background: rgba(0, 0, 0, 0.9);
+      border-color: rgba(255, 255, 255, 0.35);
+    }
+    .gallery-nav-btn.prev { left: 10px; }
+    .gallery-nav-btn.next { right: 10px; }
+
+    .gallery-caption {
+      padding: 12px 16px;
+      font-size: 0.83rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      min-height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .gallery-thumbs {
+      display: flex;
+      gap: 8px;
+      padding: 10px 14px;
+      background: #0b0b0e;
+      border-top: 1px solid var(--border);
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .gallery-thumbs::-webkit-scrollbar {
+      display: none;
+    }
+
+    .gallery-thumb-btn {
+      width: 62px;
+      height: 44px;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 2px solid transparent;
+      background: #000;
+      cursor: pointer;
+      opacity: 0.45;
+      transition: all 0.15s ease;
+      flex-shrink: 0;
+      padding: 0;
+    }
+    .gallery-thumb-btn:hover {
+      opacity: 0.85;
+    }
+    .gallery-thumb-btn.active {
+      opacity: 1;
+      border-color: var(--accent);
+      box-shadow: 0 0 8px rgba(56, 189, 248, 0.4);
+    }
+    .gallery-thumb-btn img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Lightbox Modal */
+    .lightbox-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: rgba(9, 9, 11, 0.95);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 32px;
+    }
+    .lightbox-modal.active {
+      display: flex;
+    }
+
+    .lightbox-content {
+      position: relative;
+      max-width: 92vw;
+      max-height: 86vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .lightbox-img {
+      max-width: 100%;
+      max-height: 75vh;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.9);
+    }
+
+    .lightbox-close-btn {
+      position: absolute;
+      top: 24px;
+      right: 28px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #fff;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .lightbox-close-btn:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .lightbox-nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #fff;
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.15s;
+      user-select: none;
+    }
+    .lightbox-nav-btn:hover {
+      background: rgba(255, 255, 255, 0.2);
+      border-color: rgba(255, 255, 255, 0.35);
+    }
+    .lightbox-nav-btn.prev { left: -64px; }
+    .lightbox-nav-btn.next { right: -64px; }
+
+    .lightbox-footer {
+      margin-top: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 800px;
+      color: var(--text-secondary);
+      font-size: 0.88rem;
+      gap: 16px;
+    }
+    .lightbox-caption {
+      flex: 1;
+      text-align: left;
+    }
+    .lightbox-counter {
+      font-variant-numeric: tabular-nums;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      white-space: nowrap;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 1080px) {
+      .event-container {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+      .media-stage {
+        width: 100%;
+        max-width: 540px;
+        margin: 0 auto;
+      }
+      .event {
+        padding: 40px 24px;
+        align-items: flex-start;
+      }
+      .hero-stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .pillars-grid {
+        grid-template-columns: 1fr;
+      }
+      .lightbox-nav-btn.prev { left: 12px; }
+      .lightbox-nav-btn.next { right: 12px; }
+    }
+
+    @media (max-width: 640px) {
+      .event-title {
+        font-size: 1.85rem;
+      }
+      .site-header {
+        height: 56px;
+      }
+      .hero-title {
+        font-size: 2.2rem;
+      }
+      .arrow-container {
+        padding: 10px 14px;
+      }
+    }
+  
+    /* ── ONE-PAGE COMPACT FIT OVERRIDES ── */
+    .site-header {
+      height: 54px;
+    }
+    .arrow-container {
+      top: 54px;
+      padding: 10px 24px;
+    }
+    .arrow-tail,
+    .arrow-shaft {
+      height: 40px;
+    }
+    .arrow-head {
+      border-top: 20px solid transparent;
+      border-bottom: 20px solid transparent;
+      border-left: 24px solid #18181b;
+    }
+    .arrow-event {
+      font-size: 0.74rem;
+      padding: 5px 11px;
+    }
+    .events {
+      min-height: calc(100vh - 115px);
+      height: calc(100vh - 115px);
+      overflow-y: hidden;
+    }
+    .event {
+      width: 100vw;
+      min-width: 100vw;
+      max-width: 100vw;
+      padding: 20px 36px;
+      height: calc(100vh - 115px);
+      align-items: center;
+      box-sizing: border-box;
+    }
+    .event-container {
+      max-width: 1260px;
+      width: 100%;
+      margin: 0 auto;
+      grid-template-columns: minmax(0, 1fr) 450px;
+      gap: 48px;
+      align-items: center;
+    }
+    .event-info,
+    .media-stage {
+      min-width: 0;
+    }
+    .event-meta-pill {
+      font-size: 0.7rem;
+      padding: 4px 11px;
+      margin-bottom: 10px;
+    }
+    .event-title {
+      font-size: 1.88rem;
+      line-height: 1.16;
+      margin-bottom: 8px;
+    }
+    .event-subtitle {
+      font-size: 0.9rem;
+      line-height: 1.46;
+      margin-bottom: 16px;
+    }
+    .event-bubbles {
+      gap: 11px;
+    }
+    .event-bubble {
+      padding: 12px 16px;
+      font-size: 0.825rem;
+      line-height: 1.52;
+      border-radius: 11px;
+    }
+    .event-glossary {
+      margin-top: 14px;
+      padding: 12px 16px;
+      border-radius: 11px;
+    }
+    .glossary-heading {
+      font-size: 0.68rem;
+      margin-bottom: 8px;
+    }
+    .glossary-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 9px 18px;
+    }
+    .glossary-item {
+      font-size: 0.75rem;
+      line-height: 1.42;
+      padding-left: 9px;
+    }
+    .glossary-term {
+      display: inline;
+      font-size: 0.76rem;
+      margin-bottom: 0;
+    }
+    .glossary-term::after {
+      content: " : ";
+      color: var(--accent);
+    }
+    .media-header {
+      padding: 9px 14px;
+    }
+    .anim-header {
+      padding: 9px 14px;
+    }
+    .anim-stage canvas {
+      max-height: 250px;
+    }
+    .anim-controls {
+      padding: 9px 12px;
+      gap: 6px;
+    }
+    .anim-btn {
+      font-size: 0.72rem;
+      padding: 5px 10px;
+    }
+    .anim-caption {
+      padding: 10px 14px;
+      font-size: 0.78rem;
+      line-height: 1.44;
+    }
+    .gallery-viewer {
+      aspect-ratio: 16 / 9.8;
+    }
+    .gallery-caption {
+      padding: 10px 14px;
+      font-size: 0.78rem;
+      min-height: 42px;
+    }
+    .gallery-thumbs {
+      padding: 8px 12px;
+    }
+    .gallery-thumb-btn {
+      width: 56px;
+      height: 39px;
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="#landing" class="brand" title="Retour à l'accueil" id="brand-link">
+      <span class="brand-dot"></span>
+      <span class="brand-title">Histoire de la Matière</span>
+    </a>
+
+    <nav class="header-nav">
+      <a href="#landing" class="header-nav-link" id="nav-link-landing">Accueil</a>
+      <a href="#timeline" class="header-nav-link" id="nav-link-timeline">Chronologie</a>
+    </nav>
+
+    <div class="header-actions">
+      <span class="event-counter" id="event-counter">01 / 12</span>
+      <button class="nav-btn" id="btn-prev" title="Événement précédent (Flèche Gauche)">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+      </button>
+      <button class="nav-btn" id="btn-next" title="Événement suivant (Flèche Droite)">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ── Landing Page Hero Section ── -->
+<section id="landing" class="landing-section">
+  <div class="landing-hero">
+    <div class="hero-tag">
+      <span class="hero-tag-dot"></span>
+      <span>Histoire & Révolution Scientifique</span>
+    </div>
+
+    <h1 class="hero-title">
+      Voyage dans l'histoire de la <span class="hero-highlight">matière</span>
+    </h1>
+
+    <div class="hero-actions">
+      <button class="btn-primary" id="btn-explore-timeline">
+        <span>Explorer la Chronologie</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ── Timeline Section with Sticky Arrow ── -->
+<section id="timeline" class="timeline-section">
+  <div class="arrow-container">
+    <nav class="arrow" id="timeline-arrow">
+      <div class="arrow-tail"></div>
+      <div class="arrow-shaft" id="arrow-shaft"></div>
+      <div class="arrow-head"></div>
+    </nav>
+  </div>
+
+  <ul class="events" id="events"></ul>
+</section>
+
+<!-- Lightbox Modal -->
+<div id="lightbox-modal" class="lightbox-modal" onclick="closeLightbox()">
+  <button class="lightbox-close-btn" onclick="closeLightbox()" title="Fermer (Échap)">✕</button>
+  <button class="lightbox-nav-btn prev" onclick="event.stopPropagation(); lightboxPrev()" title="Photo précédente">‹</button>
+  <button class="lightbox-nav-btn next" onclick="event.stopPropagation(); lightboxNext()" title="Photo suivante">›</button>
+  
+  <div class="lightbox-content" onclick="event.stopPropagation()">
+    <img id="lightbox-img" class="lightbox-img" src="" alt="">
+    <div class="lightbox-footer">
+      <span id="lightbox-caption" class="lightbox-caption"></span>
+      <span id="lightbox-counter" class="lightbox-counter"></span>
+    </div>
+  </div>
+</div>
+
+<script>
+  const events = [
+  {
+    "title": "-13.8 milliards d'années",
+    "era": "Étape 01 · Origine de l'Univers",
+    "subtitle": "Le Big Bang",
+    "desc": "Le Big Bang est la théorie selon laquelle l'Univers est né il y a environ 13,8 milliards d'années à partir d'un état extrêmement chaud et dense, puis s'est progressivement développé pour former l'Univers que nous connaissons aujourd'hui.",
+    "bubbles": [
+      "Jusqu'au début du XXᵉ siècle, beaucoup de scientifiques pensaient que l'Univers était immobile et éternel. Cependant, en 1929, l'astronome américain <strong>Edwin Hubble</strong> observa que les galaxies s'éloignaient les unes des autres. Cette découverte montrait que l'Univers était en expansion.",
+      "Cette idée renforça les travaux du prêtre et astrophysicien belge <strong>Georges Lemaître</strong>, qui avait proposé que l'Univers provenait d'un « atome primitif ». Plus tard, la découverte fortuite du rayonnement fossile en 1965 apporta des preuves observationnelles majeures à ce modèle.",
+      "Aujourd'hui, le <strong>Big Bang</strong> constitue le socle fondamental de la cosmologie moderne, reliant la formation de la matière élémentaire à la naissance des étoiles, des molécules complexes et finalement de la matière vivante."
+    ],
+    "photos": [
+      {
+        "src": "Photos/1.jpg",
+        "caption": "Carte du rayonnement fossile (Fond diffus cosmologique / CMB) captée par le satellite WMAP."
+      },
+      {
+        "src": "Photos/1 (2).jpg",
+        "caption": "Frise chronologique de l'expansion spatio-temporelle de l'Univers depuis le Big Bang."
+      }
+    ],
+    "glossary": [
+      {
+        "term": "Big Bang",
+        "def": "Modèle cosmologique décrivant l'expansion de l'Univers à partir d'un état initial extrêmement chaud et dense il y a 13,8 milliards d'années."
+      },
+      {
+        "term": "Atome primitif",
+        "def": "Expression de Georges Lemaître désignant l'état originel ultra-concentré de toute la matière et l'énergie de l'Univers."
+      },
+      {
+        "term": "Rayonnement fossile (CMB)",
+        "def": "Lumière la plus ancienne de l'Univers, émise environ 380 000 ans après le Big Bang et détectée en 1965."
+      },
+      {
+        "term": "Loi de Hubble",
+        "def": "Observation montrant que plus une galaxie est lointaine, plus elle s'éloigne vite, prouvant l'expansion de l'espace."
+      }
+    ]
+  },
+  {
+    "title": "1590",
+    "era": "Étape 02 · Fin du XVIᵉ siècle",
+    "subtitle": "Hans et Zacharias Janssen",
+    "desc": "Invention du premier microscope composé. Les fabricants de lunettes Janssen mettent au point un instrument utilisant plusieurs lentilles superposées.",
+    "bubbles": [
+      "<strong>Zacharias Janssen</strong> est un opticien et fabricant de lunettes néerlandais de Middelbourg. Avec son père Hans Janssen, il conçoit à la fin du XVIᵉ siècle un instrument novateur associant deux lentilles convexes à l'intérieur de tubes coulissants.",
+      "Sur le plan optique, ce premier <strong>microscope composé</strong> grossit l'objet en deux étapes : une lentille d'objectif forme une première image agrandie, reprise et à nouveau amplifiée par une lentille oculaire. C'est le saut technologique qui dépasse la simple loupe.",
+      "Cette invention ouvre une brèche historique décisive dans le mur de l'invisible : pour la première fois, l'homme possède un outil pour scruter les microstructures qui composent la matière et les êtres vivants."
+    ],
+    "photos": [
+      {
+        "src": "Photos/2.jpg",
+        "caption": "Le premier microscope composé à tubes coulissants en laiton attribué aux Janssen (vers 1590-1595)."
+      },
+      {
+        "src": "Photos/2 (2).jpg",
+        "caption": "Portrait gravé de Zacharias Janssen (vers 1585-1632), opticien de Middelbourg."
+      },
+      {
+        "src": "Photos/2 (3).jpg",
+        "caption": "Microscope scientifique en laiton sur coffret en bois illustrant l'évolution des instruments optiques d'observation."
+      }
+    ],
+    "glossary": [
+      {
+        "term": "Microscope composé",
+        "def": "Instrument optique associant au moins deux lentilles (objectif et oculaire) dans un tube pour multiplier le grossissement."
+      },
+      {
+        "term": "Objectif",
+        "def": "Lentille située près de l'échantillon observé, qui en forme une première image agrandie."
+      },
+      {
+        "term": "Oculaire",
+        "def": "Lentille proche de l'œil de l'observateur, qui agrandit à nouveau l'image formée par l'objectif."
+      }
+    ]
+  },
+  {
+    "title": "1665",
+    "era": "Étape 03 · XVIIᵉ siècle",
+    "subtitle": "Robert Hooke",
+    "desc": "Découverte et introduction du terme « cellule ». En observant une fine tranche de liège avec son microscope, il remarque de petites cavités régulières.",
+    "bubbles": [
+      "<strong>Robert Hooke</strong> est un savant polymathe anglais du XVIIᵉ siècle. En observant une fine lamelle d'écorce de liège sous son microscope, il remarque une multitude de compartiments géométriques réguliers.",
+      "Ces alvéoles lui rappellent immédiatement les petites chambres occupées par les moines dans les monastères, appelées <em>« cellae »</em> en latin. C'est ainsi qu'il introduit pour la première fois le mot <strong>cellule</strong> dans son chef-d'œuvre <em>Micrographia</em> (1665).",
+      "Ce qu'observait Hooke correspondait en réalité aux parois cellulosiques de cellules végétales mortes. Son travail pose la première pierre fondamentale qui guidera la biologie vers l'identification de l'unité universelle de la vie."
+    ],
+    "photos": [
+      {
+        "src": "Photos/3.jpg",
+        "caption": "Portrait historique de Robert Hooke (1635-1703), pionnier et curateur d'expériences de la Royal Society."
+      },
+      {
+        "src": "Photos/3 (2).jpg",
+        "caption": "Le microscope composé de Hooke et son système d'éclairage à condenseur d'eau (planche de Micrographia, 1665)."
+      },
+      {
+        "src": "Photos/3 (3).jpg",
+        "caption": "Planche originale XIII de Micrographia (1665) montrant les pores de liège que Hooke baptisa « cellules »."
+      }
+    ],
+    "glossary": [
+      {
+        "term": "Cellule",
+        "def": "Terme inventé par Hooke en 1665 en comparant les petites loges vides du liège aux chambres (cellulae) des moines."
+      },
+      {
+        "term": "Paroi cellulosique",
+        "def": "Enveloppe rigide entourant les cellules végétales ; c'est elle qui persiste dans le liège mort observé par Hooke."
+      },
+      {
+        "term": "Micrographia",
+        "def": "Ouvrage célèbre publié par Robert Hooke en 1665, premier traité illustré de gravures microscopiques."
+      }
+    ]
+  },
+  {
+    "title": "1674",
+    "era": "Étape 04 · XVIIᵉ siècle",
+    "subtitle": "Antoni van Leeuwenhoek",
+    "desc": "Première observation de cellules vivantes et de micro-organismes dans une simple goutte d'eau grâce à des lentilles d'une précision inégalée.",
+    "bubbles": [
+      "<strong>Antoni van Leeuwenhoek</strong> est un marchand et drapier néerlandais de Delft. Passionné d'optique, il apprend à polir lui-même de minuscules billes de verre d'une qualité exceptionnelle, atteignant des grossissements de près de 300 fois.",
+      "Grâce à ces microscopes artisanaux à lentille unique, il est le premier être humain à contempler des cellules vivantes et mobiles : bactéries, paramécies, protozoaires dans l'eau stagnante, globules rouges et spermatozoïdes.",
+      "Il baptise ces créatures microscopiques les <strong>« animalcules »</strong>. Ses lettres à la Royal Society révèlent un univers biologique insoupçonné et fondent les bases de la <strong>microbiologie</strong>."
+    ],
+    "photos": [
+      {
+        "src": "Photos/4 (2).jpg",
+        "caption": "Portrait d'Antoni van Leeuwenhoek (1632-1723) par Jan Verkolje (1686), drapier et pionnier de la microbiologie."
+      },
+      {
+        "src": "Photos/4 (3).jpg",
+        "caption": "Microscope artisanal à lentille unique en argent et vis de mise au point fabriqué par Leeuwenhoek."
+      }
+    ],
+    "glossary": [
+      {
+        "term": "Animalcules",
+        "def": "Nom donné par Leeuwenhoek aux micro-organismes vivants et mobiles (bactéries, protozoaires) qu'il fut le premier à observer."
+      },
+      {
+        "term": "Microscope à lentille unique",
+        "def": "Instrument miniature doté d'une seule bille de verre polie à la main, atteignant un grossissement d'environ ×300."
+      },
+      {
+        "term": "Microbiologie",
+        "def": "Science qui étudie les micro-organismes invisibles à l'œil nu, fondée grâce aux lettres de Leeuwenhoek."
+      }
+    ]
+  },
+  {
+    "title": "1831",
+    "era": "Étape 05 · XIXᵉ siècle",
+    "subtitle": "Robert Brown",
+    "desc": "Découverte et désignation du noyau cellulaire. Brown identifie une structure circulaire constante au sein des cellules végétales.",
+    "bubbles": [
+      "<strong>Robert Brown</strong> est un éminent botaniste écossais du XIXᵉ siècle. En étudiant attentivement l'épiderme de différentes espèces d'orchidées et d'asclépiades au microscope, il remarque une tache opaque constante à l'intérieur de chaque cellule.",
+      "En 1831, il comprend qu'il ne s'agit pas d'un artefact mais d'un organite structural permanent, et le nomme <strong>noyau</strong> (<em>nucleus</em>).",
+      "Le noyau abrite l'information génétique (l'ADN) et orchestre la réplication ainsi que la synthèse des protéines. La découverte de Brown démontre que la cellule possède une organisation interne sophistiquée et organisée."
+    ],
+    "photos": [
+      {
+        "src": "Photos/5(4).jpg",
+        "caption": "Portrait à l'huile de Robert Brown (1773-1858), découvreur du noyau cellulaire et du mouvement brownien."
+      },
+      {
+        "src": "Photos/5 (3).jpg",
+        "caption": "Micrographie électronique colorée d'une cellule végétale révélant le noyau, les chloroplastes et la vacuole."
+      }
+    ],
+    "glossary": [
+      {
+        "term": "Noyau (Nucleus)",
+        "def": "Organite central découvert par Brown en 1831 dans les cellules végétales ; il abrite l'ADN et dirige les activités cellulaires."
+      },
+      {
+        "term": "Organite",
+        "def": "Structure spécialisée située à l'intérieur de la cellule, assurant une fonction biologique précise (noyau, chloroplaste...)."
+      },
+      {
+        "term": "ADN",
+        "def": "Acide désoxyribonucléique ; molécule contenue dans le noyau qui porte l'information génétique héréditaire."
+      }
+    ]
+  },
+  {
+    "title": "1838",
+    "era": "Étape 06 · XIXᵉ siècle",
+    "subtitle": "Matthias Schleiden",
+    "desc": "Tous les végétaux sont constitués de cellules. Schleiden pose le premier pilier universel de la théorie cellulaire pour le règne végétal.",
+    "bubbles": [
+      "<strong>Matthias Jakob Schleiden</strong> est un botaniste allemand qui rejette les descriptions superficielles des plantes pour analyser leur structure microscopique intime.",
+      "Après des années d'observations systématiques de tissus végétaux variés, il conclut en 1838 que <strong>tous les organes végétaux sont intégralement formés de cellules</strong> et de dérivés cellulaires.",
+      "Schleiden affirme que la cellule est l'unité élémentaire et vivante indépendante des plantes, et que la plante entière résulte de la coopération d'une communauté de cellules."
+    ],
+    "photos": [
+      {
+        "src": "Photos/6.jpg",
+        "caption": "Portrait gravé du botaniste allemand Matthias Jakob Schleiden (1804-1881)."
+      },
+      {
+        "src": "Photos/6 (2).jpg",
+        "caption": "Planches lithographiques III et IV de Beiträge zur Phytogenesis (1838) sur l'organogenèse végétale."
+      },
+      {
+        "src": "Photos/6 (3).jpg",
+        "caption": "Dessin histologique montrant l'assemblage régulier et compartimenté de cellules végétales."
+      },
+      {
+        "src": "Photos/6 (4).jpg",
+        "caption": "Microphotographie contemporaine de cellules végétales polygonales avec parois et chloroplastes."
+      }
+    ],
+    "glossary": [
+      {
+        "term": "Botaniste",
+        "def": "Scientifique spécialisé dans l'étude des plantes et de l'organisation du règne végétal."
+      },
+      {
+        "term": "Tissu végétal",
+        "def": "Ensemble organisé de cellules végétales coopérant pour assurer une fonction précise (feuille, tige, racine)."
+      },
+      {
+        "term": "Chloroplaste",
+        "def": "Organite propre aux cellules végétales permettant la photosynthèse grâce à la chlorophylle."
+      }
+    ]
+  },
+  {
+    "title": "1839",
+    "era": "Étape 07 · XIXᵉ siècle",
+    "subtitle": "Theodor Schwann",
+    "desc": "Tous les animaux sont constitués de cellules. Schwann unifie la biologie : tous les êtres vivants partagent la même unité fondamentale.",
+    "bubbles": [
+      "<strong>Theodor Schwann</strong>, physiologiste et anatomiste allemand, confronte ses observations de tissus embryonnaires et animaux aux travaux de son ami Schleiden.",
+      "En 1839, dans ses célèbres <em>Recherches microscopiques</em>, il prouve que les tissus animaux (cartilage, muscle, nerf) sont également formés de cellules élémentaires.",
+      "Schwann formalise ainsi les deux premiers principes fondamentaux de la <strong>théorie cellulaire</strong> : la cellule est l'unité structurale et fonctionnelle de TOUS les êtres vivants, du plus simple au plus complexe."
+    ],
+    "photos": [
+      {
+        "src": "Photos/7.jpg",
+        "caption": "Portrait de Theodor Schwann (1810-1882), physiologiste allemand et cofondateur de la théorie cellulaire."
+      },
+      {
+        "src": "Photos/7 (3).jpg",
+        "caption": "Planche I originale de 1839 démontrant l'organisation cellulaire de divers tissus animaux."
+      },
+      {
+        "src": "Photos/7 (2).jpg",
+        "caption": "Coupe histologique contemporaine d'hépatocytes animaux montrant les membranes cellulaires et noyaux."
+      }
+    ],
+    "glossary": [
+      {
+        "term": "Théorie cellulaire",
+        "def": "Principe fondamental selon lequel tout être vivant (végétal ou animal) est constitué de cellules, unités de base du vivant."
+      },
+      {
+        "term": "Tissu animal",
+        "def": "Assemblage de cellules animales spécialisées (muscle, nerf, cartilage) formant les organes."
+      },
+      {
+        "term": "Cellules de Schwann",
+        "def": "Cellules formant la gaine protectrice autour des fibres nerveuses, nommées en hommage à Theodor Schwann."
+      }
+    ]
+  },
+  {
+    "title": "1855",
+    "era": "Étape 08 · XIXᵉ siècle",
+    "subtitle": "Rudolf Virchow",
+    "desc": "Toute cellule provient d'une cellule préexistante. Virchow achève la théorie cellulaire en écartant définitivement la génération spontanée.",
+    "bubbles": [
+      "Le médecin et pathologiste allemand <strong>Rudolf Virchow</strong> condense la dynamique du vivant dans sa formule immortelle : <em>« Omnis cellula e cellula »</em> (toute cellule provient d'une autre cellule préexistante).",
+      "Il démontre que les cellules ne surgissent jamais du néant ou d'un fluide inorganique, mais se reproduisent exclusivement par division cellulaire.",
+      "Virchow fonde également la <strong>pathologie cellulaire</strong>, montrant que les maladies résultent d'altérations et de désordres au niveau des cellules composant nos organes."
+    ],
+    "photos": [
+      {
+        "src": "Photos/8 (3).jpg",
+        "caption": "Portrait gravé du Dr Rudolf Virchow (1821-1902), pionnier de la médecine cellulaire."
+      },
+      {
+        "src": "Photos/8.jpg",
+        "caption": "Photographie historique de Rudolf Virchow à Berlin, promoteur du principe « Omnis cellula e cellula »."
+      },
+      {
+        "src": "Photos/8 (2).jpg",
+        "caption": "Dessins scientifiques illustrant les étapes successives de la division cellulaire (mitose)."
+      }
+    ],
+    "glossary": [
+      {
+        "term": "Omnis cellula e cellula",
+        "def": "Formule latine signifiant « toute cellule provient d'une autre cellule préexistante », excluant la génération spontanée."
+      },
+      {
+        "term": "Division cellulaire (Mitose)",
+        "def": "Processus par lequel une cellule mère se scinde pour donner naissance à deux cellules filles identiques."
+      },
+      {
+        "term": "Pathologie cellulaire",
+        "def": "Discipline fondée par Virchow montrant que les maladies résultent d'altérations au niveau des cellules."
+      }
+    ]
+  },
+  {
+    "title": "1867-1934",
+    "era": "Étape 09 · Tournant du XXᵉ siècle",
+    "subtitle": "Marie Curie",
+    "desc": "Pionnière de la radioactivité, découverte du polonium et du radium, ouvrant l'exploration de la radiothérapie et des effets ionisants sur les cellules.",
+    "bubbles": [
+      "<strong>Marie Curie</strong> est une physicienne et chimiste franco-polonaise visionnaire. En étudiant les rayonnements de l'uranium, elle isole deux éléments inconnus : le <strong>polonium</strong> et le <strong>radium</strong>.",
+      "Elle est l'unique personnalité scientifique de l'histoire à avoir été honorée de deux Prix Nobel dans deux sciences distinctes : Physique en 1903 et Chimie en 1911.",
+      "Ses recherches posent les fondements de la <strong>curiethérapie</strong>, utilisant le rayonnement pour détruire sélectivement les cellules tumorales, et ouvrent la voie à la biologie moléculaire moderne."
+    ],
+    "photos": [
+      {
+        "src": "Photos/9 (3).jpg",
+        "caption": "Portrait officiel de Marie Skłodowska-Curie (1867-1934), double lauréate du Prix Nobel."
+      },
+      {
+        "src": "Photos/9 (2).jpg",
+        "caption": "Marie Curie manipulant des flacons de distillation au laboratoire de l'École de Physique et Chimie (vers 1898)."
+      },
+      {
+        "src": "Photos/9.jpg",
+        "caption": "Marie Curie effectuant des mesures de rayonnement avec une chambre d'ionisation et un quartz piézoélectrique."
+      }
+    ],
+    "glossary": [
+      {
+        "term": "Radioactivité",
+        "def": "Phénomène physique par lequel des noyaux atomiques instables se désintègrent spontanément en émettant des rayonnements."
+      },
+      {
+        "term": "Polonium & Radium",
+        "def": "Deux éléments chimiques hautement radioactifs découverts et isolés par Marie et Pierre Curie en 1898."
+      },
+      {
+        "term": "Curiethérapie",
+        "def": "Traitement médical utilisant des sources radioactives pour détruire sélectivement les cellules tumorales."
+      }
+    ]
+  },
+  {
+    "title": "1869",
+    "era": "Étape 10 · XIXᵉ siècle",
+    "subtitle": "Friedrich Miescher",
+    "desc": "Découverte de la « nucléine ». Miescher isole pour la toute première fois la molécule qui s'avérera être l'ADN.",
+    "bubbles": [
+      "Dans son laboratoire de Tübingen, le jeune médecin suisse <strong>Friedrich Miescher</strong> étudie la composition chimique du noyau des globules blancs prélevés sur des pansements chirurgicaux souillés.",
+      "En 1869, il réussit à précipiter une substance acide jusque-là inconnue, riche en phosphore et résistante aux enzymes de digestion des protéines. Située exclusivement au cœur du noyau, il la nomme <strong>« nucléine »</strong>.",
+      "Sans le savoir immédiatement, Miescher vient d'isoler chimiquement l'<strong>acide désoxyribonucléique (ADN)</strong>, la macromolécule porteuse de tout le code génétique de la cellule."
+    ],
+    "photos": [
+      {
+        "src": "Photos/10.jpg",
+        "caption": "Photographie d'époque du biochimiste suisse Friedrich Miescher à Bâle."
+      }
+    ],
+    "glossary": [
+      {
+        "term": "Nucléine",
+        "def": "Substance acide riche en phosphore isolée par Miescher en 1869 dans le noyau des globules blancs ; c'est la première extraction de l'ADN."
+      },
+      {
+        "term": "Globule blanc (Leucocyte)",
+        "def": "Cellule du système immunitaire dotée d'un grand noyau, utilisée par Miescher pour extraire la nucléine."
+      },
+      {
+        "term": "Phosphore (P)",
+        "def": "Élément chimique abondant dans la nucléine (absent des protéines soufrées), prouvant sa nature moléculaire unique."
+      }
+    ]
+  },
+  {
+    "title": "1931",
+    "era": "Étape 11 · XXᵉ siècle",
+    "subtitle": "Ernst Ruska et Max Knoll",
+    "desc": "Invention du microscope électronique en transmission. La limite de diffraction de la lumière visible est franchie.",
+    "bubbles": [
+      "Les ingénieurs allemands <strong>Ernst Ruska</strong> et <strong>Max Knoll</strong> révolutionnent l'optique en remplaçant la lumière visible par un faisceau d'électrons accélérés, guidés par des lentilles électromagnétiques.",
+      "Comme la longueur d'onde des électrons est des milliers de fois plus courte que celle des photons, le <strong>microscope électronique</strong> permet d'atteindre des grossissements vertigineux, au-delà de 100 000 fois.",
+      "Pour la première fois, les biologistes peuvent observer l'ultrastructure interne des cellules : mitochondries, ribosomes, membrane plasmique et virus. Ruska recevra le Prix Nobel de Physique en 1986."
+    ],
+    "photos": [
+      {
+        "src": "Photos/11.jpg",
+        "caption": "Portrait d'Ernst Ruska (1906-1988), lauréat du Prix Nobel de physique en 1986."
+      },
+      {
+        "src": "Photos/11 (4).jpg",
+        "caption": "Max Knoll et Ernst Ruska ajustant le premier prototype de microscope électronique en transmission (1931)."
+      },
+      {
+        "src": "Photos/11 (2).jpg",
+        "caption": "Ernst Ruska présentant les plans techniques de la colonne électromagnétique du microscope."
+      },
+      {
+        "src": "Photos/11 (3).jpg",
+        "caption": "Ernst Ruska devant une console moderne de microscopie électronique à balayage et transmission."
+      }
+    ],
+    "glossary": [
+      {
+        "term": "Microscope électronique (MET)",
+        "def": "Microscope utilisant un faisceau d'électrons accélérés et des lentilles électromagnétiques au lieu de la lumière visible."
+      },
+      {
+        "term": "Limite de diffraction",
+        "def": "Barrière physique empêchant un microscope optique classique de distinguer des détails inférieurs à environ 200 nm."
+      },
+      {
+        "term": "Ultrastructure",
+        "def": "Architecture interne microscopique de la cellule (mitochondries, ribosomes, membranes) révélée grâce aux électrons."
+      }
+    ]
+  },
+  {
+    "title": "1953",
+    "era": "Étape 12 · XXᵉ siècle",
+    "subtitle": "Watson, Crick, Franklin et Wilkins",
+    "desc": "Découverte de la structure en double hélice de l'ADN. Le mystère du code moléculaire de la vie est enfin élucidé.",
+    "bubbles": [
+      "À l'université de Cambridge, <strong>James Watson</strong> et <strong>Francis Crick</strong> résolvent l'architecture tridimensionnelle de l'ADN, s'appuyant de manière cruciale sur les clichés de diffraction des rayons X de la biophysicienne <strong>Rosalind Franklin</strong> (notamment le célèbre « Cliché 51 »).",
+      "La structure révélée est une <strong>double hélice</strong> antiparallèle, stabilisée par des paires de bases complémentaires spécifiques (Adénine avec Thymine, Cytosine avec Guanine).",
+      "Cette configuration géométrique explique d'emblée le secret de la transmission héréditaire : chaque brin sert de matrice pour dupliquer fidèlement l'information lors de la division cellulaire."
+    ],
+    "photos": [
+      {
+        "src": "Photos/12 (2).jpg",
+        "caption": "James Watson et Francis Crick devant leur modèle moléculaire tridimensionnel en tige de métal (1953)."
+      },
+      {
+        "src": "Photos/12 (3).jpg",
+        "caption": "Le célèbre « Cliché 51 » de diffraction des rayons X obtenu par Rosalind Franklin et Raymond Gosling en 1952."
+      },
+      {
+        "src": "Photos/12.jpg",
+        "caption": "Détail de la maquette physique originale de la double hélice assemblée au laboratoire Cavendish."
+      }
+    ],
+    "glossary": [
+      {
+        "term": "Double hélice",
+        "def": "Architecture en deux brins antiparallèles enroulés en spirale et complémentaires de la molécule d'ADN."
+      },
+      {
+        "term": "Cliché 51",
+        "def": "Célèbre photographie de diffraction aux rayons X obtenue par Rosalind Franklin en 1952, dont la croix en « X » prouva la forme hélicoïdale."
+      },
+      {
+        "term": "Paires de bases (A–T, C–G)",
+        "def": "Associations chimiques spécifiques (Adénine avec Thymine, Cytosine avec Guanine) permettant de copier fidèlement l'ADN."
+      }
+    ]
+  }
+];
+
+  /* ANIMATIONS HTML FOR EVENTS 0-4 */
+  const animations = {
+    0: `
+      <div class="anim-header">
+        <div class="anim-title"><span class="anim-badge"></span> Simulation Cosmologique</div>
+        <span class="anim-tag" id="bb-time-badge">t = 0.0 Ga</span>
+      </div>
+      <div class="anim-stage">
+        <canvas id="canvas-bb" width="460" height="270"></canvas>
+      </div>
+      <div class="anim-controls">
+        <button class="anim-btn" id="btn-bb-restart">💥 Rejouer l'expansion</button>
+        <button class="anim-btn" id="btn-bb-toggle">⏸ Pause</button>
+      </div>
+      <p class="anim-caption">L'espace lui-même se dilate : les galaxies s'éloignent les unes des autres proportionnellement à leur distance (<strong>loi de Hubble</strong>).</p>
+    `,
+    1: `
+      <div class="anim-header">
+        <div class="anim-title"><span class="anim-badge"></span> Système Optique des Janssen</div>
+        <span class="anim-tag" id="janssen-step-tag">3. Deux lentilles combinées (×10)</span>
+      </div>
+      <div class="anim-stage">
+        <canvas id="canvas-janssen" width="460" height="270"></canvas>
+      </div>
+      <div class="anim-controls">
+        <button class="anim-btn" id="btn-janssen-s1">👁️ Sans microscope (×1)</button>
+        <button class="anim-btn" id="btn-janssen-s2">🔍 Simple loupe (×3)</button>
+        <button class="anim-btn active" id="btn-janssen-s3">🔬 Deux lentilles (×10)</button>
+      </div>
+      <p class="anim-caption">Une loupe seule ne grossit que modérément. La révolution des Janssen : <strong>combiner deux lentilles</strong> pour multiplier la puissance d'agrandissement.</p>
+    `,
+    2: `
+      <div class="anim-header">
+        <div class="anim-title"><span class="anim-badge"></span> Oculaire de Hooke (1665)</div>
+        <span class="anim-tag" id="hooke-tag">Mise au point : Nette</span>
+      </div>
+      <div class="anim-stage">
+        <canvas id="canvas-hooke" width="460" height="270"></canvas>
+      </div>
+      <div class="anim-controls">
+        <button class="anim-btn" id="btn-hooke-focus">🔍 Réajuster le focus</button>
+        <button class="anim-btn active" id="btn-hooke-highlight">✨ Inspecter les cellules</button>
+      </div>
+      <p class="anim-caption">En observant les cavités de liège mort rappelant les <strong>chambres des moines</strong>, Robert Hooke invente le terme <em>« cellule »</em>.</p>
+    `,
+    3: `
+      <div class="anim-header">
+        <div class="anim-title"><span class="anim-badge"></span> Goutte d'Eau Microscopique</div>
+        <span class="anim-tag" id="leeu-count-badge">Animalcules vivants</span>
+      </div>
+      <div class="anim-stage">
+        <canvas id="canvas-leeu" width="460" height="270"></canvas>
+      </div>
+      <div class="anim-controls">
+        <button class="anim-btn" id="btn-leeu-add">➕ Ajouter des organismes</button>
+        <button class="anim-btn" id="btn-leeu-speed">⚡ Vitesse ×1.5</button>
+      </div>
+      <p class="anim-caption">Grâce à ses lentilles artisanales ultra-puissantes, Leeuwenhoek découvre les <strong>premiers organismes vivants</strong> invisibles à l'œil nu.</p>
+    `,
+    4: `
+      <div class="anim-header">
+        <div class="anim-title"><span class="anim-badge"></span> Découverte du Noyau</div>
+        <span class="anim-tag" id="brown-step-tag">1. Tissu : un noyau par cellule</span>
+      </div>
+      <div class="anim-stage">
+        <canvas id="canvas-brown" width="460" height="270" style="cursor: pointer;"></canvas>
+      </div>
+      <div class="anim-controls">
+        <button class="anim-btn active" id="btn-brown-s1">🌿 1. Tissu</button>
+        <button class="anim-btn" id="btn-brown-s2">🔍 2. Cellule</button>
+        <button class="anim-btn" id="btn-brown-s3">🧬 3. Noyau & ADN</button>
+      </div>
+      <p class="anim-caption">Robert Brown découvre que chaque cellule végétale renferme un même élément central : le <strong>noyau</strong>.</p>
+    `,
+    5: `
+      <div class="anim-header">
+        <div class="anim-title"><span class="anim-badge"></span> Tous les Végétaux = Cellules</div>
+        <span class="anim-tag" id="schleiden-tag">1. Feuille : tissu photosynthétique</span>
+      </div>
+      <div class="anim-stage">
+        <canvas id="canvas-schleiden" width="460" height="270" style="cursor: pointer;"></canvas>
+      </div>
+      <div class="anim-controls">
+        <button class="anim-btn active" id="btn-schleiden-leaf">🌿 1. Feuille</button>
+        <button class="anim-btn" id="btn-schleiden-stem">🌱 2. Tige</button>
+        <button class="anim-btn" id="btn-schleiden-root">🌾 3. Racine</button>
+      </div>
+      <p class="anim-caption">En observant chaque organe au microscope, Schleiden prouve que <strong>toute plante est une communauté de cellules</strong>.</p>
+    `,
+    6: `
+      <div class="anim-header">
+        <div class="anim-title"><span class="anim-badge"></span> Unification du Règne Vivant</div>
+        <span class="anim-tag" id="schwann-tag">1. Tissus animaux (Cartilage & Muscle)</span>
+      </div>
+      <div class="anim-stage">
+        <canvas id="canvas-schwann" width="460" height="270" style="cursor: pointer;"></canvas>
+      </div>
+      <div class="anim-controls">
+        <button class="anim-btn active" id="btn-schwann-muscle">🦴 1. Cartilage & Muscle</button>
+        <button class="anim-btn" id="btn-schwann-nerve">🧠 2. Cellules nerveuses</button>
+        <button class="anim-btn" id="btn-schwann-cartilage">🌍 3. Unification (Végétal = Animal)</button>
+      </div>
+      <p class="anim-caption">Schwann démontre que les <strong>animaux sont aussi formés de cellules</strong> : la cellule devient l'unité universelle de tout le vivant.</p>
+    `,
+    7: `
+      <div class="anim-header">
+        <div class="anim-title"><span class="anim-badge"></span> Division Cellulaire (Virchow)</div>
+        <span class="anim-tag" id="virchow-tag">1. Cellule mère préexistante</span>
+      </div>
+      <div class="anim-stage">
+        <canvas id="canvas-virchow" width="460" height="270" style="cursor: pointer;"></canvas>
+      </div>
+      <div class="anim-controls">
+        <button class="anim-btn" id="btn-virchow-s1">1. Cellule mère</button>
+        <button class="anim-btn" id="btn-virchow-s2">2. Séparation</button>
+        <button class="anim-btn" id="btn-virchow-s3">3. Cellules filles</button>
+        <button class="anim-btn active" id="btn-virchow-toggle">⏸ Pause</button>
+      </div>
+      <p class="anim-caption"><em>« Omnis cellula e cellula »</em> — aucune cellule ne naît du néant : toute cellule provient de la <strong>division d'une cellule préexistante</strong>.</p>
+    `,
+    8: `
+      <div class="anim-header">
+        <div class="anim-title"><span class="anim-badge"></span> Radioactivité & Curiethérapie</div>
+        <span class="anim-tag" id="curie-tag">1. Découverte du Polonium & du Radium</span>
+      </div>
+      <div class="anim-stage">
+        <canvas id="canvas-curie" width="460" height="270" style="cursor: pointer;"></canvas>
+      </div>
+      <div class="anim-controls">
+        <button class="anim-btn active" id="btn-curie-radium">☢️ 1. Polonium & Radium</button>
+        <button class="anim-btn" id="btn-curie-therapy">🎯 2. Curiethérapie (Cellules)</button>
+        <button class="anim-btn" id="btn-curie-reset">🔄 Rejouer</button>
+      </div>
+      <p class="anim-caption">Marie Curie isole le <strong>polonium</strong> et le <strong>radium</strong>, dont les rayonnements permettent de détruire sélectivement les cellules tumorales.</p>
+    `,
+    9: `
+      <div class="anim-header">
+        <div class="anim-title"><span class="anim-badge"></span> Découverte de la « Nucléine »</div>
+        <span class="anim-tag" id="miescher-tag">1. Globule blanc intact</span>
+      </div>
+      <div class="anim-stage">
+        <canvas id="canvas-miescher" width="460" height="270" style="cursor: pointer;"></canvas>
+      </div>
+      <div class="anim-controls">
+        <button class="anim-btn active" id="btn-miescher-s1">🩸 1. Globule blanc</button>
+        <button class="anim-btn" id="btn-miescher-s2">🧪 2. Noyau isolé</button>
+        <button class="anim-btn" id="btn-miescher-s3">🧬 3. Nucléine (ADN)</button>
+      </div>
+      <p class="anim-caption">En éliminant les protéines du cytoplasme, Miescher isole du cœur du noyau la <strong>« nucléine »</strong> riche en phosphore (l'ADN).</p>
+    `,
+    10: `
+      <div class="anim-header">
+        <div class="anim-title"><span class="anim-badge"></span> Optique vs Microscope Électronique</div>
+        <span class="anim-tag" id="ruska-tag">1. Lumière visible (×1 500)</span>
+      </div>
+      <div class="anim-stage">
+        <canvas id="canvas-ruska" width="460" height="270" style="cursor: pointer;"></canvas>
+      </div>
+      <div class="anim-controls">
+        <button class="anim-btn active" id="btn-ruska-optical">💡 1. Lumière (×1 500)</button>
+        <button class="anim-btn" id="btn-ruska-electron">⚡ 2. Électrons (×100 000)</button>
+        <button class="anim-btn" id="btn-ruska-ultra">🔍 3. Ultrastructure</button>
+      </div>
+      <p class="anim-caption">Le faisceau d'électrons à longueur d'onde ultra-courte franchit la limite de la lumière et dévoile <strong>mitochondries, ribosomes et membranes</strong>.</p>
+    `,
+    11: `
+      <div class="anim-header">
+        <div class="anim-title"><span class="anim-badge"></span> Structure & Duplication de l'ADN</div>
+        <span class="anim-tag" id="dna-tag">2. Double hélice (paires A-T et C-G)</span>
+      </div>
+      <div class="anim-stage">
+        <canvas id="canvas-dna" width="460" height="270" style="cursor: pointer;"></canvas>
+      </div>
+      <div class="anim-controls">
+        <button class="anim-btn" id="btn-dna-photo51">✨ 1. Cliché 51 (Franklin)</button>
+        <button class="anim-btn active" id="btn-dna-helix">🧬 2. Double Hélice</button>
+        <button class="anim-btn" id="btn-dna-rep">🔀 3. Duplication</button>
+      </div>
+      <p class="anim-caption">Du <strong>Cliché 51</strong> de Rosalind Franklin à la <strong>double hélice</strong> (A–T, C–G) de Watson et Crick : chaque brin sert de matrice pour copier le code génétique.</p>
+    `
+  };
+
+  /* STATE FOR GALLERIES & LIGHTBOX */
+  const galleryState = {};
+  let currentEventIndex = 0;
+  let lightboxState = { eventIdx: 0, photoIdx: 0 };
+
+  /* BUILD DOM */
+  const shaft = document.getElementById('arrow-shaft');
+  const eventList = document.getElementById('events');
+  const counterEl = document.getElementById('event-counter');
+
+  events.forEach((ev, i) => {
+    galleryState[i] = 0; // current active photo index
+
+    // Arrow Event Link
+    const link = document.createElement('a');
+    link.className = `arrow-event ${i === 0 ? 'active' : ''}`;
+    link.id = `arrow-link-${i}`;
+    link.textContent = ev.title;
+    link.href = `#event-${i}`;
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      scrollToTimeline();
+      navigateToEvent(i);
+    });
+    shaft.appendChild(link);
+
+    // Event Slide
+    const hasAnim = Boolean(animations[i]);
+    const animHTML = animations[i] || '';
+
+    // Gallery HTML
+    const galleryHTML = `
+      <div class="gallery-view" id="gallery-view-${i}">
+        <div class="gallery-viewer" onclick="openLightbox(${i})">
+          <img class="gallery-main-img" id="gallery-main-${i}" src="${ev.photos[0].src}" alt="${ev.photos[0].caption}">
+          <div class="gallery-zoom-hint">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg>
+            Agrandir
+          </div>
+          <div class="gallery-counter" id="gallery-count-${i}">1 / ${ev.photos.length}</div>
+          <button class="gallery-nav-btn prev" onclick="event.stopPropagation(); prevPhoto(${i})" title="Précédent">‹</button>
+          <button class="gallery-nav-btn next" onclick="event.stopPropagation(); nextPhoto(${i})" title="Suivant">›</button>
+        </div>
+        <p class="gallery-caption" id="gallery-cap-${i}">${ev.photos[0].caption}</p>
+        <div class="gallery-thumbs" id="gallery-thumbs-${i}">
+          ${ev.photos.map((p, pIdx) => `
+            <button class="gallery-thumb-btn ${pIdx === 0 ? 'active' : ''}" onclick="selectPhoto(${i}, ${pIdx})" title="${p.caption}">
+              <img src="${p.src}" alt="${p.caption}">
+            </button>
+          `).join('')}
+        </div>
+      </div>
+    `;
+
+    // Right-column Media Stage
+    let mediaStageHTML = '';
+    if (hasAnim) {
+      mediaStageHTML = `
+        <div class="media-stage" id="media-stage-${i}">
+          <div class="media-header">
+            <div class="media-segmented">
+              <button class="media-tab-btn active" data-tab-event="${i}" data-tab-target="anim" onclick="switchMediaTab(${i}, 'anim')">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                Simulation
+              </button>
+              <button class="media-tab-btn" data-tab-event="${i}" data-tab-target="photos" onclick="switchMediaTab(${i}, 'photos')">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+                Photos (${ev.photos.length})
+              </button>
+            </div>
+            <span class="media-count-tag">Interactif</span>
+          </div>
+          <div class="anim-view" id="media-anim-${i}">
+            ${animHTML}
+          </div>
+          <div class="gallery-box" id="media-photos-${i}" style="display: none;">
+            ${galleryHTML}
+          </div>
+        </div>
+      `;
+    } else {
+      mediaStageHTML = `
+        <div class="media-stage" id="media-stage-${i}">
+          <div class="media-header">
+            <div class="media-static-title">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+              Archives & Documents
+            </div>
+            <span class="media-count-tag">${ev.photos.length} clichés</span>
+          </div>
+          ${galleryHTML}
+        </div>
+      `;
+    }
+
+    const li = document.createElement('li');
+    li.className = 'event';
+    li.id = `event-${i}`;
+    li.innerHTML = `
+      <div class="event-container">
+        <div class="event-info">
+          <div class="event-meta-pill">${ev.era}</div>
+          <h2 class="event-title">${ev.subtitle}</h2>
+          <p class="event-subtitle">${ev.desc}</p>
+          <div class="event-bubbles">
+            ${ev.bubbles.map(b => `<div class="event-bubble">${b}</div>`).join('')}
+          </div>
+          ${ev.glossary && ev.glossary.length ? `
+            <div class="event-glossary">
+              <div class="glossary-heading">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
+                Mots-clés &amp; Définitions
+              </div>
+              <div class="glossary-grid">
+                ${ev.glossary.map(g => `
+                  <div class="glossary-item">
+                    <span class="glossary-term">${g.term}</span>
+                    <span>${g.def}</span>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+          ` : ''}
+        </div>
+        ${mediaStageHTML}
+      </div>
+    `;
+    eventList.appendChild(li);
+  });
+
+  /* MEDIA TAB SWITCHER */
+  function switchMediaTab(eventIdx, tab) {
+    const animEl = document.getElementById(`media-anim-${eventIdx}`);
+    const photosEl = document.getElementById(`media-photos-${eventIdx}`);
+    const tabBtns = document.querySelectorAll(`[data-tab-event="${eventIdx}"]`);
+
+    tabBtns.forEach(btn => {
+      btn.classList.toggle('active', btn.getAttribute('data-tab-target') === tab);
+    });
+
+    if (tab === 'anim') {
+      if (animEl) animEl.style.display = 'flex';
+      if (photosEl) photosEl.style.display = 'none';
+    } else {
+      if (animEl) animEl.style.display = 'none';
+      if (photosEl) photosEl.style.display = 'block';
+    }
+  }
+
+  /* PHOTO GALLERY CONTROLS */
+  function selectPhoto(eventIdx, photoIdx) {
+    const ev = events[eventIdx];
+    if (!ev || !ev.photos[photoIdx]) return;
+    galleryState[eventIdx] = photoIdx;
+
+    const mainImg = document.getElementById(`gallery-main-${eventIdx}`);
+    const countEl = document.getElementById(`gallery-count-${eventIdx}`);
+    const capEl = document.getElementById(`gallery-cap-${eventIdx}`);
+    const thumbContainer = document.getElementById(`gallery-thumbs-${eventIdx}`);
+
+    if (mainImg) {
+      mainImg.src = ev.photos[photoIdx].src;
+      mainImg.alt = ev.photos[photoIdx].caption;
+    }
+    if (countEl) {
+      countEl.textContent = `${photoIdx + 1} / ${ev.photos.length}`;
+    }
+    if (capEl) {
+      capEl.textContent = ev.photos[photoIdx].caption;
+    }
+    if (thumbContainer) {
+      const thumbs = thumbContainer.querySelectorAll('.gallery-thumb-btn');
+      thumbs.forEach((th, idx) => th.classList.toggle('active', idx === photoIdx));
+    }
+  }
+
+  function prevPhoto(eventIdx) {
+    const total = events[eventIdx].photos.length;
+    const nextIdx = (galleryState[eventIdx] - 1 + total) % total;
+    selectPhoto(eventIdx, nextIdx);
+  }
+
+  function nextPhoto(eventIdx) {
+    const total = events[eventIdx].photos.length;
+    const nextIdx = (galleryState[eventIdx] + 1) % total;
+    selectPhoto(eventIdx, nextIdx);
+  }
+
+  /* LIGHTBOX MODAL */
+  function openLightbox(eventIdx) {
+    lightboxState.eventIdx = eventIdx;
+    lightboxState.photoIdx = galleryState[eventIdx] || 0;
+    updateLightbox();
+    const modal = document.getElementById('lightbox-modal');
+    modal.classList.add('active');
+  }
+
+  function closeLightbox() {
+    const modal = document.getElementById('lightbox-modal');
+    modal.classList.remove('active');
+  }
+
+  function updateLightbox() {
+    const ev = events[lightboxState.eventIdx];
+    const photo = ev.photos[lightboxState.photoIdx];
+    const imgEl = document.getElementById('lightbox-img');
+    const capEl = document.getElementById('lightbox-caption');
+    const cntEl = document.getElementById('lightbox-counter');
+
+    if (imgEl && photo) {
+      imgEl.src = photo.src;
+      imgEl.alt = photo.caption;
+    }
+    if (capEl && photo) {
+      capEl.textContent = photo.caption;
+    }
+    if (cntEl) {
+      cntEl.textContent = `${ev.subtitle} · ${lightboxState.photoIdx + 1} / ${ev.photos.length}`;
+    }
+  }
+
+  function lightboxPrev() {
+    const ev = events[lightboxState.eventIdx];
+    lightboxState.photoIdx = (lightboxState.photoIdx - 1 + ev.photos.length) % ev.photos.length;
+    selectPhoto(lightboxState.eventIdx, lightboxState.photoIdx);
+    updateLightbox();
+  }
+
+  function lightboxNext() {
+    const ev = events[lightboxState.eventIdx];
+    lightboxState.photoIdx = (lightboxState.photoIdx + 1) % ev.photos.length;
+    selectPhoto(lightboxState.eventIdx, lightboxState.photoIdx);
+    updateLightbox();
+  }
+
+  /* SCROLL HELPERS */
+  function scrollToTimeline() {
+    const timelineEl = document.getElementById('timeline');
+    if (timelineEl) {
+      const topOffset = timelineEl.getBoundingClientRect().top + window.pageYOffset - 52;
+      window.scrollTo({ top: topOffset, behavior: 'smooth' });
+    }
+  }
+
+  function scrollToLanding() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function navigateToEvent(idx) {
+    if (idx < 0) idx = 0;
+    if (idx >= events.length) idx = events.length - 1;
+    const target = document.getElementById(`event-${idx}`);
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+    }
+  }
+
+  // Header Nav Links
+  document.getElementById('brand-link').addEventListener('click', (e) => {
+    e.preventDefault();
+    scrollToLanding();
+  });
+  document.getElementById('nav-link-landing').addEventListener('click', (e) => {
+    e.preventDefault();
+    scrollToLanding();
+  });
+  document.getElementById('nav-link-timeline').addEventListener('click', (e) => {
+    e.preventDefault();
+    scrollToTimeline();
+  });
+
+  // Previous / Next Buttons in Header
+  document.getElementById('btn-prev').addEventListener('click', () => {
+    scrollToTimeline();
+    navigateToEvent(currentEventIndex - 1);
+  });
+  document.getElementById('btn-next').addEventListener('click', () => {
+    scrollToTimeline();
+    navigateToEvent(currentEventIndex + 1);
+  });
+
+  // CTA buttons on landing
+  const btnExploreTimeline = document.getElementById('btn-explore-timeline');
+  if (btnExploreTimeline) {
+    btnExploreTimeline.addEventListener('click', () => {
+      scrollToTimeline();
+    });
+  }
+
+  // IntersectionObserver for active arrow date & counter
+  const cards = document.querySelectorAll('.event');
+  const arrowLinks = document.querySelectorAll('.arrow-event');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const idx = Array.from(cards).indexOf(entry.target);
+        if (idx !== -1) {
+          currentEventIndex = idx;
+          arrowLinks.forEach((l, lIdx) => l.classList.toggle('active', lIdx === idx));
+          if (counterEl) {
+            counterEl.textContent = `${String(idx + 1).padStart(2, '0')} / ${String(events.length).padStart(2, '0')}`;
+          }
+          // Center active date horizontally in arrow shaft ONLY (never scroll window)
+          const activeLink = document.getElementById(`arrow-link-${idx}`);
+          if (activeLink && shaft) {
+            const targetLeft = activeLink.offsetLeft - (shaft.clientWidth / 2) + (activeLink.clientWidth / 2);
+            shaft.scrollTo({ left: targetLeft, behavior: 'smooth' });
+          }
+        }
+      }
+    });
+  }, { root: eventList, rootMargin: '0px -40% 0px 0px', threshold: 0.1 });
+
+  cards.forEach(c => observer.observe(c));
+
+  // Mouse wheel horizontal translation inside timeline events list
+  eventList.addEventListener('wheel', (e) => {
+    if (Math.abs(e.deltaY) > Math.abs(e.deltaX) && !e.ctrlKey) {
+      eventList.scrollLeft += e.deltaY;
+    }
+  }, { passive: true });
+
+  // Keyboard navigation
+  window.addEventListener('keydown', (e) => {
+    const modal = document.getElementById('lightbox-modal');
+    const isLightboxOpen = modal && modal.classList.contains('active');
+
+    if (isLightboxOpen) {
+      if (e.key === 'Escape') closeLightbox();
+      else if (e.key === 'ArrowLeft') lightboxPrev();
+      else if (e.key === 'ArrowRight') lightboxNext();
+    } else {
+      const timelineRect = document.getElementById('timeline').getBoundingClientRect();
+      if (timelineRect.top < window.innerHeight && timelineRect.bottom > 100) {
+        if (e.key === 'ArrowLeft') navigateToEvent(currentEventIndex - 1);
+        else if (e.key === 'ArrowRight') navigateToEvent(currentEventIndex + 1);
+      }
+    }
+  });
+
+  /* ══════════════════════════════════════════════════════════════
+     INTERACTIVE ANIMATION ENGINES (FROM SCRATCH)
+  ══════════════════════════════════════════════════════════════ */
+
+  function getDPRCanvas(id, w, h) {
+    const canvas = document.getElementById(id);
+    if (!canvas) return null;
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width = w * dpr;
+    canvas.height = h * dpr;
+    const ctx = canvas.getContext('2d');
+    ctx.scale(dpr, dpr);
+    return { canvas, ctx, w, h };
+  }
+
+  /* ── 1. BIG BANG ENGINE ── */
+  (function initBigBang() {
+    const cData = getDPRCanvas('canvas-bb', 460, 270);
+    if (!cData) return;
+    const { ctx, w, h } = cData;
+    const cx = w / 2, cy = h / 2;
+
+    let time = 0; // 0 to 13.8
+    let playing = true;
+
+    // Generate cosmic particles
+    const particles = Array.from({ length: 90 }, () => {
+      const angle = Math.random() * Math.PI * 2;
+      const speed = 0.5 + Math.random() * 1.5;
+      const color = ['#60a5fa', '#f472b6', '#a78bfa', '#fde047', '#34d399', '#ffffff'][Math.floor(Math.random() * 6)];
+      return { angle, speed, color, r: 1 + Math.random() * 1.5 };
+    });
+
+    // Generate galaxies with rotating spiral arms
+    const galaxies = [
+      { angle: 0.5, distFactor: 1.1, color: '#93c5fd', name: 'Voie Lactée', arms: 2, rotSpeed: 0.02 },
+      { angle: 2.1, distFactor: 0.9, color: '#f472b6', name: 'Andromède', arms: 2, rotSpeed: -0.015 },
+      { angle: 3.7, distFactor: 1.2, color: '#a78bfa', name: 'Galaxie C', arms: 3, rotSpeed: 0.018 },
+      { angle: 5.1, distFactor: 0.85, color: '#34d399', name: 'Galaxie D', arms: 2, rotSpeed: -0.025 }
+    ];
+
+    function draw() {
+      if (playing) {
+        time += 0.045;
+        if (time > 13.8) time = 13.8;
+      }
+
+      // Update badge
+      const badge = document.getElementById('bb-time-badge');
+      if (badge) badge.textContent = `t = ${time.toFixed(1)} Ga`;
+
+      // Background gradient
+      const bgGrad = ctx.createRadialGradient(cx, cy, 10, cx, cy, 240);
+      bgGrad.addColorStop(0, '#1a102e');
+      bgGrad.addColorStop(0.5, '#0b0f1e');
+      bgGrad.addColorStop(1, '#05070f');
+      ctx.fillStyle = bgGrad;
+      ctx.fillRect(0, 0, w, h);
+
+      // Expanding metric grid
+      ctx.save();
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.06)';
+      ctx.lineWidth = 1;
+      const expansionFactor = 1 + (time / 13.8) * 1.6;
+      const gridStep = 32 * expansionFactor;
+      for (let x = (cx % gridStep); x < w; x += gridStep) {
+        ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, h); ctx.stroke();
+      }
+      for (let y = (cy % gridStep); y < h; y += gridStep) {
+        ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(w, y); ctx.stroke();
+      }
+      ctx.restore();
+
+      // Shockwave rings
+      const waveProgress = (time / 13.8);
+      for (let i = 1; i <= 3; i++) {
+        const ringT = (waveProgress * 2.5 - i * 0.3);
+        if (ringT > 0 && ringT < 1.4) {
+          ctx.beginPath();
+          ctx.arc(cx, cy, ringT * 150, 0, Math.PI * 2);
+          ctx.strokeStyle = `rgba(96, 165, 250, ${Math.max(0, (1 - ringT / 1.4) * 0.4)})`;
+          ctx.lineWidth = 2;
+          ctx.stroke();
+        }
+      }
+
+      // Flying particles (Hubble drift)
+      particles.forEach(p => {
+        const d = p.speed * time * 12;
+        const px = cx + Math.cos(p.angle) * d;
+        const py = cy + Math.sin(p.angle) * d;
+        if (px >= 0 && px <= w && py >= 0 && py <= h) {
+          ctx.beginPath();
+          ctx.arc(px, py, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = p.color;
+          ctx.globalAlpha = Math.min(1, time / 1.5);
+          ctx.fill();
+        }
+      });
+      ctx.globalAlpha = 1;
+
+      // Rotating spiral galaxies
+      galaxies.forEach((g, idx) => {
+        const gDist = (time / 13.8) * 140 * g.distFactor;
+        const gx = cx + Math.cos(g.angle) * gDist;
+        const gy = cy + Math.sin(g.angle) * gDist;
+
+        ctx.save();
+        ctx.translate(gx, gy);
+        ctx.rotate(time * g.rotSpeed * 10);
+
+        // Core glow
+        const coreGlow = ctx.createRadialGradient(0, 0, 1, 0, 0, 12);
+        coreGlow.addColorStop(0, '#ffffff');
+        coreGlow.addColorStop(0.4, g.color);
+        coreGlow.addColorStop(1, 'transparent');
+        ctx.fillStyle = coreGlow;
+        ctx.beginPath(); ctx.arc(0, 0, 12, 0, Math.PI * 2); ctx.fill();
+
+        // Spiral arms
+        ctx.strokeStyle = g.color;
+        ctx.lineWidth = 1.5;
+        for (let a = 0; a < g.arms; a++) {
+          ctx.beginPath();
+          const armAngleOffset = (a * Math.PI * 2) / g.arms;
+          for (let r = 2; r < 18; r += 2) {
+            const theta = armAngleOffset + r * 0.35;
+            const ax = Math.cos(theta) * r;
+            const ay = Math.sin(theta) * r;
+            if (r === 2) ctx.moveTo(ax, ay); else ctx.lineTo(ax, ay);
+          }
+          ctx.stroke();
+        }
+
+        ctx.restore();
+
+        // Name and distance vector
+        if (time > 2.5) {
+          ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
+          ctx.font = '8.5px Segoe UI, sans-serif';
+          ctx.textAlign = 'center';
+          ctx.fillText(g.name, gx, gy + 22);
+
+          // Distance velocity line
+          ctx.strokeStyle = 'rgba(255, 255, 255, 0.12)';
+          ctx.setLineDash([2, 3]);
+          ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(gx, gy); ctx.stroke();
+          ctx.setLineDash([]);
+        }
+      });
+
+      // Central initial singularity / primordial core
+      const coreR = Math.max(2, 10 - (time / 13.8) * 7);
+      const coreGrad = ctx.createRadialGradient(cx, cy, 0, cx, cy, coreR * 3);
+      coreGrad.addColorStop(0, '#ffffff');
+      coreGrad.addColorStop(0.4, '#fde047');
+      coreGrad.addColorStop(0.8, '#ef4444');
+      coreGrad.addColorStop(1, 'transparent');
+      ctx.fillStyle = coreGrad;
+      ctx.beginPath(); ctx.arc(cx, cy, coreR * 3, 0, Math.PI * 2); ctx.fill();
+
+      // Core center point
+      ctx.fillStyle = '#ffffff';
+      ctx.beginPath(); ctx.arc(cx, cy, coreR, 0, Math.PI * 2); ctx.fill();
+
+      // Timeline bar at bottom
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.1)';
+      ctx.fillRect(40, h - 16, w - 80, 4);
+      ctx.fillStyle = '#60a5fa';
+      ctx.fillRect(40, h - 16, ((w - 80) * (time / 13.8)), 4);
+
+      requestAnimationFrame(draw);
+    }
+    requestAnimationFrame(draw);
+
+    // Controls
+    const restartBtn = document.getElementById('btn-bb-restart');
+    if (restartBtn) restartBtn.addEventListener('click', () => { time = 0; playing = true; });
+    const toggleBtn = document.getElementById('btn-bb-toggle');
+    if (toggleBtn) toggleBtn.addEventListener('click', () => {
+      playing = !playing;
+      toggleBtn.textContent = playing ? '⏸ Pause' : '▶ Lecture';
+    });
+  })();
+
+  /* ── 2. JANSSEN MICROSCOPE ENGINE (CONCRETE & CLEAR) ── */
+  (function initJanssen() {
+    const cData = getDPRCanvas('canvas-janssen', 460, 270);
+    if (!cData) return;
+    const { ctx, w, h } = cData;
+
+    let step = 3; // 1: Œil nu (×1), 2: Loupe (×3), 3: 2 Lentilles (×10)
+    let animPulse = 0;
+
+    // Helper to draw an insect / flea specimen at given scale
+    function drawSpecimen(ox, oy, scale, showDetails) {
+      ctx.save();
+      ctx.translate(ox, oy);
+      ctx.scale(scale, scale);
+
+      if (scale < 0.25) {
+        // Naked eye: a tiny speck
+        ctx.fillStyle = '#111827';
+        ctx.beginPath(); ctx.arc(0, 0, 2.5, 0, Math.PI * 2); ctx.fill();
+        ctx.restore();
+        return;
+      }
+
+      // Thorax & Abdomen
+      ctx.fillStyle = '#92400e';
+      ctx.beginPath(); ctx.ellipse(-2, 4, 12, 16, 0.2, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = '#b45309';
+      ctx.beginPath(); ctx.ellipse(0, -10, 8, 8, 0, 0, Math.PI * 2); ctx.fill();
+
+      // Head
+      ctx.fillStyle = '#78350f';
+      ctx.beginPath(); ctx.ellipse(4, -18, 5, 5, 0.3, 0, Math.PI * 2); ctx.fill();
+
+      if (showDetails) {
+        // Detailed antenna
+        ctx.strokeStyle = '#451a03'; ctx.lineWidth = 1.2;
+        ctx.beginPath();
+        ctx.moveTo(6, -21); ctx.quadraticCurveTo(12, -28, 16, -24);
+        ctx.moveTo(4, -22); ctx.quadraticCurveTo(8, -30, 11, -32);
+        ctx.stroke();
+
+        // Eye facets
+        ctx.fillStyle = '#ef4444';
+        ctx.beginPath(); ctx.arc(6, -19, 1.8, 0, Math.PI * 2); ctx.fill();
+
+        // 6 segmented jointed legs
+        ctx.strokeStyle = '#78350f'; ctx.lineWidth = 1.5;
+        const legOffsets = [[-2, -6], [-4, 2], [-6, 12]];
+        legOffsets.forEach(([lx, ly], i) => {
+          // Left leg
+          ctx.beginPath();
+          ctx.moveTo(lx, ly);
+          ctx.lineTo(lx - 12, ly + (i===2?14:4));
+          ctx.lineTo(lx - 20, ly + (i===2?26:12));
+          ctx.stroke();
+          // Right leg
+          ctx.beginPath();
+          ctx.moveTo(lx + 4, ly);
+          ctx.lineTo(lx + 16, ly + (i===2?16:6));
+          ctx.lineTo(lx + 24, ly + (i===2?28:16));
+          ctx.stroke();
+        });
+
+        // Abdomen segmentation rings
+        ctx.strokeStyle = '#78350f'; ctx.lineWidth = 1;
+        for (let r = -4; r <= 14; r += 4) {
+          ctx.beginPath(); ctx.moveTo(-10, r); ctx.lineTo(6, r + 2); ctx.stroke();
+        }
+      } else {
+        // Simple blurry outline for 1-lens loupe
+        ctx.strokeStyle = '#78350f'; ctx.lineWidth = 1.2;
+        ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(-12, 10); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(2, 0); ctx.lineTo(14, 12); ctx.stroke();
+      }
+
+      ctx.restore();
+    }
+
+    function draw() {
+      animPulse = (animPulse + 0.04) % (Math.PI * 2);
+
+      // Spatial void background
+      ctx.fillStyle = '#030712';
+      ctx.fillRect(0, 0, w, h);
+
+      // Left Section: The Microscope Device setup (x: 14 to 255)
+      ctx.fillStyle = 'rgba(12, 18, 36, 0.9)';
+      ctx.strokeStyle = 'rgba(56, 189, 248, 0.25)';
+      ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.roundRect(14, 14, 240, 242, 6); ctx.fill(); ctx.stroke();
+
+      // Section title
+      ctx.fillStyle = '#38bdf8';
+      ctx.font = 'bold 9.5px Segoe UI, sans-serif';
+      ctx.textAlign = 'left';
+      ctx.fillText("DISPOSITIF OPTIQUE", 24, 32);
+
+      // Specimen slide at x=36
+      ctx.fillStyle = 'rgba(30, 41, 59, 0.9)';
+      ctx.strokeStyle = '#38bdf8';
+      ctx.lineWidth = 1.5;
+      ctx.fillRect(32, 70, 8, 110);
+      ctx.strokeRect(32, 70, 8, 110);
+
+      // Specimen sample (tiny speck on slide)
+      drawSpecimen(36, 125, 0.18, false);
+
+      ctx.fillStyle = '#38bdf8';
+      ctx.font = 'bold 8px Segoe UI, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText("Échantillon", 36, 62);
+      ctx.font = '7px Segoe UI, sans-serif';
+      ctx.fillStyle = '#94a3b8';
+      ctx.fillText("(minuscule)", 36, 192);
+
+      // Microscope tube body (cross-section)
+      const tubeY = 85, tubeH = 80;
+      ctx.fillStyle = 'rgba(14, 165, 233, 0.12)';
+      ctx.strokeStyle = '#0284c7';
+      ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.roundRect(64, tubeY, 155, tubeH, 4); ctx.fill(); ctx.stroke();
+      ctx.fillStyle = '#38bdf8';
+      ctx.font = 'bold 8px Segoe UI, sans-serif';
+      ctx.fillText("Tube du microscope", 140, tubeY + 14);
+
+      // Axis
+      ctx.strokeStyle = 'rgba(56, 189, 248, 0.2)';
+      ctx.setLineDash([3, 3]);
+      ctx.beginPath(); ctx.moveTo(36, 125); ctx.lineTo(240, 125); ctx.stroke();
+      ctx.setLineDash([]);
+
+      // Light beams and Lenses based on current step
+      if (step === 1) {
+        // Step 1: Eye looking directly without lenses
+        ctx.fillStyle = 'rgba(239, 68, 68, 0.1)';
+        ctx.beginPath(); ctx.moveTo(36, 125); ctx.lineTo(235, 110); ctx.lineTo(235, 140); ctx.closePath(); ctx.fill();
+        ctx.strokeStyle = '#f87171'; ctx.lineWidth = 1.2;
+        ctx.beginPath(); ctx.moveTo(36, 125); ctx.lineTo(235, 110); ctx.moveTo(36, 125); ctx.lineTo(235, 140); ctx.stroke();
+
+        ctx.fillStyle = '#f87171'; ctx.font = 'bold 9px Segoe UI, sans-serif';
+        ctx.fillText("Pas de lentille : l'œil ne voit rien !", 140, 155);
+      } else if (step === 2) {
+        // Step 2: 1 Single Lens (Loupe)
+        const l1x = 95;
+        ctx.fillStyle = 'rgba(56, 189, 248, 0.35)'; ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 2.5;
+        ctx.beginPath(); ctx.ellipse(l1x, 125, 6, 32, 0, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+        ctx.fillStyle = '#38bdf8'; ctx.font = 'bold 8px Segoe UI, sans-serif';
+        ctx.fillText("Lentille 1", l1x, 82);
+        ctx.fillText("(Loupe)", l1x, 175);
+
+        // Cone of light expanding through lens 1
+        ctx.fillStyle = 'rgba(56, 189, 248, 0.12)';
+        ctx.beginPath(); ctx.moveTo(36, 125); ctx.lineTo(l1x, 100); ctx.lineTo(235, 88); ctx.lineTo(235, 162); ctx.lineTo(l1x, 150); ctx.closePath(); ctx.fill();
+
+        ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 1.2;
+        ctx.beginPath(); ctx.moveTo(36, 125); ctx.lineTo(l1x, 100); ctx.lineTo(235, 88); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(36, 125); ctx.lineTo(l1x, 150); ctx.lineTo(235, 162); ctx.stroke();
+
+        // Intermediate preview
+        drawSpecimen(170, 125, 0.4, false);
+        ctx.fillStyle = '#38bdf8'; ctx.font = 'bold 7.5px Segoe UI, sans-serif';
+        ctx.fillText("Agrandissement ×3", 170, 155);
+      } else if (step === 3) {
+        // Step 3: Two lenses combined (Janssen compound microscope)
+        const l1x = 88;  // Objectif
+        const l2x = 188; // Oculaire
+
+        // Lens 1: Objectif
+        ctx.fillStyle = 'rgba(56, 189, 248, 0.45)'; ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 2.5;
+        ctx.beginPath(); ctx.ellipse(l1x, 125, 5, 26, 0, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+        ctx.fillStyle = '#38bdf8'; ctx.font = 'bold 8px Segoe UI, sans-serif';
+        ctx.fillText("1. Objectif", l1x, 82);
+        ctx.font = '7px Segoe UI, sans-serif'; ctx.fillText("(près de l'objet)", l1x, 162);
+
+        // Intermediate image in the middle
+        const imgMidX = 138;
+        drawSpecimen(imgMidX, 125, -0.4, true);
+        ctx.fillStyle = '#fbbf24'; ctx.font = 'bold 7px Segoe UI, sans-serif';
+        ctx.fillText("Image 1 (×3)", imgMidX, 150);
+
+        // Lens 2: Oculaire
+        ctx.fillStyle = 'rgba(168, 85, 247, 0.45)'; ctx.strokeStyle = '#a855f7'; ctx.lineWidth = 2.5;
+        ctx.beginPath(); ctx.ellipse(l2x, 125, 7, 34, 0, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+        ctx.fillStyle = '#c084fc'; ctx.font = 'bold 8px Segoe UI, sans-serif';
+        ctx.fillText("2. Oculaire", l2x, 82);
+        ctx.font = '7px Segoe UI, sans-serif'; ctx.fillText("(près de l'œil)", l2x, 170);
+
+        // Light rays cascading through both lenses
+        ctx.fillStyle = 'rgba(168, 85, 247, 0.12)';
+        ctx.beginPath();
+        ctx.moveTo(36, 125); ctx.lineTo(l1x, 106); ctx.lineTo(imgMidX, 138); ctx.lineTo(l2x, 96); ctx.lineTo(235, 78);
+        ctx.lineTo(235, 172); ctx.lineTo(l2x, 154); ctx.lineTo(imgMidX, 112); ctx.lineTo(l1x, 144); ctx.closePath();
+        ctx.fill();
+
+        ctx.strokeStyle = '#a855f7'; ctx.lineWidth = 1.3;
+        ctx.beginPath();
+        ctx.moveTo(36, 125); ctx.lineTo(l1x, 106); ctx.lineTo(imgMidX, 138); ctx.lineTo(l2x, 96); ctx.lineTo(235, 78);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(36, 125); ctx.lineTo(l1x, 144); ctx.lineTo(imgMidX, 112); ctx.lineTo(l2x, 154); ctx.lineTo(235, 172);
+        ctx.stroke();
+
+        // Multiplied badge inside left section
+        ctx.fillStyle = 'rgba(14, 165, 233, 0.15)'; ctx.strokeStyle = 'rgba(56, 189, 248, 0.4)'; ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.roundRect(68, 222, 148, 22, 4); ctx.fill(); ctx.stroke();
+        ctx.fillStyle = '#38bdf8'; ctx.font = 'bold 8.5px Segoe UI, sans-serif';
+        ctx.fillText("×3  MULTIPLIÉ PAR  ×3.3  =  ×10 !", 142, 236);
+      }
+
+      // Eye observer icon at x=238
+      ctx.strokeStyle = '#38bdf8'; ctx.fillStyle = '#0f172a'; ctx.lineWidth = 1.5;
+      ctx.beginPath();
+      ctx.moveTo(234, 125); ctx.quadraticCurveTo(243, 117, 252, 125); ctx.quadraticCurveTo(243, 133, 234, 125); ctx.closePath();
+      ctx.fill(); ctx.stroke();
+      ctx.fillStyle = '#38bdf8'; ctx.beginPath(); ctx.arc(243, 125, 3.5, 0, Math.PI * 2); ctx.fill();
+
+      // Right Section: The Observer's Eyepiece View (What the eye sees!)
+      const viewCX = 362, viewCY = 120, viewR = 64;
+
+      ctx.fillStyle = '#38bdf8';
+      ctx.font = 'bold 9.5px Segoe UI, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText("CE QUE L'ŒIL OBSERVE", viewCX, 32);
+
+      // Brass eyepiece frame
+      ctx.save();
+      ctx.beginPath(); ctx.arc(viewCX, viewCY, viewR, 0, Math.PI * 2); ctx.clip();
+
+      // Spatial optical field backdrop
+      const lampGrad = ctx.createRadialGradient(viewCX, viewCY, 10, viewCX, viewCY, viewR);
+      lampGrad.addColorStop(0, '#1e293b');
+      lampGrad.addColorStop(0.65, '#0f172a');
+      lampGrad.addColorStop(1, '#020617');
+      ctx.fillStyle = lampGrad;
+      ctx.fillRect(viewCX - viewR, viewCY - viewR, viewR * 2, viewR * 2);
+
+      // Circular reticle grid lines
+      ctx.strokeStyle = 'rgba(56, 189, 248, 0.25)'; ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.arc(viewCX, viewCY, 30, 0, Math.PI * 2); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(viewCX - viewR, viewCY); ctx.lineTo(viewCX + viewR, viewCY); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(viewCX, viewCY - viewR); ctx.lineTo(viewCX, viewCY + viewR); ctx.stroke();
+
+      // Draw specimen inside eyepiece view according to step
+      if (step === 1) {
+        drawSpecimen(viewCX, viewCY, 0.18, false);
+      } else if (step === 2) {
+        drawSpecimen(viewCX, viewCY, 0.6, false);
+      } else if (step === 3) {
+        drawSpecimen(viewCX, viewCY, 1.8, true);
+      }
+
+      ctx.restore();
+
+      // Bezel border
+      ctx.strokeStyle = '#0284c7'; ctx.lineWidth = 5;
+      ctx.beginPath(); ctx.arc(viewCX, viewCY, viewR, 0, Math.PI * 2); ctx.stroke();
+      ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 1.5;
+      ctx.beginPath(); ctx.arc(viewCX, viewCY, viewR - 2.5, 0, Math.PI * 2); ctx.stroke();
+
+      // Caption below eyepiece
+      ctx.textAlign = 'center';
+      if (step === 1) {
+        ctx.fillStyle = '#f87171'; ctx.font = 'bold 9px Segoe UI, sans-serif';
+        ctx.fillText("À l'œil nu (×1) : presque invisible", viewCX, viewCY + viewR + 18);
+        ctx.fillStyle = '#94a3b8'; ctx.font = '7.5px Segoe UI, sans-serif';
+        ctx.fillText("Un simple point sombre sans détails", viewCX, viewCY + viewR + 30);
+      } else if (step === 2) {
+        ctx.fillStyle = '#fbbf24'; ctx.font = 'bold 9px Segoe UI, sans-serif';
+        ctx.fillText("Une seule lentille (×3) : loupe", viewCX, viewCY + viewR + 18);
+        ctx.fillStyle = '#94a3b8'; ctx.font = '7.5px Segoe UI, sans-serif';
+        ctx.fillText("Forme visible, mais floue et limitée", viewCX, viewCY + viewR + 30);
+      } else if (step === 3) {
+        ctx.fillStyle = '#38bdf8'; ctx.font = 'bold 9px Segoe UI, sans-serif';
+        ctx.fillText("2 Lentilles Janssen (×10) : net !", viewCX, viewCY + viewR + 18);
+        ctx.fillStyle = '#94a3b8'; ctx.font = '7.5px Segoe UI, sans-serif';
+        ctx.fillText("Antennes, pattes et yeux révélés !", viewCX, viewCY + viewR + 30);
+      }
+
+      requestAnimationFrame(draw);
+    }
+    requestAnimationFrame(draw);
+
+    // Button controls
+    const s1 = document.getElementById('btn-janssen-s1');
+    const s2 = document.getElementById('btn-janssen-s2');
+    const s3 = document.getElementById('btn-janssen-s3');
+    const tag = document.getElementById('janssen-step-tag');
+
+    function setStep(newStep, activeBtn, text) {
+      step = newStep;
+      [s1, s2, s3].forEach(b => { if (b) b.classList.remove('active'); });
+      if (activeBtn) activeBtn.classList.add('active');
+      if (tag) tag.textContent = text;
+    }
+
+    if (s1) s1.addEventListener('click', () => setStep(1, s1, "1. Sans microscope (×1)"));
+    if (s2) s2.addEventListener('click', () => setStep(2, s2, "2. Simple loupe (×3)"));
+    if (s3) s3.addEventListener('click', () => setStep(3, s3, "3. Deux lentilles combinées (×10)"));
+  })();
+
+  /* ── 3. HOOKE CORK CELLS ENGINE ── */
+  (function initHooke() {
+    const cData = getDPRCanvas('canvas-hooke', 460, 270);
+    if (!cData) return;
+    const { ctx, w, h } = cData;
+    const cx = 230, cy = 135, r = 110;
+
+    let focus = 1.0;
+    let focusDirection = -1;
+    let autoFocus = false;
+    let scanAngle = 0;
+    let selectedCellIdx = 22;
+
+    // Generate honeycomb cork cell grid
+    const cells = [];
+    const hexRadius = 15;
+    for (let q = -6; q <= 6; q++) {
+      for (let rIdx = -5; rIdx <= 5; rIdx++) {
+        const hx = cx + hexRadius * Math.sqrt(3) * (q + rIdx / 2);
+        const hy = cy + hexRadius * (3/2) * rIdx;
+        const distFromCenter = Math.hypot(hx - cx, hy - cy);
+        if (distFromCenter < r - 6) {
+          cells.push({ x: hx, y: hy, dist: distFromCenter });
+        }
+      }
+    }
+
+    function draw() {
+      if (autoFocus) {
+        focus += focusDirection * 0.008;
+        if (focus <= 0.25) { focus = 0.25; focusDirection = 1; }
+        if (focus >= 1.0) { focus = 1.0; focusDirection = -1; }
+      }
+      scanAngle += 0.015;
+
+      // Spatial void casing
+      ctx.fillStyle = '#030712';
+      ctx.fillRect(0, 0, w, h);
+
+      // Circular microscope field
+      ctx.save();
+      ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.clip();
+
+      // Cork woody background
+      ctx.fillStyle = '#261b12';
+      ctx.fillRect(cx - r, cy - r, r * 2, r * 2);
+
+      // Draw cork cells with focus sharpness
+      cells.forEach((cell, idx) => {
+        const isHighlight = (idx === selectedCellIdx);
+        const blurOffset = (1 - focus) * 4;
+
+        ctx.beginPath();
+        for (let a = 0; a < 6; a++) {
+          const angle = (a * Math.PI) / 3;
+          const px = cell.x + Math.cos(angle) * (hexRadius - 1.5) + (Math.random() - 0.5) * blurOffset;
+          const py = cell.y + Math.sin(angle) * (hexRadius - 1.5) + (Math.random() - 0.5) * blurOffset;
+          if (a === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+        }
+        ctx.closePath();
+
+        // Fill cell cavity (subérine / liège mort)
+        if (isHighlight) {
+          ctx.fillStyle = `rgba(56, 189, 248, ${0.4 + 0.3 * Math.sin(scanAngle * 3)})`;
+        } else {
+          ctx.fillStyle = '#140e0a';
+        }
+        ctx.fill();
+
+        // Thick dead cellulose walls
+        ctx.strokeStyle = isHighlight ? '#38bdf8' : '#a77f52';
+        ctx.lineWidth = isHighlight ? 3.5 : 2.5 * focus;
+        ctx.stroke();
+      });
+
+      // Lens vignette shadow
+      const lensVignette = ctx.createRadialGradient(cx, cy, r * 0.7, cx, cy, r);
+      lensVignette.addColorStop(0, 'rgba(0,0,0,0)');
+      lensVignette.addColorStop(1, 'rgba(0,0,0,0.85)');
+      ctx.fillStyle = lensVignette;
+      ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.fill();
+
+      ctx.restore();
+
+      // Spatial eyepiece bezel ring
+      ctx.strokeStyle = '#0284c7'; ctx.lineWidth = 5;
+      ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.stroke();
+      ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 1.5;
+      ctx.beginPath(); ctx.arc(cx, cy, r + 3, 0, Math.PI * 2); ctx.stroke();
+
+      // Callout pointing to selected cell
+      if (cells[selectedCellIdx]) {
+        const sc = cells[selectedCellIdx];
+        const calloutX = 350, calloutY = 55;
+        ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 1.2;
+        ctx.beginPath(); ctx.moveTo(sc.x, sc.y); ctx.lineTo(calloutX - 45, calloutY + 12); ctx.stroke();
+
+        ctx.fillStyle = '#38bdf8';
+        ctx.beginPath(); ctx.arc(sc.x, sc.y, 3.5, 0, Math.PI * 2); ctx.fill();
+
+        // Badge
+        ctx.fillStyle = 'rgba(10, 16, 32, 0.9)';
+        ctx.strokeStyle = 'rgba(56, 189, 248, 0.4)'; ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.roundRect(calloutX - 50, calloutY - 8, 140, 42, 4); ctx.fill(); ctx.stroke();
+
+        ctx.fillStyle = '#38bdf8'; ctx.font = 'bold 8.5px Consolas, monospace'; ctx.textAlign = 'left';
+        ctx.fillText("« Cellule » (1665)", calloutX - 42, calloutY + 8);
+        ctx.fillStyle = '#94a3b8'; ctx.font = '7.5px Consolas, monospace';
+        ctx.fillText("Paroi morte de liège (~25 µm)", calloutX - 42, calloutY + 22);
+      }
+
+      requestAnimationFrame(draw);
+    }
+    requestAnimationFrame(draw);
+
+    // Controls
+    const focusBtn = document.getElementById('btn-hooke-focus');
+    if (focusBtn) focusBtn.addEventListener('click', () => {
+      autoFocus = !autoFocus;
+      focus = autoFocus ? 0.3 : 1.0;
+      focusBtn.classList.toggle('active', autoFocus);
+      const tag = document.getElementById('hooke-tag');
+      if (tag) tag.textContent = autoFocus ? 'Mise au point : Recherche...' : 'Mise au point : Nette';
+    });
+
+    const highlightBtn = document.getElementById('btn-hooke-highlight');
+    if (highlightBtn) highlightBtn.addEventListener('click', () => {
+      selectedCellIdx = (selectedCellIdx + 7) % cells.length;
+    });
+
+    cData.canvas.addEventListener('click', (e) => {
+      const rect = cData.canvas.getBoundingClientRect();
+      const mx = e.clientX - rect.left;
+      const my = e.clientY - rect.top;
+      let closestIdx = 0, minDist = 9999;
+      cells.forEach((cell, idx) => {
+        const d = Math.hypot(cell.x - mx, cell.y - my);
+        if (d < minDist) { minDist = d; closestIdx = idx; }
+      });
+      selectedCellIdx = closestIdx;
+    });
+  })();
+
+  /* ── 4. LEEUWENHOEK LIVING CELLS ENGINE ── */
+  (function initLeeuwenhoek() {
+    const cData = getDPRCanvas('canvas-leeu', 460, 270);
+    if (!cData) return;
+    const { ctx, w, h } = cData;
+    const cx = 230, cy = 135, r = 110;
+
+    let speedMult = 1.0;
+    let mouseX = -100, mouseY = -100;
+
+    // Create organisms
+    const organisms = [];
+    function spawnOrganism(type) {
+      const angle = Math.random() * Math.PI * 2;
+      const dist = Math.random() * (r - 25);
+      return {
+        type: type || ['paramecium', 'bacillus', 'spirillum', 'sperm'][Math.floor(Math.random() * 4)],
+        x: cx + Math.cos(angle) * dist,
+        y: cy + Math.sin(angle) * dist,
+        vx: (Math.random() - 0.5) * 1.4,
+        vy: (Math.random() - 0.5) * 1.4,
+        angle: Math.random() * Math.PI * 2,
+        phase: Math.random() * 10
+      };
+    }
+
+    for (let i = 0; i < 3; i++) organisms.push(spawnOrganism('paramecium'));
+    for (let i = 0; i < 7; i++) organisms.push(spawnOrganism('bacillus'));
+    for (let i = 0; i < 4; i++) organisms.push(spawnOrganism('spirillum'));
+    for (let i = 0; i < 3; i++) organisms.push(spawnOrganism('sperm'));
+
+    function draw() {
+      // Spatial void background
+      ctx.fillStyle = '#030712';
+      ctx.fillRect(0, 0, w, h);
+
+      // Droplet field
+      ctx.save();
+      ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.clip();
+
+      const waterGrad = ctx.createRadialGradient(cx, cy, 20, cx, cy, r);
+      waterGrad.addColorStop(0, '#0e7490');
+      waterGrad.addColorStop(0.65, '#082f49');
+      waterGrad.addColorStop(1, '#030712');
+      ctx.fillStyle = waterGrad;
+      ctx.fillRect(cx - r, cy - r, r * 2, r * 2);
+
+      // Microscopic organisms update and draw
+      organisms.forEach(org => {
+        org.phase += 0.15 * speedMult;
+
+        // Repel from cursor
+        const dm = Math.hypot(org.x - mouseX, org.y - mouseY);
+        if (dm < 45) {
+          org.vx += ((org.x - mouseX) / dm) * 0.4;
+          org.vy += ((org.y - mouseY) / dm) * 0.4;
+        }
+
+        // Move
+        org.x += org.vx * speedMult;
+        org.y += org.vy * speedMult;
+        org.angle = Math.atan2(org.vy, org.vx);
+
+        // Keep inside droplet
+        const distFromCenter = Math.hypot(org.x - cx, org.y - cy);
+        if (distFromCenter > r - 16) {
+          const normAngle = Math.atan2(org.y - cy, org.x - cx);
+          org.vx -= Math.cos(normAngle) * 0.3;
+          org.vy -= Math.sin(normAngle) * 0.3;
+        }
+
+        // Friction and speed cap
+        const spd = Math.hypot(org.vx, org.vy);
+        if (spd > 2.5) { org.vx *= 0.95; org.vy *= 0.95; }
+        if (spd < 0.4) { org.vx *= 1.05; org.vy *= 1.05; }
+
+        ctx.save();
+        ctx.translate(org.x, org.y);
+        ctx.rotate(org.angle);
+
+        if (org.type === 'paramecium') {
+          // Protozoan body
+          ctx.fillStyle = 'rgba(110, 231, 183, 0.75)';
+          ctx.strokeStyle = '#34d399';
+          ctx.lineWidth = 1.2;
+          ctx.beginPath(); ctx.ellipse(0, 0, 16, 7, 0, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+          // Cilia
+          ctx.strokeStyle = '#6ee7b7'; ctx.lineWidth = 0.8;
+          for (let s = -12; s <= 12; s += 3) {
+            const wave = Math.sin(org.phase + s);
+            ctx.beginPath(); ctx.moveTo(s, -7); ctx.lineTo(s, -11 + wave); ctx.stroke();
+            ctx.beginPath(); ctx.moveTo(s, 7); ctx.lineTo(s, 11 - wave); ctx.stroke();
+          }
+        } else if (org.type === 'bacillus') {
+          // Rod bacterium with spinning flagellum
+          ctx.fillStyle = '#38bdf8'; ctx.strokeStyle = '#0284c7'; ctx.lineWidth = 1;
+          ctx.beginPath(); ctx.roundRect(-8, -3.5, 16, 7, 3.5); ctx.fill(); ctx.stroke();
+          // Flagella
+          ctx.strokeStyle = '#7dd3fc'; ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.moveTo(-8, 0);
+          ctx.quadraticCurveTo(-14, Math.sin(org.phase) * 5, -20, 0);
+          ctx.stroke();
+        } else if (org.type === 'spirillum') {
+          // Corkscrew spiral bacterium
+          ctx.strokeStyle = '#f472b6'; ctx.lineWidth = 1.8;
+          ctx.beginPath();
+          for (let xStep = -10; xStep <= 10; xStep += 2) {
+            const yStep = Math.sin(org.phase + xStep * 0.5) * 3.5;
+            if (xStep === -10) ctx.moveTo(xStep, yStep); else ctx.lineTo(xStep, yStep);
+          }
+          ctx.stroke();
+        } else if (org.type === 'sperm') {
+          // Motile cell with undulating flagellum
+          ctx.fillStyle = '#fde047';
+          ctx.beginPath(); ctx.arc(0, 0, 4, 0, Math.PI * 2); ctx.fill();
+          ctx.strokeStyle = '#fef08a'; ctx.lineWidth = 1.2;
+          ctx.beginPath();
+          ctx.moveTo(0, 0);
+          for (let tx = 0; tx > -22; tx -= 2) {
+            const ty = Math.sin(org.phase + tx * 0.45) * 4.5;
+            ctx.lineTo(tx, ty);
+          }
+          ctx.stroke();
+        }
+
+        ctx.restore();
+      });
+
+      // Lens vignette & reflection
+      const dropShimmer = ctx.createRadialGradient(cx - 30, cy - 30, 10, cx, cy, r);
+      dropShimmer.addColorStop(0, 'rgba(255,255,255,0.18)');
+      dropShimmer.addColorStop(1, 'rgba(0,0,0,0.5)');
+      ctx.fillStyle = dropShimmer;
+      ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.fill();
+
+      ctx.restore();
+
+      // Outer spatial frame
+      ctx.strokeStyle = '#0284c7'; ctx.lineWidth = 5;
+      ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.stroke();
+      ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 1.5;
+      ctx.beginPath(); ctx.arc(cx, cy, r + 3, 0, Math.PI * 2); ctx.stroke();
+
+      const countBadge = document.getElementById('leeu-count-badge');
+      if (countBadge) countBadge.textContent = organisms.length + ' animalcules vivants';
+
+      requestAnimationFrame(draw);
+    }
+    requestAnimationFrame(draw);
+
+    // Interaction
+    cData.canvas.addEventListener('mousemove', (e) => {
+      const rect = cData.canvas.getBoundingClientRect();
+      mouseX = e.clientX - rect.left;
+      mouseY = e.clientY - rect.top;
+    });
+    cData.canvas.addEventListener('mouseleave', () => { mouseX = -100; mouseY = -100; });
+
+    const addBtn = document.getElementById('btn-leeu-add');
+    if (addBtn) addBtn.addEventListener('click', () => {
+      for (let k = 0; k < 4; k++) organisms.push(spawnOrganism());
+    });
+    const spdBtn = document.getElementById('btn-leeu-speed');
+    if (spdBtn) spdBtn.addEventListener('click', () => {
+      speedMult = speedMult === 1.0 ? 1.8 : 1.0;
+      spdBtn.classList.toggle('active', speedMult > 1.0);
+    });
+  })();
+
+  /* ── 5. ROBERT BROWN ENGINE (CLEAN, FLUID & VISUAL) ── */
+  (function initBrown() {
+    const cData = getDPRCanvas('canvas-brown', 460, 270);
+    if (!cData) return;
+    const { canvas, ctx, w, h } = cData;
+
+    let step = 1; // 1: Tissu, 2: Cellule, 3: Noyau
+    let currentZoom = 1.0;
+    let targetZoom = 1.0;
+    let time = 0;
+
+    // Viewport center
+    const cx = w / 2;
+    const cy = h / 2;
+
+    // Grid of plant cells (orchid / onion epidermis pattern)
+    const cellW = 106;
+    const cellH = 62;
+    const cells = [];
+
+    for (let r = -2; r <= 2; r++) {
+      const rowY = cy + r * cellH;
+      const stagger = (Math.abs(r) % 2 === 1) ? cellW / 2 : 0;
+      for (let c = -3; c <= 3; c++) {
+        const cellX = cx + c * cellW + stagger;
+        const isCenter = (r === 0 && c === 0);
+        const jx = isCenter ? 0 : Math.sin(r * 3 + c * 5) * 3;
+        const jy = isCenter ? 0 : Math.cos(r * 4 + c * 2) * 2;
+        cells.push({
+          x: cellX,
+          y: rowY,
+          w: cellW - 6,
+          h: cellH - 6,
+          nx: cellX + jx,
+          ny: rowY + jy,
+          isCenter,
+          phase: (r * 3 + c * 2) * 0.8
+        });
+      }
+    }
+
+    function draw() {
+      time += 0.035;
+
+      // Smooth camera zoom easing
+      currentZoom += (targetZoom - currentZoom) * 0.075;
+
+      // Spatial void background
+      ctx.fillStyle = '#030712';
+      ctx.fillRect(0, 0, w, h);
+
+      // Save camera transform
+      ctx.save();
+      ctx.translate(cx, cy);
+      ctx.scale(currentZoom, currentZoom);
+      ctx.translate(-cx, -cy);
+
+      // ── 1. DRAW PLANT CELLS & TISSUE ──
+      cells.forEach((cell) => {
+        // Culling
+        const dx = (cell.x - cx) * currentZoom;
+        const dy = (cell.y - cy) * currentZoom;
+        if (Math.abs(dx) > w * 1.5 || Math.abs(dy) > h * 1.5) return;
+
+        // Cell wall
+        ctx.fillStyle = cell.isCenter ? 'rgba(6, 26, 22, 0.75)' : 'rgba(4, 18, 16, 0.55)';
+        ctx.strokeStyle = '#059669';
+        ctx.lineWidth = 3.5;
+        ctx.beginPath();
+        ctx.roundRect(cell.x - cell.w / 2, cell.y - cell.h / 2, cell.w, cell.h, 12);
+        ctx.fill();
+        ctx.stroke();
+
+        // Inner cellulose boundary
+        ctx.strokeStyle = 'rgba(16, 185, 129, 0.25)';
+        ctx.lineWidth = 1.2;
+        ctx.beginPath();
+        ctx.roundRect(cell.x - cell.w / 2 + 3, cell.y - cell.h / 2 + 3, cell.w - 6, cell.h - 6, 9);
+        ctx.stroke();
+
+        // Chloroplasts in cyclosis (cytoplasmic streaming)
+        const chloroCount = 6;
+        for (let k = 0; k < chloroCount; k++) {
+          const a = time * 0.6 + cell.phase + (k * Math.PI * 2) / chloroCount;
+          const rx = (cell.w / 2 - 12) * Math.cos(a);
+          const ry = (cell.h / 2 - 10) * Math.sin(a);
+          const chX = cell.x + rx;
+          const chY = cell.y + ry;
+
+          ctx.save();
+          ctx.translate(chX, chY);
+          ctx.rotate(a + Math.PI / 2);
+          ctx.fillStyle = '#16a34a';
+          ctx.beginPath();
+          ctx.ellipse(0, 0, 4.2, 2.5, 0, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.fillStyle = '#4ade80';
+          ctx.beginPath();
+          ctx.ellipse(-1, 0, 2, 1.2, 0, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.restore();
+        }
+
+        // Nucleus in all non-center cells
+        if (!cell.isCenter) {
+          const nucR = 8.5;
+          const grad = ctx.createRadialGradient(cell.nx, cell.ny, 2, cell.nx, cell.ny, nucR);
+          grad.addColorStop(0, '#475569');
+          grad.addColorStop(0.7, '#1e293b');
+          grad.addColorStop(1, '#0f172a');
+          ctx.fillStyle = grad;
+          ctx.beginPath();
+          ctx.arc(cell.nx, cell.ny, nucR, 0, Math.PI * 2);
+          ctx.fill();
+
+          ctx.fillStyle = '#64748b';
+          ctx.beginPath();
+          ctx.arc(cell.nx - 2, cell.ny - 1.5, 2, 0, Math.PI * 2);
+          ctx.fill();
+
+          // Subtle pulse ring in tissue view showing every cell has a nucleus
+          if (currentZoom < 2.0) {
+            const pulse = (time * 2.5 + cell.phase) % (Math.PI * 2);
+            ctx.strokeStyle = `rgba(56, 189, 248, ${0.35 + 0.25 * Math.sin(pulse)})`;
+            ctx.lineWidth = 1.2;
+            ctx.beginPath();
+            ctx.arc(cell.nx, cell.ny, nucR + 3 + Math.sin(pulse) * 1.5, 0, Math.PI * 2);
+            ctx.stroke();
+          }
+        }
+      });
+
+      // ── 2. CENTRAL NUCLEUS ──
+      const centerNucR = 12.5;
+
+      // Soft glow
+      const glowGrad = ctx.createRadialGradient(cx, cy, centerNucR * 0.8, cx, cy, centerNucR * 2.2);
+      glowGrad.addColorStop(0, 'rgba(56, 189, 248, 0.35)');
+      glowGrad.addColorStop(1, 'rgba(56, 189, 248, 0)');
+      ctx.fillStyle = glowGrad;
+      ctx.beginPath();
+      ctx.arc(cx, cy, centerNucR * 2.2, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Nucleus body
+      const nucGrad = ctx.createRadialGradient(cx, cy, 3, cx, cy, centerNucR);
+      nucGrad.addColorStop(0, '#334155');
+      nucGrad.addColorStop(0.65, '#1e293b');
+      nucGrad.addColorStop(1, '#090d16');
+      ctx.fillStyle = nucGrad;
+      ctx.beginPath();
+      ctx.arc(cx, cy, centerNucR, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Nucleolus
+      if (currentZoom < 3.5) {
+        ctx.fillStyle = '#64748b';
+        ctx.beginPath();
+        ctx.arc(cx - 3, cy - 2.5, 3, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      // Nuclear envelope with pores
+      ctx.strokeStyle = '#38bdf8';
+      ctx.lineWidth = Math.max(1, 2.2 / currentZoom);
+      ctx.setLineDash([3, 2.5]);
+      ctx.beginPath();
+      ctx.arc(cx, cy, centerNucR, 0, Math.PI * 2);
+      ctx.stroke();
+      ctx.setLineDash([]);
+
+      // ── 3. INSIDE NUCLEUS: DNA HELIX & REGULATORY PARTICLES ──
+      const dnaAlpha = Math.max(0, Math.min(1, (currentZoom - 2.5) / 2.0));
+
+      if (dnaAlpha > 0) {
+        const helixWidth = 15;
+        const helixStep = 0.65;
+        ctx.lineWidth = Math.max(0.8, 1.8 / currentZoom);
+
+        for (let dx = -helixWidth / 2; dx <= helixWidth / 2; dx += helixStep) {
+          const angle = time * 2.2 + dx * 0.95;
+          const dy1 = Math.sin(angle) * 3.6;
+          const dy2 = -dy1;
+          const depth = Math.cos(angle);
+
+          // Base pair rungs
+          if (Math.abs(dx) % 1.3 < 0.4) {
+            ctx.strokeStyle = `rgba(254, 240, 138, ${dnaAlpha * (0.4 + 0.3 * depth)})`;
+            ctx.beginPath();
+            ctx.moveTo(cx + dx, cy + dy1);
+            ctx.lineTo(cx + dx, cy + dy2);
+            ctx.stroke();
+          }
+
+          // Strand 1 (Cyan)
+          const r1 = Math.max(0.8, (2.2 + depth * 0.8) / currentZoom);
+          ctx.fillStyle = `rgba(56, 189, 248, ${dnaAlpha * (0.6 + 0.4 * depth)})`;
+          ctx.beginPath();
+          ctx.arc(cx + dx, cy + dy1, r1, 0, Math.PI * 2);
+          ctx.fill();
+
+          // Strand 2 (Magenta)
+          const r2 = Math.max(0.8, (2.2 - depth * 0.8) / currentZoom);
+          ctx.fillStyle = `rgba(244, 114, 182, ${dnaAlpha * (0.6 - 0.4 * depth)})`;
+          ctx.beginPath();
+          ctx.arc(cx + dx, cy + dy2, r2, 0, Math.PI * 2);
+          ctx.fill();
+        }
+
+        // Messenger particles drifting out through pores
+        for (let p = 0; p < 6; p++) {
+          const pa = (p * Math.PI * 2) / 6 + time * 0.7;
+          const pDist = 5 + ((time * 7 + p * 4) % 16);
+          const px = cx + Math.cos(pa) * pDist;
+          const py = cy + Math.sin(pa) * pDist;
+          const pAlpha = dnaAlpha * Math.max(0, 1 - (pDist / 20));
+          ctx.fillStyle = `rgba(250, 204, 21, ${pAlpha})`;
+          ctx.beginPath();
+          ctx.arc(px, py, Math.max(0.6, 1.4 / currentZoom), 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+
+      ctx.restore();
+
+      // ── 4. MINIMAL CONTEXTUAL LABELS (NO EXTRA TEXT) ──
+      if (step === 1) {
+        const pinX = cx + 24, pinY = cy - 22;
+        ctx.strokeStyle = '#38bdf8';
+        ctx.lineWidth = 1.2;
+        ctx.beginPath();
+        ctx.moveTo(cx + 4, cy - 4);
+        ctx.lineTo(pinX, pinY);
+        ctx.lineTo(pinX + 44, pinY);
+        ctx.stroke();
+
+        ctx.fillStyle = '#38bdf8';
+        ctx.font = 'bold 9.5px Consolas, monospace';
+        ctx.textAlign = 'left';
+        ctx.fillText("Noyau", pinX + 4, pinY - 4);
+      } else if (step === 2) {
+        const nPinX = cx + 55, nPinY = cy - 25;
+        ctx.strokeStyle = '#38bdf8';
+        ctx.lineWidth = 1.2;
+        ctx.beginPath();
+        ctx.moveTo(cx + 8, cy - 8);
+        ctx.lineTo(nPinX, nPinY);
+        ctx.lineTo(nPinX + 44, nPinY);
+        ctx.stroke();
+
+        ctx.fillStyle = '#38bdf8';
+        ctx.font = 'bold 9.5px Consolas, monospace';
+        ctx.textAlign = 'left';
+        ctx.fillText("Noyau", nPinX + 4, nPinY - 4);
+
+        const cPinX = cx - 65, cPinY = cy + 45;
+        ctx.strokeStyle = '#4ade80';
+        ctx.lineWidth = 1.2;
+        ctx.beginPath();
+        ctx.moveTo(cx - 75, cy + 20);
+        ctx.lineTo(cPinX, cPinY);
+        ctx.lineTo(cPinX - 44, cPinY);
+        ctx.stroke();
+
+        ctx.fillStyle = '#4ade80';
+        ctx.font = 'bold 9.5px Consolas, monospace';
+        ctx.textAlign = 'right';
+        ctx.fillText("Cytoplasme", cPinX - 4, cPinY - 4);
+      } else if (step === 3) {
+        const aPinX = cx + 55, aPinY = cy - 40;
+        ctx.strokeStyle = '#38bdf8';
+        ctx.lineWidth = 1.2;
+        ctx.beginPath();
+        ctx.moveTo(cx + 15, cy - 10);
+        ctx.lineTo(aPinX, aPinY);
+        ctx.lineTo(aPinX + 42, aPinY);
+        ctx.stroke();
+
+        ctx.fillStyle = '#38bdf8';
+        ctx.font = 'bold 9.5px Consolas, monospace';
+        ctx.textAlign = 'left';
+        ctx.fillText("ADN", aPinX + 4, aPinY - 4);
+      }
+
+      requestAnimationFrame(draw);
+    }
+    requestAnimationFrame(draw);
+
+    // Controls
+    const s1 = document.getElementById('btn-brown-s1');
+    const s2 = document.getElementById('btn-brown-s2');
+    const s3 = document.getElementById('btn-brown-s3');
+    const tag = document.getElementById('brown-step-tag');
+
+    function setStep(newStep) {
+      step = newStep;
+      [s1, s2, s3].forEach(b => { if (b) b.classList.remove('active'); });
+      if (step === 1) {
+        targetZoom = 1.0;
+        if (s1) s1.classList.add('active');
+        if (tag) tag.textContent = "1. Tissu : un noyau par cellule";
+      } else if (step === 2) {
+        targetZoom = 2.3;
+        if (s2) s2.classList.add('active');
+        if (tag) tag.textContent = "2. Cellule : le noyau au centre";
+      } else if (step === 3) {
+        targetZoom = 5.4;
+        if (s3) s3.classList.add('active');
+        if (tag) tag.textContent = "3. Au cœur du noyau : l'ADN";
+      }
+    }
+
+    if (s1) s1.addEventListener('click', () => setStep(1));
+    if (s2) s2.addEventListener('click', () => setStep(2));
+    if (s3) s3.addEventListener('click', () => setStep(3));
+
+    canvas.addEventListener('click', () => {
+      const next = step === 3 ? 1 : step + 1;
+      setStep(next);
+    });
+  })();
+
+  /* ══════════════════════════════════════════════════════════════
+     REDONE ANIMATION ENGINES (STEPS 06 TO 12 — INDICES 5 TO 11)
+     Designed with motion-graphics & ui-design skills:
+     - Split-view contextual diagrams + clean ocular viewports
+     - Smooth continuous easing transitions
+     - Strict alignment with each section's narrative text
+     - High-contrast pill badges with zero overlapping text
+  ══════════════════════════════════════════════════════════════ */
+
+  function drawLabelPill(ctx, x, y, text, borderColor, align) {
+    ctx.save();
+    ctx.font = 'bold 9px Consolas, monospace';
+    const padX = 7;
+    const textW = ctx.measureText(text).width;
+    const boxW = textW + padX * 2;
+    const boxH = 17;
+    let bx = x - boxW / 2;
+    if (align === 'left') bx = x;
+    if (align === 'right') bx = x - boxW;
+    const by = y - boxH / 2;
+
+    ctx.fillStyle = 'rgba(3, 7, 18, 0.88)';
+    ctx.strokeStyle = borderColor || '#38bdf8';
+    ctx.lineWidth = 1.1;
+    ctx.beginPath();
+    ctx.roundRect(bx, by, boxW, boxH, 5);
+    ctx.fill();
+    ctx.stroke();
+
+    ctx.fillStyle = '#f8fafc';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(text, bx + boxW / 2, by + boxH / 2 + 0.5);
+    ctx.restore();
+  }
+
+  /* ── 6. SCHLEIDEN ENGINE (1838 : TOUS LES ORGANES VÉGÉTAUX SONT CELLULAIRES) ── */
+  (function initSchleiden() {
+    const cData = getDPRCanvas('canvas-schleiden', 460, 270);
+    if (!cData) return;
+    const { canvas, ctx, w, h } = cData;
+
+    let mode = 'leaf'; // 'leaf' | 'stem' | 'root'
+    let time = 0;
+    let reticleY = 78;
+    let targetReticleY = 78;
+
+    function draw() {
+      time += 0.03;
+      reticleY += (targetReticleY - reticleY) * 0.1;
+
+      ctx.fillStyle = '#030712';
+      ctx.fillRect(0, 0, w, h);
+
+      // ── LEFT PANEL: WHOLE PLANT SILHOUETTE (x: 12..142) ──
+      ctx.fillStyle = 'rgba(12, 18, 36, 0.9)';
+      ctx.strokeStyle = 'rgba(16, 185, 129, 0.25)';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.roundRect(12, 12, 130, 246, 8);
+      ctx.fill();
+      ctx.stroke();
+
+      ctx.fillStyle = '#34d399';
+      ctx.font = 'bold 8.5px Segoe UI, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('PLANTE ENTIÈRE', 77, 27);
+
+      // Soil line
+      ctx.strokeStyle = 'rgba(180, 83, 9, 0.5)';
+      ctx.lineWidth = 1.2;
+      ctx.beginPath();
+      ctx.moveTo(22, 178);
+      ctx.lineTo(132, 178);
+      ctx.stroke();
+
+      // Roots (y: 178..236)
+      ctx.strokeStyle = '#d97706';
+      ctx.lineWidth = 2.2;
+      ctx.lineCap = 'round';
+      ctx.beginPath();
+      ctx.moveTo(77, 178); ctx.lineTo(77, 232);
+      ctx.moveTo(77, 192); ctx.quadraticCurveTo(58, 206, 48, 224);
+      ctx.moveTo(77, 202); ctx.quadraticCurveTo(96, 214, 106, 228);
+      ctx.moveTo(62, 210); ctx.lineTo(54, 232);
+      ctx.moveTo(92, 214); ctx.lineTo(98, 234);
+      ctx.stroke();
+
+      // Stem (y: 65..178)
+      ctx.strokeStyle = '#22c55e';
+      ctx.lineWidth = 4;
+      ctx.beginPath();
+      ctx.moveTo(77, 178);
+      ctx.lineTo(77, 62);
+      ctx.stroke();
+
+      // Leaves (y: 52..105)
+      ctx.fillStyle = 'rgba(16, 185, 129, 0.65)';
+      ctx.strokeStyle = '#34d399';
+      ctx.lineWidth = 1.4;
+      // Left leaf
+      ctx.beginPath();
+      ctx.ellipse(57, 82, 20, 10, -0.45, 0, Math.PI * 2);
+      ctx.fill(); ctx.stroke();
+      // Right leaf
+      ctx.beginPath();
+      ctx.ellipse(97, 72, 20, 10, 0.45, 0, Math.PI * 2);
+      ctx.fill(); ctx.stroke();
+      // Top leaf
+      ctx.beginPath();
+      ctx.ellipse(77, 50, 10, 15, 0, 0, Math.PI * 2);
+      ctx.fill(); ctx.stroke();
+
+      // Organ labels on left panel
+      ctx.font = '7.5px Segoe UI, sans-serif';
+      ctx.textAlign = 'left';
+      ctx.fillStyle = mode === 'leaf' ? '#ffffff' : '#64748b';
+      ctx.fillText('Feuille', 20, 56);
+      ctx.fillStyle = mode === 'stem' ? '#ffffff' : '#64748b';
+      ctx.fillText('Tige', 20, 140);
+      ctx.fillStyle = mode === 'root' ? '#ffffff' : '#64748b';
+      ctx.fillText('Racine', 20, 214);
+
+      // Glowing scanner reticle on plant
+      const retX = 77;
+      ctx.strokeStyle = '#38bdf8';
+      ctx.lineWidth = 1.8;
+      ctx.beginPath();
+      ctx.arc(retX, reticleY, 16, 0, Math.PI * 2);
+      ctx.stroke();
+
+      ctx.fillStyle = 'rgba(56, 189, 248, 0.16)';
+      ctx.fill();
+
+      // Projection cone from reticle to right microscope stage
+      ctx.strokeStyle = 'rgba(56, 189, 248, 0.25)';
+      ctx.lineWidth = 1;
+      ctx.setLineDash([3, 3]);
+      ctx.beginPath();
+      ctx.moveTo(retX + 14, reticleY - 10);
+      ctx.lineTo(156, 22);
+      ctx.moveTo(retX + 14, reticleY + 10);
+      ctx.lineTo(156, 248);
+      ctx.stroke();
+      ctx.setLineDash([]);
+
+      // ── RIGHT PANEL: MICROSCOPIC CELLULAR VIEW (x: 156..448) ──
+      const rx = 156, ry = 12, rw = 292, rh = 246;
+      const mcx = rx + rw / 2, mcy = ry + rh / 2;
+
+      ctx.save();
+      ctx.beginPath();
+      ctx.roundRect(rx, ry, rw, rh, 8);
+      ctx.clip();
+
+      if (mode === 'leaf') {
+        // 1. FEUILLE: Photosynthetic polygonal cells mosaic
+        ctx.fillStyle = '#041410';
+        ctx.fillRect(rx, ry, rw, rh);
+
+        const cW = 72, cH = 48;
+        for (let r = -2; r <= 2; r++) {
+          const stag = (Math.abs(r) % 2) * (cW / 2);
+          for (let c = -2; c <= 2; c++) {
+            const cx = mcx + c * cW + stag;
+            const cy = mcy + r * cH;
+
+            // Cell wall
+            ctx.fillStyle = 'rgba(6, 78, 59, 0.55)';
+            ctx.strokeStyle = '#10b981';
+            ctx.lineWidth = 2.8;
+            ctx.beginPath();
+            ctx.roundRect(cx - cW / 2 + 3, cy - cH / 2 + 3, cW - 6, cH - 6, 10);
+            ctx.fill();
+            ctx.stroke();
+
+            // Inner membrane
+            ctx.strokeStyle = 'rgba(52, 211, 153, 0.22)';
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.roundRect(cx - cW / 2 + 6, cy - cH / 2 + 6, cW - 12, cH - 12, 7);
+            ctx.stroke();
+
+            // Orbiting chloroplasts
+            for (let k = 0; k < 5; k++) {
+              const a = time * 0.7 + r + c + (k * Math.PI * 2) / 5;
+              const chx = cx + Math.cos(a) * 21;
+              const chy = cy + Math.sin(a) * 12;
+              ctx.fillStyle = '#22c55e';
+              ctx.beginPath();
+              ctx.ellipse(chx, chy, 3.6, 2.1, a + 0.5, 0, Math.PI * 2);
+              ctx.fill();
+            }
+
+            // Central nucleus
+            ctx.fillStyle = '#1e293b';
+            ctx.strokeStyle = '#38bdf8';
+            ctx.lineWidth = 1.2;
+            ctx.beginPath();
+            ctx.arc(cx, cy, 6.5, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.stroke();
+          }
+        }
+      } else if (mode === 'stem') {
+        // 2. TIGE: Elongated vertical conductive & support cells
+        ctx.fillStyle = '#051408';
+        ctx.fillRect(rx, ry, rw, rh);
+
+        const colW = 54, rowH = 74;
+        for (let c = -2; c <= 2; c++) {
+          const stagY = (Math.abs(c) % 2) * 24;
+          for (let r = -2; r <= 2; r++) {
+            const cx = mcx + c * colW;
+            const cy = mcy + r * rowH + stagY;
+
+            ctx.fillStyle = 'rgba(20, 83, 45, 0.5)';
+            ctx.strokeStyle = '#4ade80';
+            ctx.lineWidth = 2.6;
+            ctx.beginPath();
+            ctx.roundRect(cx - colW / 2 + 3, cy - rowH / 2 + 3, colW - 6, rowH - 6, 8);
+            ctx.fill();
+            ctx.stroke();
+
+            // Nucleus
+            ctx.fillStyle = '#1e293b';
+            ctx.strokeStyle = '#38bdf8';
+            ctx.lineWidth = 1.2;
+            ctx.beginPath();
+            ctx.arc(cx, cy, 6, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.stroke();
+
+            // Cooperative sap flow particle moving upwards from cell to cell
+            const sapY = cy + 24 - ((time * 28 + c * 17 + r * 23) % 48);
+            ctx.fillStyle = '#38bdf8';
+            ctx.beginPath();
+            ctx.arc(cx + 10, sapY, 2.2, 0, Math.PI * 2);
+            ctx.fill();
+          }
+        }
+      } else {
+        // 3. RACINE: Compact root cells in earthy tones
+        ctx.fillStyle = '#140c04';
+        ctx.fillRect(rx, ry, rw, rh);
+
+        const cW = 64, cH = 50;
+        for (let r = -2; r <= 2; r++) {
+          const stag = (Math.abs(r) % 2) * (cW / 2);
+          for (let c = -2; c <= 2; c++) {
+            const cx = mcx + c * cW + stag;
+            const cy = mcy + r * cH;
+
+            ctx.fillStyle = 'rgba(120, 53, 15, 0.48)';
+            ctx.strokeStyle = '#f59e0b';
+            ctx.lineWidth = 2.6;
+            ctx.beginPath();
+            ctx.roundRect(cx - cW / 2 + 3, cy - cH / 2 + 3, cW - 6, cH - 6, 9);
+            ctx.fill();
+            ctx.stroke();
+
+            // Reserve granules
+            for (let k = 0; k < 4; k++) {
+              const a = k * 1.57 + r + c;
+              ctx.fillStyle = 'rgba(251, 191, 36, 0.55)';
+              ctx.beginPath();
+              ctx.arc(cx + Math.cos(a) * 15, cy + Math.sin(a) * 10, 2.5, 0, Math.PI * 2);
+              ctx.fill();
+            }
+
+            // Nucleus
+            ctx.fillStyle = '#1e293b';
+            ctx.strokeStyle = '#38bdf8';
+            ctx.lineWidth = 1.2;
+            ctx.beginPath();
+            ctx.arc(cx, cy, 6.5, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.stroke();
+          }
+        }
+      }
+
+      // Top & Bottom clean header/footer bands inside right viewport
+      ctx.fillStyle = 'rgba(3, 7, 18, 0.85)';
+      ctx.fillRect(rx, ry, rw, 26);
+      ctx.fillRect(rx, ry + rh - 26, rw, 26);
+
+      ctx.fillStyle = '#38bdf8';
+      ctx.font = 'bold 9px Segoe UI, sans-serif';
+      ctx.textAlign = 'left';
+      const titles = {
+        leaf: 'MICROSCOPE : CELLULES DE LA FEUILLE',
+        stem: 'MICROSCOPE : CELLULES DE LA TIGE',
+        root: 'MICROSCOPE : CELLULES DE LA RACINE'
+      };
+      ctx.fillText(titles[mode], rx + 10, ry + 16);
+
+      // Clean non-overlapping leader callout to center cell nucleus & wall
+      ctx.strokeStyle = '#38bdf8';
+      ctx.lineWidth = 1.2;
+      ctx.beginPath();
+      ctx.moveTo(mcx, mcy);
+      ctx.lineTo(mcx + 34, mcy - 22);
+      ctx.stroke();
+      drawLabelPill(ctx, mcx + 36, mcy - 22, 'Noyau', '#38bdf8', 'left');
+
+      ctx.strokeStyle = mode === 'root' ? '#f59e0b' : '#10b981';
+      ctx.beginPath();
+      ctx.moveTo(mcx - 28, mcy + 14);
+      ctx.lineTo(mcx - 52, mcy + 28);
+      ctx.stroke();
+      drawLabelPill(ctx, mcx - 54, mcy + 28, 'Paroi cellulaire', mode === 'root' ? '#f59e0b' : '#10b981', 'right');
+
+      ctx.fillStyle = '#e2e8f0';
+      ctx.font = '8.5px Segoe UI, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('Unité commune : chaque organe est un assemblage de cellules', mcx, ry + rh - 9);
+
+      ctx.restore();
+
+      // Viewport border
+      ctx.strokeStyle = 'rgba(56, 189, 248, 0.35)';
+      ctx.lineWidth = 1.2;
+      ctx.beginPath();
+      ctx.roundRect(rx, ry, rw, rh, 8);
+      ctx.stroke();
+
+      requestAnimationFrame(draw);
+    }
+    requestAnimationFrame(draw);
+
+    function setMode(m) {
+      mode = m;
+      targetReticleY = m === 'leaf' ? 74 : (m === 'stem' ? 136 : 208);
+      const tag = document.getElementById('schleiden-tag');
+      const labels = {
+        leaf: '1. Feuille : tissu photosynthétique',
+        stem: '2. Tige : cellules conductrices',
+        root: '3. Racine : cellules souterraines'
+      };
+      if (tag) tag.textContent = labels[m];
+
+      const bL = document.getElementById('btn-schleiden-leaf');
+      const bS = document.getElementById('btn-schleiden-stem');
+      const bR = document.getElementById('btn-schleiden-root');
+      [bL, bS, bR].forEach(b => { if (b) b.classList.remove('active'); });
+      if (m === 'leaf' && bL) bL.classList.add('active');
+      if (m === 'stem' && bS) bS.classList.add('active');
+      if (m === 'root' && bR) bR.classList.add('active');
+    }
+
+    const bL = document.getElementById('btn-schleiden-leaf');
+    const bS = document.getElementById('btn-schleiden-stem');
+    const bR = document.getElementById('btn-schleiden-root');
+    if (bL) bL.addEventListener('click', () => setMode('leaf'));
+    if (bS) bS.addEventListener('click', () => setMode('stem'));
+    if (bR) bR.addEventListener('click', () => setMode('root'));
+
+    canvas.addEventListener('click', () => {
+      setMode(mode === 'leaf' ? 'stem' : (mode === 'stem' ? 'root' : 'leaf'));
+    });
+  })();
+
+  /* ── 7. SCHWANN ENGINE (1839 : TISSUS ANIMAUX & UNIFICATION DU VIVANT) ── */
+  (function initSchwann() {
+    const cData = getDPRCanvas('canvas-schwann', 460, 270);
+    if (!cData) return;
+    const { canvas, ctx, w, h } = cData;
+    const cx = w / 2, cy = h / 2;
+
+    let mode = 'tissues'; // 'tissues' (Cartilage & Muscle) | 'nerve' | 'unify'
+    let time = 0;
+
+    function draw() {
+      time += 0.03;
+      ctx.fillStyle = '#030712';
+      ctx.fillRect(0, 0, w, h);
+
+      if (mode === 'tissues') {
+        // ── VIEW 1: CARTILAGE (LEFT) & MUSCLE (RIGHT) ──
+        // Left box: Cartilage cells
+        ctx.fillStyle = 'rgba(15, 23, 42, 0.7)';
+        ctx.strokeStyle = 'rgba(168, 85, 247, 0.35)';
+        ctx.lineWidth = 1.2;
+        ctx.beginPath(); ctx.roundRect(12, 12, 212, 222, 8); ctx.fill(); ctx.stroke();
+
+        ctx.fillStyle = '#c084fc';
+        ctx.font = 'bold 9px Segoe UI, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('TISSU CARTILAGINEUX', 118, 28);
+
+        const cartCells = [
+          { x: 72, y: 78 }, { x: 162, y: 78 },
+          { x: 72, y: 145 }, { x: 162, y: 145 }
+        ];
+        cartCells.forEach((c, i) => {
+          const pulse = Math.sin(time + i) * 1.2;
+          // Outer cavity
+          ctx.fillStyle = 'rgba(88, 28, 135, 0.35)';
+          ctx.strokeStyle = '#a855f7';
+          ctx.lineWidth = 2;
+          ctx.beginPath();
+          ctx.ellipse(c.x, c.y, 32 + pulse, 22 + pulse, 0, 0, Math.PI * 2);
+          ctx.fill(); ctx.stroke();
+
+          // Animal cell membrane inside
+          ctx.fillStyle = 'rgba(192, 132, 252, 0.28)';
+          ctx.beginPath();
+          ctx.ellipse(c.x, c.y, 22, 15, 0, 0, Math.PI * 2);
+          ctx.fill();
+
+          // Nucleus
+          ctx.fillStyle = '#1e293b';
+          ctx.strokeStyle = '#38bdf8';
+          ctx.lineWidth = 1.3;
+          ctx.beginPath();
+          ctx.arc(c.x, c.y, 6, 0, Math.PI * 2);
+          ctx.fill(); ctx.stroke();
+        });
+
+        drawLabelPill(ctx, 118, 206, 'Cellules de cartilage + Noyau', '#a855f7', 'center');
+
+        // Right box: Muscle cells
+        ctx.fillStyle = 'rgba(15, 23, 42, 0.7)';
+        ctx.strokeStyle = 'rgba(244, 63, 94, 0.35)';
+        ctx.lineWidth = 1.2;
+        ctx.beginPath(); ctx.roundRect(236, 12, 212, 222, 8); ctx.fill(); ctx.stroke();
+
+        ctx.fillStyle = '#fb7185';
+        ctx.font = 'bold 9px Segoe UI, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('TISSU MUSCULAIRE', 342, 28);
+
+        const contract = Math.sin(time * 2) * 4;
+        for (let r = 0; r < 3; r++) {
+          const fy = 66 + r * 44;
+          const fw = 176 - contract;
+          const fx = 342 - fw / 2;
+
+          ctx.fillStyle = 'rgba(225, 29, 72, 0.32)';
+          ctx.strokeStyle = '#f43f5e';
+          ctx.lineWidth = 1.8;
+          ctx.beginPath();
+          ctx.roundRect(fx, fy - 14, fw, 28, 12);
+          ctx.fill(); ctx.stroke();
+
+          // Striations
+          ctx.strokeStyle = 'rgba(251, 113, 133, 0.3)';
+          ctx.lineWidth = 1;
+          for (let s = fx + 16; s < fx + fw - 12; s += 14) {
+            ctx.beginPath(); ctx.moveTo(s, fy - 11); ctx.lineTo(s, fy + 11); ctx.stroke();
+          }
+
+          // Nucleus
+          ctx.fillStyle = '#1e293b';
+          ctx.strokeStyle = '#38bdf8';
+          ctx.lineWidth = 1.3;
+          ctx.beginPath();
+          ctx.ellipse(342 + (r - 1) * 28, fy, 9, 5, 0, 0, Math.PI * 2);
+          ctx.fill(); ctx.stroke();
+        }
+
+        drawLabelPill(ctx, 342, 206, 'Cellules musculaires + Noyau', '#f43f5e', 'center');
+
+      } else if (mode === 'nerve') {
+        // ── VIEW 2: NERVE CELLS (NEURONS & SCHWANN SHEATH) ──
+        ctx.fillStyle = 'rgba(15, 23, 42, 0.6)';
+        ctx.strokeStyle = 'rgba(56, 189, 248, 0.25)';
+        ctx.lineWidth = 1.2;
+        ctx.beginPath(); ctx.roundRect(12, 12, 436, 222, 8); ctx.fill(); ctx.stroke();
+
+        const n1x = 95, n1y = 120;
+        const n2x = 375, n2y = 120;
+
+        // Dendrites of neuron 1
+        ctx.strokeStyle = '#fbbf24';
+        ctx.lineWidth = 2;
+        for (let d = 0; d < 6; d++) {
+          const a = (d * Math.PI * 2) / 6 + 0.3;
+          if (Math.cos(a) > 0.5) continue;
+          ctx.beginPath();
+          ctx.moveTo(n1x + Math.cos(a) * 18, n1y + Math.sin(a) * 18);
+          ctx.lineTo(n1x + Math.cos(a) * 44, n1y + Math.sin(a) * 44);
+          ctx.stroke();
+        }
+
+        // Axon connecting neuron 1 to neuron 2
+        ctx.strokeStyle = '#fde047';
+        ctx.lineWidth = 3.5;
+        ctx.beginPath();
+        ctx.moveTo(n1x + 20, n1y);
+        ctx.lineTo(n2x - 24, n2y);
+        ctx.stroke();
+
+        // Schwann myelin cells along axon
+        [155, 225, 295].forEach(sx => {
+          ctx.fillStyle = 'rgba(56, 189, 248, 0.22)';
+          ctx.strokeStyle = '#38bdf8';
+          ctx.lineWidth = 1.6;
+          ctx.beginPath();
+          ctx.roundRect(sx - 26, n1y - 13, 52, 26, 8);
+          ctx.fill(); ctx.stroke();
+        });
+
+        // Moving nerve impulse
+        const impX = 120 + ((time * 95) % 220);
+        const impGrad = ctx.createRadialGradient(impX, n1y, 1, impX, n1y, 16);
+        impGrad.addColorStop(0, '#ffffff');
+        impGrad.addColorStop(0.5, '#38bdf8');
+        impGrad.addColorStop(1, 'transparent');
+        ctx.fillStyle = impGrad;
+        ctx.beginPath(); ctx.arc(impX, n1y, 16, 0, Math.PI * 2); ctx.fill();
+
+        // Cell bodies (Somas)
+        [n1x, n2x].forEach(nx => {
+          ctx.fillStyle = 'rgba(245, 158, 11, 0.35)';
+          ctx.strokeStyle = '#fbbf24';
+          ctx.lineWidth = 2.2;
+          ctx.beginPath();
+          ctx.arc(nx, n1y, 24, 0, Math.PI * 2);
+          ctx.fill(); ctx.stroke();
+
+          // Nucleus
+          ctx.fillStyle = '#1e293b';
+          ctx.strokeStyle = '#38bdf8';
+          ctx.lineWidth = 1.5;
+          ctx.beginPath();
+          ctx.arc(nx, n1y, 8, 0, Math.PI * 2);
+          ctx.fill(); ctx.stroke();
+        });
+
+        drawLabelPill(ctx, n1x, 54, 'Cellule nerveuse + Noyau', '#fbbf24', 'center');
+        drawLabelPill(ctx, 225, 175, 'Gaine de cellules de Schwann', '#38bdf8', 'center');
+
+      } else {
+        // ── VIEW 3: UNIFICATION (PLANT CELL = ANIMAL CELL) ──
+        const leftX = 118, rightX = 342, cellY = 115;
+
+        // Plant Cell (Left - Schleiden 1838)
+        ctx.fillStyle = 'rgba(6, 78, 59, 0.55)';
+        ctx.strokeStyle = '#10b981';
+        ctx.lineWidth = 3.5;
+        ctx.beginPath();
+        ctx.roundRect(leftX - 58, cellY - 46, 116, 92, 14);
+        ctx.fill(); ctx.stroke();
+
+        // Chloroplasts
+        for (let k = 0; k < 5; k++) {
+          const a = time * 0.6 + (k * Math.PI * 2) / 5;
+          ctx.fillStyle = '#22c55e';
+          ctx.beginPath();
+          ctx.ellipse(leftX + Math.cos(a) * 36, cellY + Math.sin(a) * 26, 4.5, 2.5, a, 0, Math.PI * 2);
+          ctx.fill();
+        }
+
+        // Plant Nucleus
+        ctx.fillStyle = '#1e293b';
+        ctx.strokeStyle = '#38bdf8';
+        ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.arc(leftX, cellY, 13, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+
+        drawLabelPill(ctx, leftX, 34, 'CELLULE VÉGÉTALE (1838)', '#10b981', 'center');
+
+        // Animal Cell (Right - Schwann 1839)
+        ctx.fillStyle = 'rgba(131, 24, 67, 0.45)';
+        ctx.strokeStyle = '#f472b6';
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+        ctx.ellipse(rightX, cellY, 56, 44, 0, 0, Math.PI * 2);
+        ctx.fill(); ctx.stroke();
+
+        // Animal Nucleus
+        ctx.fillStyle = '#1e293b';
+        ctx.strokeStyle = '#38bdf8';
+        ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.arc(rightX, cellY, 13, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+
+        drawLabelPill(ctx, rightX, 34, 'CELLULE ANIMALE (1839)', '#f472b6', 'center');
+
+        // Shared structures bridges in the middle
+        ctx.strokeStyle = '#38bdf8';
+        ctx.lineWidth = 1.4;
+        ctx.setLineDash([3, 3]);
+        // Nucleus bridge
+        ctx.beginPath(); ctx.moveTo(leftX + 14, cellY); ctx.lineTo(rightX - 14, cellY); ctx.stroke();
+        // Cytoplasm bridge
+        ctx.beginPath(); ctx.moveTo(leftX + 32, cellY - 24); ctx.lineTo(rightX - 32, cellY - 24); ctx.stroke();
+        // Membrane bridge
+        ctx.beginPath(); ctx.moveTo(leftX + 56, cellY + 28); ctx.lineTo(rightX - 52, cellY + 28); ctx.stroke();
+        ctx.setLineDash([]);
+
+        drawLabelPill(ctx, cx, cellY - 24, 'Cytoplasme', '#94a3b8', 'center');
+        drawLabelPill(ctx, cx, cellY, 'Même Noyau', '#38bdf8', 'center');
+        drawLabelPill(ctx, cx, cellY + 28, 'Membrane', '#94a3b8', 'center');
+      }
+
+      // Bottom takeaway banner
+      ctx.fillStyle = 'rgba(15, 23, 42, 0.9)';
+      ctx.fillRect(0, h - 24, w, 24);
+      ctx.fillStyle = '#38bdf8';
+      ctx.font = 'bold 8.5px Segoe UI, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('THÉORIE CELLULAIRE : La cellule est l\'unité fondamentale de TOUS les êtres vivants', cx, h - 8);
+
+      requestAnimationFrame(draw);
+    }
+    requestAnimationFrame(draw);
+
+    function setMode(m) {
+      mode = m;
+      const tag = document.getElementById('schwann-tag');
+      const labels = {
+        tissues: '1. Tissus animaux (Cartilage & Muscle)',
+        nerve: '2. Tissu nerveux (Neurones & Schwann)',
+        unify: '3. Unification : Végétaux = Animaux'
+      };
+      if (tag) tag.textContent = labels[m];
+
+      const b1 = document.getElementById('btn-schwann-muscle');
+      const b2 = document.getElementById('btn-schwann-nerve');
+      const b3 = document.getElementById('btn-schwann-cartilage');
+      [b1, b2, b3].forEach(b => { if (b) b.classList.remove('active'); });
+      if (m === 'tissues' && b1) b1.classList.add('active');
+      if (m === 'nerve' && b2) b2.classList.add('active');
+      if (m === 'unify' && b3) b3.classList.add('active');
+    }
+
+    const b1 = document.getElementById('btn-schwann-muscle');
+    const b2 = document.getElementById('btn-schwann-nerve');
+    const b3 = document.getElementById('btn-schwann-cartilage');
+    if (b1) b1.addEventListener('click', () => setMode('tissues'));
+    if (b2) b2.addEventListener('click', () => setMode('nerve'));
+    if (b3) b3.addEventListener('click', () => setMode('unify'));
+
+    canvas.addEventListener('click', () => {
+      setMode(mode === 'tissues' ? 'nerve' : (mode === 'nerve' ? 'unify' : 'tissues'));
+    });
+  })();
+
+  /* ── 8. VIRCHOW ENGINE (1855 : OMNIS CELLULA E CELLULA — DIVISION CELLULAIRE) ── */
+  (function initVirchow() {
+    const cData = getDPRCanvas('canvas-virchow', 460, 270);
+    if (!cData) return;
+    const { canvas, ctx, w, h } = cData;
+    const cx = w / 2, cy = h / 2 - 6;
+
+    let prog = 0; // 0.0 to 1.0
+    let targetProg = null;
+    let playing = true;
+
+    function drawOrganicDividingCell(sep, pinch, radius) {
+      // Smooth peanut / figure-8 contour using parametric angle
+      ctx.beginPath();
+      const steps = 80;
+      for (let i = 0; i <= steps; i++) {
+        const theta = (i / steps) * Math.PI * 2;
+        const cosT = Math.cos(theta);
+        const sinT = Math.sin(theta);
+
+        // Stretch horizontally by `sep`, pinch vertically near x=0 (where cosT ~ 0)
+        const rx = (radius + sep) * cosT;
+        const waistFactor = 1 - pinch * Math.pow(1 - cosT * cosT, 1.6);
+        const ry = radius * sinT * waistFactor;
+
+        if (i === 0) ctx.moveTo(cx + rx, cy + ry);
+        else ctx.lineTo(cx + rx, cy + ry);
+      }
+      ctx.closePath();
+    }
+
+    function draw() {
+      if (playing && targetProg === null) {
+        prog += 0.0028;
+        if (prog > 1) prog = 0;
+      } else if (targetProg !== null) {
+        prog += (targetProg - prog) * 0.08;
+      }
+
+      ctx.fillStyle = '#030712';
+      ctx.fillRect(0, 0, w, h);
+
+      // Determine stage name
+      const tag = document.getElementById('virchow-tag');
+      let stageTitle = '1. Cellule mère préexistante';
+      if (prog >= 0.30 && prog < 0.72) stageTitle = '2. Duplication & Séparation du noyau';
+      else if (prog >= 0.72) stageTitle = '3. Deux cellules filles identiques';
+      if (tag) tag.textContent = stageTitle;
+
+      const baseR = 46;
+
+      if (prog < 0.72) {
+        // Single cell stretching and pinching
+        const p = Math.max(0, (prog - 0.15) / 0.57); // 0 to 1 during division
+        const sep = p * 44;
+        const pinch = Math.min(0.88, Math.pow(p, 1.3) * 0.92);
+
+        ctx.fillStyle = 'rgba(16, 185, 129, 0.18)';
+        ctx.strokeStyle = '#10b981';
+        ctx.lineWidth = 2.8;
+        drawOrganicDividingCell(sep, pinch, baseR);
+        ctx.fill();
+        ctx.stroke();
+
+        // Spindle fibers during division
+        if (p > 0.05) {
+          const poleX = 18 + sep * 0.85;
+          ctx.strokeStyle = `rgba(56, 189, 248, ${0.35 * Math.sin(p * Math.PI)})`;
+          ctx.lineWidth = 1;
+          for (let k = -2; k <= 2; k++) {
+            ctx.beginPath();
+            ctx.moveTo(cx - poleX, cy);
+            ctx.quadraticCurveTo(cx, cy + k * 12, cx + poleX, cy);
+            ctx.stroke();
+          }
+        }
+
+        // Nuclei / Chromosomes separating
+        const nucSep = Math.pow(p, 1.1) * 46;
+        [-1, 1].forEach(dir => {
+          if (p < 0.12 && dir === 1) return; // single nucleus at very start
+          const nx = p < 0.12 ? cx : cx + dir * nucSep;
+          const nucR = p < 0.12 ? 18 : 14;
+
+          ctx.fillStyle = '#1e293b';
+          ctx.strokeStyle = '#38bdf8';
+          ctx.lineWidth = 1.8;
+          ctx.setLineDash(p > 0.15 && p < 0.8 ? [3, 2] : []);
+          ctx.beginPath();
+          ctx.arc(nx, cy, nucR, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.stroke();
+          ctx.setLineDash([]);
+
+          // Genetic filaments (chromosomes)
+          ctx.strokeStyle = '#fbbf24';
+          ctx.lineWidth = 2;
+          for (let c = -1; c <= 1; c++) {
+            const cxOff = nx + c * 4;
+            ctx.beginPath();
+            ctx.moveTo(cxOff - 3, cy - 4);
+            ctx.lineTo(cxOff + 3, cy + 4);
+            ctx.moveTo(cxOff + 3, cy - 4);
+            ctx.lineTo(cxOff - 3, cy + 4);
+            ctx.stroke();
+          }
+        });
+
+        // Cleavage furrow arrows
+        if (p > 0.35) {
+          ctx.strokeStyle = '#f43f5e';
+          ctx.lineWidth = 1.6;
+          const arrowY = baseR * (1 - pinch) + 14;
+          // Top arrow pointing down
+          ctx.beginPath();
+          ctx.moveTo(cx, cy - arrowY - 12); ctx.lineTo(cx, cy - arrowY);
+          ctx.stroke();
+          // Bottom arrow pointing up
+          ctx.beginPath();
+          ctx.moveTo(cx, cy + arrowY + 12); ctx.lineTo(cx, cy + arrowY);
+          ctx.stroke();
+        }
+
+      } else {
+        // Two separated identical daughter cells
+        const p2 = (prog - 0.72) / 0.28; // 0 to 1
+        const cellDist = 52 + p2 * 18;
+        const cellR = 40;
+
+        [-1, 1].forEach((dir, idx) => {
+          const dcx = cx + dir * cellDist;
+          ctx.fillStyle = 'rgba(16, 185, 129, 0.2)';
+          ctx.strokeStyle = '#10b981';
+          ctx.lineWidth = 2.8;
+          ctx.beginPath();
+          ctx.arc(dcx, cy, cellR, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.stroke();
+
+          // Reformed nucleus
+          ctx.fillStyle = '#1e293b';
+          ctx.strokeStyle = '#38bdf8';
+          ctx.lineWidth = 1.8;
+          ctx.beginPath();
+          ctx.arc(dcx, cy, 14, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.stroke();
+
+          // Chromatin inside
+          ctx.strokeStyle = '#fbbf24';
+          ctx.lineWidth = 1.6;
+          ctx.beginPath();
+          ctx.arc(dcx - 3, cy, 5, 0, Math.PI);
+          ctx.arc(dcx + 3, cy, 5, Math.PI, Math.PI * 2);
+          ctx.stroke();
+
+          drawLabelPill(ctx, dcx, cy + cellR + 16, `Cellule fille ${idx + 1}`, '#10b981', 'center');
+        });
+      }
+
+      // Top header pill
+      drawLabelPill(ctx, cx, 24, stageTitle, '#38bdf8', 'center');
+
+      // Bottom timeline progress bar
+      const barX = 45, barY = h - 18, barW = w - 90;
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.12)';
+      ctx.fillRect(barX, barY, barW, 4);
+      ctx.fillStyle = '#10b981';
+      ctx.fillRect(barX, barY, barW * prog, 4);
+
+      [0.12, 0.50, 0.86].forEach(tick => {
+        ctx.fillStyle = prog >= tick ? '#10b981' : '#475569';
+        ctx.beginPath();
+        ctx.arc(barX + barW * tick, barY + 2, 4, 0, Math.PI * 2);
+        ctx.fill();
+      });
+
+      requestAnimationFrame(draw);
+    }
+    requestAnimationFrame(draw);
+
+    const b1 = document.getElementById('btn-virchow-s1');
+    const b2 = document.getElementById('btn-virchow-s2');
+    const b3 = document.getElementById('btn-virchow-s3');
+    const bT = document.getElementById('btn-virchow-toggle');
+
+    function jumpTo(val, btn) {
+      playing = false;
+      targetProg = val;
+      [b1, b2, b3, bT].forEach(b => { if (b) b.classList.remove('active'); });
+      if (btn) btn.classList.add('active');
+      if (bT) bT.textContent = '▶ Lecture';
+    }
+
+    if (b1) b1.addEventListener('click', () => jumpTo(0.10, b1));
+    if (b2) b2.addEventListener('click', () => jumpTo(0.52, b2));
+    if (b3) b3.addEventListener('click', () => jumpTo(0.88, b3));
+    if (bT) bT.addEventListener('click', () => {
+      playing = !playing;
+      targetProg = null;
+      [b1, b2, b3].forEach(b => { if (b) b.classList.remove('active'); });
+      bT.classList.toggle('active', playing);
+      bT.textContent = playing ? '⏸ Pause' : '▶ Lecture';
+    });
+
+    canvas.addEventListener('click', () => {
+      if (prog < 0.35) jumpTo(0.52, b2);
+      else if (prog < 0.75) jumpTo(0.88, b3);
+      else jumpTo(0.10, b1);
+    });
+  })();
+
+  /* ── 9. CURIE ENGINE (1898 : POLONIUM, RADIUM & CURIETHÉRAPIE CELLULAIRE) ── */
+  (function initCurie() {
+    const cData = getDPRCanvas('canvas-curie', 460, 270);
+    if (!cData) return;
+    const { canvas, ctx, w, h } = cData;
+
+    let mode = 'elements'; // 'elements' | 'therapy'
+    let time = 0;
+    let rays = [];
+    let cells = [];
+
+    function initCells() {
+      cells = [
+        // Healthy cells (top & bottom, outside beam cone)
+        { x: 310, y: 46, isTumor: false, alive: 1 },
+        { x: 365, y: 44, isTumor: false, alive: 1 },
+        { x: 415, y: 52, isTumor: false, alive: 1 },
+        { x: 310, y: 204, isTumor: false, alive: 1 },
+        { x: 365, y: 206, isTumor: false, alive: 1 },
+        { x: 415, y: 198, isTumor: false, alive: 1 },
+        // Tumor cells cluster (center, inside focused radiation beam)
+        { x: 315, y: 125, isTumor: true, alive: 1, hp: 1.0 },
+        { x: 350, y: 105, isTumor: true, alive: 1, hp: 1.0 },
+        { x: 350, y: 145, isTumor: true, alive: 1, hp: 1.0 },
+        { x: 385, y: 125, isTumor: true, alive: 1, hp: 1.0 },
+        { x: 390, y: 98,  isTumor: true, alive: 1, hp: 1.0 },
+        { x: 390, y: 152, isTumor: true, alive: 1, hp: 1.0 }
+      ];
+    }
+    initCells();
+
+    function spawnRay() {
+      if (mode === 'elements') {
+        const isRa = Math.random() > 0.45;
+        const sx = isRa ? 195 : 95;
+        const sy = 145;
+        const a = Math.random() * Math.PI * 2;
+        const speed = 2.2 + Math.random() * 2;
+        rays.push({
+          x: sx, y: sy,
+          vx: Math.cos(a) * speed,
+          vy: Math.sin(a) * speed,
+          color: isRa ? '#38bdf8' : '#a855f7',
+          life: 1.0
+        });
+      } else {
+        // Focused therapy beam from Radium source at (72, 125) towards tumor cluster
+        const a = (Math.random() - 0.5) * 0.28;
+        const speed = 4.8;
+        rays.push({
+          x: 84, y: 125,
+          vx: Math.cos(a) * speed,
+          vy: Math.sin(a) * speed,
+          color: '#38bdf8',
+          life: 1.0
+        });
+      }
+    }
+
+    function draw() {
+      time += 0.035;
+      ctx.fillStyle = '#030712';
+      ctx.fillRect(0, 0, w, h);
+
+      if (Math.random() < 0.75) spawnRay();
+
+      if (mode === 'elements') {
+        // ── MODE 1: POLONIUM (Po) & RADIUM (Ra) + CHAMBRE D'IONISATION ──
+        const sources = [
+          { x: 95,  y: 145, sym: 'Po', name: 'Polonium (1898)', col: '#a855f7' },
+          { x: 195, y: 145, sym: 'Ra', name: 'Radium (1898)',   col: '#38bdf8' }
+        ];
+
+        sources.forEach(s => {
+          // Radioluminescent halo
+          const glow = ctx.createRadialGradient(s.x, s.y, 4, s.x, s.y, 52);
+          glow.addColorStop(0, '#ffffff');
+          glow.addColorStop(0.3, s.col);
+          glow.addColorStop(1, 'transparent');
+          ctx.fillStyle = glow;
+          ctx.beginPath(); ctx.arc(s.x, s.y, 52, 0, Math.PI * 2); ctx.fill();
+
+          // Mineral / Atom core
+          ctx.fillStyle = '#0f172a';
+          ctx.strokeStyle = s.col;
+          ctx.lineWidth = 2.5;
+          ctx.beginPath(); ctx.arc(s.x, s.y, 20, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+
+          ctx.fillStyle = '#ffffff';
+          ctx.font = 'bold 12px Consolas, monospace';
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          ctx.fillText(s.sym, s.x, s.y);
+          ctx.textBaseline = 'alphabetic';
+
+          drawLabelPill(ctx, s.x, s.y + 42, s.name, s.col, 'center');
+        });
+
+        // Right side: Marie Curie's Ionization Chamber / Electrometer (x: 280..440)
+        ctx.fillStyle = 'rgba(15, 23, 42, 0.85)';
+        ctx.strokeStyle = 'rgba(56, 189, 248, 0.35)';
+        ctx.lineWidth = 1.4;
+        ctx.beginPath(); ctx.roundRect(278, 34, 164, 190, 8); ctx.fill(); ctx.stroke();
+
+        ctx.fillStyle = '#38bdf8';
+        ctx.font = 'bold 9px Segoe UI, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('CHAMBRE D\'IONISATION', 360, 52);
+
+        // Dial gauge
+        const gx = 360, gy = 135, gr = 48;
+        ctx.strokeStyle = '#334155';
+        ctx.lineWidth = 5;
+        ctx.beginPath();
+        ctx.arc(gx, gy, gr, Math.PI * 1.1, Math.PI * 1.9);
+        ctx.stroke();
+
+        ctx.strokeStyle = '#38bdf8';
+        ctx.lineWidth = 5;
+        ctx.beginPath();
+        ctx.arc(gx, gy, gr, Math.PI * 1.1, Math.PI * (1.75 + Math.sin(time * 4) * 0.06));
+        ctx.stroke();
+
+        // Needle
+        const needleAngle = Math.PI * (1.75 + Math.sin(time * 5) * 0.06);
+        ctx.strokeStyle = '#f43f5e';
+        ctx.lineWidth = 2.2;
+        ctx.beginPath();
+        ctx.moveTo(gx, gy);
+        ctx.lineTo(gx + Math.cos(needleAngle) * (gr - 6), gy + Math.sin(needleAngle) * (gr - 6));
+        ctx.stroke();
+
+        ctx.fillStyle = '#e2e8f0';
+        ctx.font = '8.5px Segoe UI, sans-serif';
+        ctx.fillText('Rayonnement intense mesuré', gx, 168);
+        drawLabelPill(ctx, gx, 198, '2 Prix Nobel (1903 & 1911)', '#fbbf24', 'center');
+
+      } else {
+        // ── MODE 2: CURIETHÉRAPIE (SELECTIVE TUMOR CELL DESTRUCTION) ──
+        // Beam guidance cone
+        ctx.fillStyle = 'rgba(56, 189, 248, 0.07)';
+        ctx.beginPath();
+        ctx.moveTo(80, 125);
+        ctx.lineTo(430, 75);
+        ctx.lineTo(430, 175);
+        ctx.closePath();
+        ctx.fill();
+
+        // Lead shield capsule on left
+        ctx.fillStyle = '#1e293b';
+        ctx.strokeStyle = '#38bdf8';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.roundRect(24, 102, 60, 46, 8);
+        ctx.fill(); ctx.stroke();
+
+        const raGlow = ctx.createRadialGradient(72, 125, 2, 72, 125, 22);
+        raGlow.addColorStop(0, '#ffffff');
+        raGlow.addColorStop(0.5, '#38bdf8');
+        raGlow.addColorStop(1, 'transparent');
+        ctx.fillStyle = raGlow;
+        ctx.beginPath(); ctx.arc(72, 125, 22, 0, Math.PI * 2); ctx.fill();
+
+        drawLabelPill(ctx, 62, 168, 'Source de Radium', '#38bdf8', 'center');
+
+        // Draw healthy and tumor cells
+        let remainingTumors = 0;
+        cells.forEach(c => {
+          if (c.isTumor && c.hp <= 0.05) return;
+          if (c.isTumor) remainingTumors++;
+
+          const r = c.isTumor ? 17 * Math.max(0.25, c.hp) : 16;
+          ctx.fillStyle = c.isTumor
+            ? `rgba(225, 29, 72, ${0.25 + c.hp * 0.45})`
+            : 'rgba(16, 185, 129, 0.28)';
+          ctx.strokeStyle = c.isTumor ? '#f43f5e' : '#10b981';
+          ctx.lineWidth = 2;
+          ctx.beginPath();
+          ctx.arc(c.x, c.y, r, 0, Math.PI * 2);
+          ctx.fill(); ctx.stroke();
+
+          // Nucleus
+          ctx.fillStyle = '#0f172a';
+          ctx.strokeStyle = c.isTumor ? '#fda4af' : '#38bdf8';
+          ctx.lineWidth = 1.2;
+          ctx.beginPath();
+          ctx.arc(c.x, c.y, r * 0.42, 0, Math.PI * 2);
+          ctx.fill(); ctx.stroke();
+        });
+
+        // Auto-respawn tumor cells slowly after all are destroyed so animation stays alive
+        if (remainingTumors === 0 && Math.random() < 0.02) {
+          initCells();
+        }
+
+        drawLabelPill(ctx, 360, 20, 'Cellules saines préservées', '#10b981', 'center');
+        drawLabelPill(ctx, 360, 235, remainingTumors > 0 ? 'Ciblage des cellules tumorales' : 'Tumeur éliminée par rayonnement !', '#f43f5e', 'center');
+      }
+
+      // Update & draw rays
+      rays.forEach(r => {
+        r.x += r.vx;
+        r.y += r.vy;
+        r.life -= 0.014;
+
+        if (mode === 'therapy') {
+          cells.forEach(c => {
+            if (c.isTumor && c.hp > 0.05 && Math.hypot(r.x - c.x, r.y - c.y) < 18) {
+              c.hp -= 0.045;
+              r.life = 0;
+            }
+          });
+        }
+
+        ctx.fillStyle = r.color;
+        ctx.globalAlpha = Math.max(0, r.life);
+        ctx.beginPath();
+        ctx.arc(r.x, r.y, 2.5, 0, Math.PI * 2);
+        ctx.fill();
+      });
+      ctx.globalAlpha = 1;
+      rays = rays.filter(r => r.life > 0 && r.x > 0 && r.x < w && r.y > 0 && r.y < h);
+
+      requestAnimationFrame(draw);
+    }
+    requestAnimationFrame(draw);
+
+    const bRa = document.getElementById('btn-curie-radium');
+    const bTh = document.getElementById('btn-curie-therapy');
+    const bRe = document.getElementById('btn-curie-reset');
+    const tag = document.getElementById('curie-tag');
+
+    function setMode(m) {
+      mode = m;
+      rays = [];
+      if (m === 'therapy') initCells();
+      if (bRa) bRa.classList.toggle('active', m === 'elements');
+      if (bTh) bTh.classList.toggle('active', m === 'therapy');
+      if (tag) {
+        tag.textContent = m === 'elements'
+          ? '1. Découverte du Polonium & du Radium'
+          : '2. Curiethérapie : destruction tumorale';
+      }
+    }
+
+    if (bRa) bRa.addEventListener('click', () => setMode('elements'));
+    if (bTh) bTh.addEventListener('click', () => setMode('therapy'));
+    if (bRe) bRe.addEventListener('click', () => {
+      initCells();
+      rays = [];
+    });
+
+    canvas.addEventListener('click', () => {
+      setMode(mode === 'elements' ? 'therapy' : 'elements');
+    });
+  })();
+
+  /* ── 10. MIESCHER ENGINE (1869 : EXTRACTION DE LA NUCLÉINE / ADN DU NOYAU) ── */
+  (function initMiescher() {
+    const cData = getDPRCanvas('canvas-miescher', 460, 270);
+    if (!cData) return;
+    const { canvas, ctx, w, h } = cData;
+    const cx = w / 2, cy = h / 2 - 4;
+
+    let step = 1; // 1: Globule blanc, 2: Noyau isolé (digestion), 3: Nucléine (ADN)
+    let cytoAlpha = 1.0;
+    let dnaAlpha = 0.0;
+    let time = 0;
+
+    function draw() {
+      time += 0.03;
+      const targetCyto = step === 1 ? 1.0 : 0.0;
+      const targetDna = step === 3 ? 1.0 : 0.0;
+      cytoAlpha += (targetCyto - cytoAlpha) * 0.08;
+      dnaAlpha += (targetDna - dnaAlpha) * 0.08;
+
+      ctx.fillStyle = '#030712';
+      ctx.fillRect(0, 0, w, h);
+
+      // ── 1. OUTER CYTOPLASM OF WHITE BLOOD CELL (fades out in step 2 & 3) ──
+      if (cytoAlpha > 0.02) {
+        ctx.save();
+        ctx.globalAlpha = cytoAlpha;
+        const cellR = 64 + (1 - cytoAlpha) * 22;
+
+        ctx.fillStyle = 'rgba(30, 58, 138, 0.38)';
+        ctx.strokeStyle = '#60a5fa';
+        ctx.lineWidth = 2.4;
+        ctx.setLineDash(step > 1 ? [5, 5] : []);
+        ctx.beginPath();
+        for (let a = 0; a <= Math.PI * 2; a += 0.12) {
+          const r = cellR + Math.sin(a * 5 + time) * 3.5;
+          const px = cx + Math.cos(a) * r;
+          const py = cy + Math.sin(a) * r;
+          if (a === 0) ctx.moveTo(px, py);
+          else ctx.lineTo(px, py);
+        }
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+        ctx.setLineDash([]);
+
+        // Cytoplasmic protein granules
+        for (let g = 0; g < 14; g++) {
+          const a = (g * Math.PI * 2) / 14 + time * 0.25;
+          const d = 44 + (g % 2) * 10 + (1 - cytoAlpha) * 28;
+          ctx.fillStyle = '#93c5fd';
+          ctx.beginPath();
+          ctx.arc(cx + Math.cos(a) * d, cy + Math.sin(a) * d, 2.2, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        ctx.restore();
+      }
+
+      // ── 2. CENTRAL NUCLEUS (always present, resistant to pepsin enzymes) ──
+      const nucR = 32 + dnaAlpha * 18;
+      const nucGlow = ctx.createRadialGradient(cx, cy, 4, cx, cy, nucR * 1.7);
+      nucGlow.addColorStop(0, 'rgba(56, 189, 248, 0.35)');
+      nucGlow.addColorStop(1, 'transparent');
+      ctx.fillStyle = nucGlow;
+      ctx.beginPath(); ctx.arc(cx, cy, nucR * 1.7, 0, Math.PI * 2); ctx.fill();
+
+      ctx.fillStyle = '#0f172a';
+      ctx.strokeStyle = '#38bdf8';
+      ctx.lineWidth = 2.6;
+      ctx.beginPath();
+      ctx.arc(cx, cy, nucR, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.stroke();
+
+      // ── 3. NUCLEIN / DNA DOUBLE STRAND & PHOSPHORUS (emerges in step 3) ──
+      if (dnaAlpha > 0.02) {
+        ctx.save();
+        ctx.globalAlpha = dnaAlpha;
+
+        // Uncoiling Nuclein / DNA ribbon across center
+        for (let dx = -34; dx <= 34; dx += 3) {
+          const a = time * 2 + dx * 0.14;
+          const dy1 = Math.sin(a) * 14;
+          const dy2 = -dy1;
+
+          if (Math.abs(dx) % 6 < 3) {
+            ctx.strokeStyle = 'rgba(250, 204, 21, 0.55)';
+            ctx.lineWidth = 1.4;
+            ctx.beginPath();
+            ctx.moveTo(cx + dx, cy + dy1);
+            ctx.lineTo(cx + dx, cy + dy2);
+            ctx.stroke();
+          }
+
+          ctx.fillStyle = '#38bdf8';
+          ctx.beginPath(); ctx.arc(cx + dx, cy + dy1, 2.4, 0, Math.PI * 2); ctx.fill();
+
+          ctx.fillStyle = '#34d399';
+          ctx.beginPath(); ctx.arc(cx + dx, cy + dy2, 2.4, 0, Math.PI * 2); ctx.fill();
+        }
+
+        // Orbiting Phosphorus (P) badges
+        for (let p = 0; p < 6; p++) {
+          const a = time * 0.6 + (p * Math.PI * 2) / 6;
+          const px = cx + Math.cos(a) * (nucR + 22);
+          const py = cy + Math.sin(a) * (nucR + 14);
+          ctx.fillStyle = '#facc15';
+          ctx.beginPath(); ctx.arc(px, py, 7, 0, Math.PI * 2); ctx.fill();
+          ctx.fillStyle = '#030712';
+          ctx.font = 'bold 8px Consolas, monospace';
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          ctx.fillText('P', px, py + 0.5);
+          ctx.textBaseline = 'alphabetic';
+        }
+        ctx.restore();
+      }
+
+      // Clean contextual leader labels per step
+      if (step === 1) {
+        drawLabelPill(ctx, cx, 22, '1. Globule blanc (extrait du pus chirurgical)', '#60a5fa', 'center');
+        drawLabelPill(ctx, cx + 95, cy - 42, 'Cytoplasme (protéines)', '#60a5fa', 'center');
+        drawLabelPill(ctx, cx, cy, 'Noyau', '#38bdf8', 'center');
+      } else if (step === 2) {
+        drawLabelPill(ctx, cx, 22, '2. Les enzymes digèrent les protéines, le noyau résiste', '#38bdf8', 'center');
+        drawLabelPill(ctx, cx, cy + nucR + 24, 'Noyau pur isolé intact', '#38bdf8', 'center');
+      } else {
+        drawLabelPill(ctx, cx, 22, '3. Précipitation de la « Nucléine » au cœur du noyau', '#34d399', 'center');
+        drawLabelPill(ctx, cx, cy + nucR + 32, 'Nucléine riche en Phosphore (P) = ADN !', '#facc15', 'center');
+      }
+
+      requestAnimationFrame(draw);
+    }
+    requestAnimationFrame(draw);
+
+    const b1 = document.getElementById('btn-miescher-s1');
+    const b2 = document.getElementById('btn-miescher-s2');
+    const b3 = document.getElementById('btn-miescher-s3');
+    const tag = document.getElementById('miescher-tag');
+
+    function setStep(s) {
+      step = s;
+      [b1, b2, b3].forEach(b => { if (b) b.classList.remove('active'); });
+      if (s === 1 && b1) b1.classList.add('active');
+      if (s === 2 && b2) b2.classList.add('active');
+      if (s === 3 && b3) b3.classList.add('active');
+      const labels = {
+        1: '1. Globule blanc intact',
+        2: '2. Noyau isolé (digestion des protéines)',
+        3: '3. « Nucléine » extraite (ADN riche en P)'
+      };
+      if (tag) tag.textContent = labels[s];
+    }
+
+    if (b1) b1.addEventListener('click', () => setStep(1));
+    if (b2) b2.addEventListener('click', () => setStep(2));
+    if (b3) b3.addEventListener('click', () => setStep(3));
+
+    canvas.addEventListener('click', () => {
+      setStep(step === 3 ? 1 : step + 1);
+    });
+  })();
+
+  /* ── 11. RUSKA & KNOLL ENGINE (1931 : MICROSCOPE ÉLECTRONIQUE VS OPTIQUE) ── */
+  (function initRuska() {
+    const cData = getDPRCanvas('canvas-ruska', 460, 270);
+    if (!cData) return;
+    const { canvas, ctx, w, h } = cData;
+
+    let mode = 'optical'; // 'optical' | 'electron' | 'ultra'
+    let time = 0;
+    let zoom = 1.0, targetZoom = 1.0;
+
+    function draw() {
+      time += 0.04;
+      zoom += (targetZoom - zoom) * 0.08;
+
+      ctx.fillStyle = '#030712';
+      ctx.fillRect(0, 0, w, h);
+
+      // ── LEFT PANEL: BEAM & WAVELENGTH (x: 12..182) ──
+      ctx.fillStyle = 'rgba(12, 18, 36, 0.9)';
+      ctx.strokeStyle = mode === 'optical' ? 'rgba(250, 204, 21, 0.3)' : 'rgba(56, 189, 248, 0.35)';
+      ctx.lineWidth = 1.2;
+      ctx.beginPath(); ctx.roundRect(12, 12, 170, 246, 8); ctx.fill(); ctx.stroke();
+
+      const bx = 97;
+      ctx.fillStyle = mode === 'optical' ? '#facc15' : '#38bdf8';
+      ctx.font = 'bold 8.5px Segoe UI, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText(mode === 'optical' ? 'FAISCEAU DE PHOTONS' : 'FAISCEAU D\'ÉLECTRONS', bx, 28);
+
+      // Source emitter at top
+      ctx.fillStyle = mode === 'optical' ? '#fde047' : '#38bdf8';
+      ctx.beginPath(); ctx.arc(bx, 48, 7, 0, Math.PI * 2); ctx.fill();
+
+      // Wave propagation downward (y: 55..205)
+      ctx.strokeStyle = mode === 'optical' ? '#facc15' : '#38bdf8';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      for (let y = 55; y <= 205; y += 2) {
+        // Photons: long wavelength & wide amplitude; Electrons: short wavelength & tight beam
+        const freq = mode === 'optical' ? 0.14 : 0.65;
+        const amp = mode === 'optical' ? 18 : 4.5;
+        const wx = bx + Math.sin(y * freq - time * 3) * amp;
+        if (y === 55) ctx.moveTo(wx, y);
+        else ctx.lineTo(wx, y);
+      }
+      ctx.stroke();
+
+      // Lenses on the column
+      [105, 160].forEach((ly, idx) => {
+        if (mode === 'optical') {
+          // Glass lens
+          ctx.fillStyle = 'rgba(250, 204, 21, 0.18)';
+          ctx.strokeStyle = '#eab308';
+          ctx.lineWidth = 1.5;
+          ctx.beginPath();
+          ctx.ellipse(bx, ly, 32, 7, 0, 0, Math.PI * 2);
+          ctx.fill(); ctx.stroke();
+        } else {
+          // Electromagnetic coil lens
+          ctx.fillStyle = 'rgba(56, 189, 248, 0.2)';
+          ctx.strokeStyle = '#38bdf8';
+          ctx.lineWidth = 1.8;
+          ctx.beginPath();
+          ctx.roundRect(bx - 38, ly - 8, 18, 16, 3);
+          ctx.roundRect(bx + 20, ly - 8, 18, 16, 3);
+          ctx.fill(); ctx.stroke();
+        }
+      });
+
+      drawLabelPill(
+        ctx, bx, 232,
+        mode === 'optical' ? 'λ longue (~500 nm)' : 'λ ultra-courte (~0.005 nm)',
+        mode === 'optical' ? '#eab308' : '#38bdf8',
+        'center'
+      );
+
+      // ── RIGHT PANEL: CELL OBSERVATION (x: 194..448) ──
+      const rx = 194, ry = 12, rw = 254, rh = 246;
+      const vcx = rx + rw / 2, vcy = ry + rh / 2;
+
+      ctx.save();
+      ctx.beginPath(); ctx.roundRect(rx, ry, rw, rh, 8); ctx.clip();
+
+      ctx.fillStyle = mode === 'optical' ? '#0c1612' : '#04090e';
+      ctx.fillRect(rx, ry, rw, rh);
+
+      ctx.save();
+      ctx.translate(vcx, vcy);
+      ctx.scale(zoom, zoom);
+      ctx.translate(-vcx, -vcy);
+
+      if (mode === 'optical') {
+        // Blurry low-resolution optical cell (only outline + nucleus visible)
+        ctx.fillStyle = 'rgba(34, 197, 94, 0.18)';
+        ctx.strokeStyle = 'rgba(74, 222, 128, 0.35)';
+        ctx.lineWidth = 7;
+        ctx.beginPath();
+        ctx.ellipse(vcx, vcy, 78, 58, 0, 0, Math.PI * 2);
+        ctx.fill(); ctx.stroke();
+
+        // Fuzzy nucleus
+        const nGrad = ctx.createRadialGradient(vcx - 16, vcy, 2, vcx - 16, vcy, 26);
+        nGrad.addColorStop(0, 'rgba(56, 189, 248, 0.5)');
+        nGrad.addColorStop(1, 'rgba(56, 189, 248, 0.05)');
+        ctx.fillStyle = nGrad;
+        ctx.beginPath(); ctx.arc(vcx - 16, vcy, 26, 0, Math.PI * 2); ctx.fill();
+
+        // Unresolvable blurry organelle smudges
+        [ [32, -18], [26, 22], [-34, 26] ].forEach(([ox, oy]) => {
+          ctx.fillStyle = 'rgba(148, 163, 184, 0.14)';
+          ctx.beginPath(); ctx.arc(vcx + ox, vcy + oy, 12, 0, Math.PI * 2); ctx.fill();
+        });
+
+      } else {
+        // High-resolution Electron Microscope Ultrastructure!
+        // Double lipid plasma membrane
+        ctx.strokeStyle = '#38bdf8';
+        ctx.lineWidth = 1.5 / zoom;
+        ctx.beginPath(); ctx.ellipse(vcx, vcy, 84, 62, 0, 0, Math.PI * 2); ctx.stroke();
+        ctx.beginPath(); ctx.ellipse(vcx, vcy, 81, 59, 0, 0, Math.PI * 2); ctx.stroke();
+
+        // Nucleus with double envelope & pores (left)
+        ctx.fillStyle = 'rgba(15, 23, 42, 0.9)';
+        ctx.strokeStyle = '#38bdf8';
+        ctx.lineWidth = 1.8 / zoom;
+        ctx.setLineDash([4 / zoom, 2.5 / zoom]);
+        ctx.beginPath(); ctx.arc(vcx - 32, vcy, 24, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+        ctx.setLineDash([]);
+
+        // Mitochondrion at center-right (vcx + 18, vcy - 6) so zooming into (vcx, vcy) shows it clearly
+        const mx = vcx + 14, my = vcy - 4;
+        ctx.fillStyle = 'rgba(16, 185, 129, 0.22)';
+        ctx.strokeStyle = '#10b981';
+        ctx.lineWidth = 1.8 / zoom;
+        ctx.beginPath();
+        ctx.ellipse(mx, my, 24, 13, 0, 0, Math.PI * 2);
+        ctx.fill(); ctx.stroke();
+
+        // Inner folded cristae of mitochondrion
+        ctx.strokeStyle = '#34d399';
+        ctx.lineWidth = 1.3 / zoom;
+        for (let cxOff = -14; cxOff <= 14; cxOff += 7) {
+          ctx.beginPath();
+          ctx.moveTo(mx + cxOff, my - 11);
+          ctx.lineTo(mx + cxOff, my + 4);
+          ctx.stroke();
+        }
+
+        // Endoplasmic reticulum & Ribosomes below
+        ctx.strokeStyle = '#a855f7';
+        ctx.lineWidth = 1.3 / zoom;
+        for (let r = 0; r < 3; r++) {
+          const ryOff = vcy + 20 + r * 7;
+          ctx.beginPath();
+          ctx.moveTo(vcx - 8, ryOff);
+          ctx.quadraticCurveTo(vcx + 12, ryOff + 3, vcx + 32, ryOff);
+          ctx.stroke();
+
+          // Punctate ribosomes along ER
+          for (let rxOff = -6; rxOff <= 30; rxOff += 6) {
+            ctx.fillStyle = '#facc15';
+            ctx.beginPath();
+            ctx.arc(vcx + rxOff, ryOff - 2, 1.5 / Math.sqrt(zoom), 0, Math.PI * 2);
+            ctx.fill();
+          }
+        }
+      }
+
+      ctx.restore();
+
+      // Clean non-overlapping header & footer inside right viewport
+      ctx.fillStyle = 'rgba(3, 7, 18, 0.86)';
+      ctx.fillRect(rx, ry, rw, 26);
+      ctx.fillRect(rx, ry + rh - 26, rw, 26);
+
+      ctx.fillStyle = mode === 'optical' ? '#facc15' : '#38bdf8';
+      ctx.font = 'bold 9px Segoe UI, sans-serif';
+      ctx.textAlign = 'center';
+      const headText = mode === 'optical'
+        ? 'OPTIQUE (×1 500) : IMAGE FLOUE'
+        : (mode === 'electron' ? 'ÉLECTRONIQUE : CELLULE NETTE' : 'ULTRASTRUCTURE (×100 000)');
+      ctx.fillText(headText, vcx, ry + 16);
+
+      if (mode === 'optical') {
+        drawLabelPill(ctx, vcx, ry + rh - 13, 'Ultrastructure interne invisible', '#eab308', 'center');
+      } else {
+        drawLabelPill(ctx, vcx - 56, ry + rh - 13, 'Mitochondrie', '#10b981', 'center');
+        drawLabelPill(ctx, vcx + 52, ry + rh - 13, 'Ribosomes', '#facc15', 'center');
+      }
+
+      ctx.restore();
+
+      ctx.strokeStyle = mode === 'optical' ? 'rgba(250, 204, 21, 0.35)' : 'rgba(56, 189, 248, 0.4)';
+      ctx.lineWidth = 1.2;
+      ctx.beginPath(); ctx.roundRect(rx, ry, rw, rh, 8); ctx.stroke();
+
+      requestAnimationFrame(draw);
+    }
+    requestAnimationFrame(draw);
+
+    const bOpt = document.getElementById('btn-ruska-optical');
+    const bEle = document.getElementById('btn-ruska-electron');
+    const bUlt = document.getElementById('btn-ruska-ultra');
+    const tag = document.getElementById('ruska-tag');
+
+    function setMode(m) {
+      mode = m;
+      targetZoom = m === 'ultra' ? 2.2 : 1.0;
+      [bOpt, bEle, bUlt].forEach(b => { if (b) b.classList.remove('active'); });
+      if (m === 'optical' && bOpt) bOpt.classList.add('active');
+      if (m === 'electron' && bEle) bEle.classList.add('active');
+      if (m === 'ultra' && bUlt) bUlt.classList.add('active');
+
+      const labels = {
+        optical: '1. Lumière visible (×1 500 : limite de diffraction)',
+        electron: '2. Faisceau d\'électrons (organites révélés)',
+        ultra: '3. Ultrastructure (×100 000 : mitochondries & ribosomes)'
+      };
+      if (tag) tag.textContent = labels[m];
+    }
+
+    if (bOpt) bOpt.addEventListener('click', () => setMode('optical'));
+    if (bEle) bEle.addEventListener('click', () => setMode('electron'));
+    if (bUlt) bUlt.addEventListener('click', () => setMode('ultra'));
+
+    canvas.addEventListener('click', () => {
+      setMode(mode === 'optical' ? 'electron' : (mode === 'electron' ? 'ultra' : 'optical'));
+    });
+  })();
+
+  /* ── 12. WATSON, CRICK & FRANKLIN ENGINE (1953 : CLICHÉ 51, DOUBLE HÉLICE & DUPLICATION) ── */
+  (function initDNA() {
+    const cData = getDPRCanvas('canvas-dna', 460, 270);
+    if (!cData) return;
+    const { canvas, ctx, w, h } = cData;
+    const cx = w / 2, cy = h / 2;
+
+    let mode = 'helix'; // 'photo51' | 'helix' | 'rep'
+    let time = 0;
+
+    const pairs = [
+      ['A', 'T'], ['C', 'G'], ['T', 'A'], ['G', 'C'],
+      ['A', 'T'], ['G', 'C'], ['C', 'G'], ['T', 'A'],
+      ['A', 'T'], ['C', 'G'], ['G', 'C']
+    ];
+    const baseColors = {
+      A: '#ef4444', // Adénine (Rouge)
+      T: '#38bdf8', // Thymine (Bleu)
+      C: '#10b981', // Cytosine (Vert)
+      G: '#f59e0b'  // Guanine (Ambre)
+    };
+
+    function draw() {
+      time += 0.025;
+      ctx.fillStyle = '#030712';
+      ctx.fillRect(0, 0, w, h);
+
+      if (mode === 'photo51') {
+        // ── VIEW 1: ROSALIND FRANKLIN'S PHOTO 51 (X-RAY DIFFRACTION) ──
+        // Left side: X-ray source hitting DNA fiber
+        ctx.fillStyle = 'rgba(15, 23, 42, 0.8)';
+        ctx.strokeStyle = 'rgba(56, 189, 248, 0.3)';
+        ctx.lineWidth = 1.2;
+        ctx.beginPath(); ctx.roundRect(14, 24, 155, 222, 8); ctx.fill(); ctx.stroke();
+
+        ctx.fillStyle = '#38bdf8';
+        ctx.font = 'bold 8.5px Segoe UI, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('DIFFRACTION RAYONS X', 91, 42);
+
+        // X-ray beam
+        ctx.strokeStyle = '#38bdf8';
+        ctx.lineWidth = 2;
+        ctx.setLineDash([4, 3]);
+        ctx.beginPath(); ctx.moveTo(26, cy); ctx.lineTo(115, cy); ctx.stroke();
+        ctx.setLineDash([]);
+
+        // DNA Fiber mount
+        ctx.strokeStyle = '#f472b6';
+        ctx.lineWidth = 3;
+        ctx.beginPath(); ctx.moveTo(115, cy - 45); ctx.lineTo(115, cy + 45); ctx.stroke();
+
+        // Diffracted cone onto photographic plate
+        ctx.fillStyle = 'rgba(56, 189, 248, 0.12)';
+        ctx.beginPath();
+        ctx.moveTo(115, cy);
+        ctx.lineTo(225, cy - 85);
+        ctx.lineTo(225, cy + 85);
+        ctx.closePath();
+        ctx.fill();
+
+        drawLabelPill(ctx, 91, 218, 'Fibre d\'ADN + Rayons X', '#f472b6', 'center');
+
+        // Right side: Iconic Circular Photographic Plate "Cliché 51"
+        const px = 315, py = cy, pr = 96;
+        const plateGrad = ctx.createRadialGradient(px, py, 6, px, py, pr);
+        plateGrad.addColorStop(0, '#e2e8f0');
+        plateGrad.addColorStop(0.75, '#cbd5e1');
+        plateGrad.addColorStop(1, '#64748b');
+        ctx.fillStyle = plateGrad;
+        ctx.beginPath(); ctx.arc(px, py, pr, 0, Math.PI * 2); ctx.fill();
+
+        // Central lead beam stop
+        ctx.fillStyle = '#0f172a';
+        ctx.beginPath(); ctx.arc(px, py, 11, 0, Math.PI * 2); ctx.fill();
+
+        // Characteristic X-cross diffraction spots
+        [-0.62, 0.62].forEach(armAngle => {
+          [-1, 1].forEach(dir => {
+            [22, 38, 54, 82].forEach((dist, idx) => {
+              const sx = px + Math.sin(armAngle) * dist * dir;
+              const sy = py + Math.cos(armAngle) * dist * dir;
+              ctx.fillStyle = idx === 3 ? 'rgba(15, 23, 42, 0.92)' : 'rgba(15, 23, 42, 0.78)';
+              ctx.beginPath();
+              ctx.ellipse(sx, sy, 9, 3.8, -armAngle * 0.4, 0, Math.PI * 2);
+              ctx.fill();
+            });
+          });
+        });
+
+        // Outer ring
+        ctx.strokeStyle = '#38bdf8';
+        ctx.lineWidth = 3;
+        ctx.beginPath(); ctx.arc(px, py, pr, 0, Math.PI * 2); ctx.stroke();
+
+        drawLabelPill(ctx, px, 22, '« Cliché 51 » (Rosalind Franklin, 1952)', '#38bdf8', 'center');
+        drawLabelPill(ctx, px, h - 18, 'Croix en « X » = Signature d\'une hélice', '#38bdf8', 'center');
+
+      } else if (mode === 'helix') {
+        // ── VIEW 2: CLEAN 3D DOUBLE HELIX WITH COMPLEMENTARY BASES (A-T, C-G) ──
+        const hcx = cx + 45;
+        const radius = 52;
+
+        // Left legend card
+        ctx.fillStyle = 'rgba(15, 23, 42, 0.88)';
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.12)';
+        ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.roundRect(14, 38, 138, 194, 8); ctx.fill(); ctx.stroke();
+
+        ctx.fillStyle = '#38bdf8';
+        ctx.font = 'bold 9px Segoe UI, sans-serif';
+        ctx.textAlign = 'left';
+        ctx.fillText('PAIRES DE BASES', 24, 56);
+
+        const legendItems = [
+          { b: 'A', name: 'Adénine',  col: baseColors.A, y: 80 },
+          { b: 'T', name: 'Thymine',  col: baseColors.T, y: 102 },
+          { b: 'C', name: 'Cytosine', col: baseColors.C, y: 134 },
+          { b: 'G', name: 'Guanine',  col: baseColors.G, y: 156 }
+        ];
+        legendItems.forEach(it => {
+          ctx.fillStyle = it.col;
+          ctx.beginPath(); ctx.roundRect(24, it.y - 9, 16, 14, 3); ctx.fill();
+          ctx.fillStyle = '#ffffff';
+          ctx.font = 'bold 9px Consolas, monospace';
+          ctx.textAlign = 'center';
+          ctx.fillText(it.b, 32, it.y + 1);
+
+          ctx.fillStyle = '#e2e8f0';
+          ctx.font = '8.5px Segoe UI, sans-serif';
+          ctx.textAlign = 'left';
+          ctx.fillText(it.name, 46, it.y + 1);
+        });
+
+        ctx.fillStyle = '#94a3b8';
+        ctx.font = 'bold 8px Consolas, monospace';
+        ctx.fillText('Règle : A = T | C ≡ G', 24, 192);
+        ctx.fillText('2 brins antiparallèles', 24, 210);
+
+        // Draw base pair rungs cleanly with vector lines (no negative-width roundRect!)
+        pairs.forEach(([b1, b2], i) => {
+          const y = 30 + i * 21;
+          const angle = time * 1.6 + i * 0.55;
+          const x1 = hcx + Math.cos(angle) * radius;
+          const x2 = hcx - Math.cos(angle) * radius;
+          const z = Math.sin(angle);
+          const midX = hcx;
+
+          // Rung half 1 (b1)
+          ctx.strokeStyle = baseColors[b1];
+          ctx.lineWidth = 4.5 + z * 1.2;
+          ctx.lineCap = 'round';
+          ctx.beginPath();
+          ctx.moveTo(x1, y);
+          ctx.lineTo(midX - (x2 > x1 ? 3 : -3), y);
+          ctx.stroke();
+
+          // Rung half 2 (b2)
+          ctx.strokeStyle = baseColors[b2];
+          ctx.beginPath();
+          ctx.moveTo(midX + (x2 > x1 ? 3 : -3), y);
+          ctx.lineTo(x2, y);
+          ctx.stroke();
+
+          // Hydrogen bond dot at center
+          ctx.fillStyle = '#ffffff';
+          ctx.beginPath(); ctx.arc(midX, y, 1.6, 0, Math.PI * 2); ctx.fill();
+
+          // Show crisp base letters when rung is wide across front
+          if (Math.abs(x2 - x1) > 65) {
+            const lx1 = (x1 + midX) / 2;
+            const lx2 = (x2 + midX) / 2;
+            ctx.fillStyle = '#030712';
+            ctx.beginPath(); ctx.arc(lx1, y, 5.5, 0, Math.PI * 2); ctx.fill();
+            ctx.beginPath(); ctx.arc(lx2, y, 5.5, 0, Math.PI * 2); ctx.fill();
+
+            ctx.font = 'bold 8px Consolas, monospace';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillStyle = baseColors[b1];
+            ctx.fillText(b1, lx1, y + 0.5);
+            ctx.fillStyle = baseColors[b2];
+            ctx.fillText(b2, lx2, y + 0.5);
+            ctx.textBaseline = 'alphabetic';
+          }
+        });
+
+        // Smooth continuous backbone strands
+        [0, Math.PI].forEach((offset, sIdx) => {
+          ctx.strokeStyle = sIdx === 0 ? '#38bdf8' : '#f472b6';
+          ctx.lineWidth = 3.5;
+          ctx.beginPath();
+          for (let y = 20; y <= 250; y += 3) {
+            const iFloat = (y - 30) / 21;
+            const a = time * 1.6 + iFloat * 0.55 + offset;
+            const x = hcx + Math.cos(a) * radius;
+            if (y === 20) ctx.moveTo(x, y);
+            else ctx.lineTo(x, y);
+          }
+          ctx.stroke();
+
+          // Backbone phosphate spheres
+          pairs.forEach((_, i) => {
+            const y = 30 + i * 21;
+            const a = time * 1.6 + i * 0.55 + offset;
+            const x = hcx + Math.cos(a) * radius;
+            const z = Math.sin(a);
+            ctx.fillStyle = sIdx === 0 ? '#38bdf8' : '#f472b6';
+            ctx.beginPath();
+            ctx.arc(x, y, 4 + z * 1.2, 0, Math.PI * 2);
+            ctx.fill();
+          });
+        });
+
+      } else {
+        // ── VIEW 3: DNA DUPLICATION (EACH STRAND SERVES AS TEMPLATE) ──
+        // Top half (y: 18..115): Parent double helix unzipping at y = 115
+        // Bottom half (y: 115..235): Two daughter double helices forming!
+        const forkY = 105;
+
+        for (let i = 0; i < 10; i++) {
+          const y = 24 + i * 21;
+          const [b1, b2] = pairs[i];
+
+          if (y < forkY) {
+            // Parent intact strand at top
+            const x1 = cx - 34;
+            const x2 = cx + 34;
+            ctx.strokeStyle = baseColors[b1];
+            ctx.lineWidth = 4;
+            ctx.beginPath(); ctx.moveTo(x1, y); ctx.lineTo(cx - 2, y); ctx.stroke();
+            ctx.strokeStyle = baseColors[b2];
+            ctx.beginPath(); ctx.moveTo(cx + 2, y); ctx.lineTo(x2, y); ctx.stroke();
+
+            ctx.fillStyle = '#38bdf8';
+            ctx.beginPath(); ctx.arc(x1, y, 4, 0, Math.PI * 2); ctx.fill();
+            ctx.fillStyle = '#f472b6';
+            ctx.beginPath(); ctx.arc(x2, y, 4, 0, Math.PI * 2); ctx.fill();
+          } else {
+            // Separated into Left Daughter Helix and Right Daughter Helix!
+            const spread = ((y - forkY) / 130) * 85;
+            const leftOuterX = cx - 34 - spread;
+            const leftInnerX = leftOuterX + 44;
+
+            const rightOuterX = cx + 34 + spread;
+            const rightInnerX = rightOuterX - 44;
+
+            // Left template strand + newly synthesized complementary strand
+            ctx.strokeStyle = baseColors[b1];
+            ctx.lineWidth = 4;
+            ctx.beginPath(); ctx.moveTo(leftOuterX, y); ctx.lineTo(leftOuterX + 20, y); ctx.stroke();
+
+            ctx.strokeStyle = baseColors[b2];
+            ctx.beginPath(); ctx.moveTo(leftOuterX + 24, y); ctx.lineTo(leftInnerX, y); ctx.stroke();
+
+            ctx.fillStyle = '#38bdf8';
+            ctx.beginPath(); ctx.arc(leftOuterX, y, 4, 0, Math.PI * 2); ctx.fill();
+            ctx.fillStyle = '#34d399'; // New strand
+            ctx.beginPath(); ctx.arc(leftInnerX, y, 4, 0, Math.PI * 2); ctx.fill();
+
+            // Right template strand + newly synthesized complementary strand
+            ctx.strokeStyle = baseColors[b2];
+            ctx.beginPath(); ctx.moveTo(rightOuterX, y); ctx.lineTo(rightOuterX - 20, y); ctx.stroke();
+
+            ctx.strokeStyle = baseColors[b1];
+            ctx.beginPath(); ctx.moveTo(rightOuterX - 24, y); ctx.lineTo(rightInnerX, y); ctx.stroke();
+
+            ctx.fillStyle = '#f472b6';
+            ctx.beginPath(); ctx.arc(rightOuterX, y, 4, 0, Math.PI * 2); ctx.fill();
+            ctx.fillStyle = '#34d399'; // New strand
+            ctx.beginPath(); ctx.arc(rightInnerX, y, 4, 0, Math.PI * 2); ctx.fill();
+          }
+        }
+
+        drawLabelPill(ctx, cx, 14, 'ADN Parent (se sépare au centre)', '#38bdf8', 'center');
+        drawLabelPill(ctx, cx - 105, h - 16, 'Copie identique 1', '#34d399', 'center');
+        drawLabelPill(ctx, cx + 105, h - 16, 'Copie identique 2', '#34d399', 'center');
+      }
+
+      requestAnimationFrame(draw);
+    }
+    requestAnimationFrame(draw);
+
+    const bP = document.getElementById('btn-dna-photo51');
+    const bH = document.getElementById('btn-dna-helix');
+    const bR = document.getElementById('btn-dna-rep');
+    const tag = document.getElementById('dna-tag');
+
+    function setMode(m) {
+      mode = m;
+      [bP, bH, bR].forEach(b => { if (b) b.classList.remove('active'); });
+      if (m === 'photo51' && bP) bP.classList.add('active');
+      if (m === 'helix' && bH) bH.classList.add('active');
+      if (m === 'rep' && bR) bR.classList.add('active');
+
+      const labels = {
+        photo51: '1. Cliché 51 de Rosalind Franklin (Rayons X)',
+        helix: '2. Double hélice (paires A-T et C-G)',
+        rep: '3. Duplication : chaque brin sert de matrice'
+      };
+      if (tag) tag.textContent = labels[m];
+    }
+
+    if (bP) bP.addEventListener('click', () => setMode('photo51'));
+    if (bH) bH.addEventListener('click', () => setMode('helix'));
+    if (bR) bR.addEventListener('click', () => setMode('rep'));
+
+    canvas.addEventListener('click', () => {
+      setMode(mode === 'photo51' ? 'helix' : (mode === 'helix' ? 'rep' : 'photo51'));
+    });
+  })();
+
+</script>
+</body>
+</html>

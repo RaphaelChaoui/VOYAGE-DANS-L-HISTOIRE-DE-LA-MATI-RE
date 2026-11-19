@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Timeline</title>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: #f8f7f4;
+      color: #2c3e50;
+      min-height: 100vh;
+    }
+
+    /* ── horizontal arrow — sticky nav ── */
+    .arrow {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: #f8f7f4;
+      padding: 20px 40px;
+    }
+
+    .arrow-tail {
+      width: 16px;
+      height: 48px;
+      background: #7ba7a7;
+      border-radius: 10px 0 0 10px;
+      flex-shrink: 0;
+    }
+
+    .arrow-shaft {
+      flex: 1;
+      height: 48px;
+      background: #7ba7a7;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      padding: 0 8px;
+    }
+
+    .arrow-head {
+      width: 0;
+      height: 0;
+      border-top: 54px solid transparent;
+      border-bottom: 54px solid transparent;
+      border-left: 64px solid #7ba7a7;
+      flex-shrink: 0;
+    }
+
+    /* ── clickable labels on the arrow ── */
+    .arrow-event {
+      color: #fff;
+      font-size: .75rem;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      user-select: none;
+      transition: background .2s ease, color .2s ease;
+      white-space: nowrap;
+      text-decoration: none;
+    }
+    .arrow-event:hover,
+    .arrow-event.active {
+      background: #fff;
+      color: #2c3e50;
+    }
+
+    /* ── event cards ── */
+    .events {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: row;
+      gap: 0;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      scroll-snap-type: x mandatory;
+    }
+
+    .event {
+      border: none;
+      border-right: 1px solid rgba(0,0,0,.06);
+      padding: 48px 60px;
+      min-width: 100vw;
+      flex-shrink: 0;
+      scroll-snap-align: start;
+    }
+
+    /* individual pale backgrounds */
+    .event:nth-child(1)  { background: #e8f0f2; } /* pale ice blue — cosmos */
+    .event:nth-child(2)  { background: #fdf5e6; } /* pale cream — old optics */
+    .event:nth-child(3)  { background: #f0ebe3; } /* warm beige — cork/liège */
+    .event:nth-child(4)  { background: #e6f2e6; } /* pale mint — living cells */
+    .event:nth-child(5)  { background: #f5f0e8; } /* sand — botany */
+    .event:nth-child(6)  { background: #eaf2e8; } /* soft sage — plants */
+    .event:nth-child(7)  { background: #fce8e8; } /* pale rose — animals */
+    .event:nth-child(8)  { background: #ede8f5; } /* soft lavender — theory */
+    .event:nth-child(9)  { background: #fff3e0; } /* pale amber — radioactivity */
+    .event:nth-child(10) { background: #e8eef5; } /* pale steel — DNA */
+    .event:nth-child(11) { background: #e8f0f0; } /* pale teal — electron microscope */
+    .event:nth-child(12) { background: #f0e8f5; } /* soft violet — DNA structure */
+
+    .event-label {
+      display: block;
+      font-size: .65rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #7ba7a7;
+      margin-bottom: 8px;
+    }
+    .event h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #2c3e50;
+      margin-bottom: 10px;
+    }
+    .event p {
+      color: #5a6b7b;
+      font-size: .92rem;
+      line-height: 1.6;
+      max-width: 560px;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="arrow">
+  <div class="arrow-tail"></div>
+  <div class="arrow-shaft" id="arrow-shaft"></div>
+  <div class="arrow-head"></div>
+</nav>
+
+<ul class="events" id="events"></ul>
+
+<script>
+  const events = [
+    { title: '-13.8 milliards d\'années', subtitle: 'Le Big Bang', desc: 'Le Big Bang est la théorie selon laquelle l\'Univers est né il y a environ 13,8 milliards d\'années à partir d\'un état extrêmement chaud et dense, puis s\'est progressivement développé pour former l\'Univers que nous connaissons aujourd\'hui.' },
+    { title: '1590', subtitle: 'Hans et Zacharias Janssen', desc: 'Inventent le premier microscope composé. Les fabricants de lunettes Janssen mettent au point un instrument utilisant plusieurs lentilles.' },
+    { title: '1665', subtitle: 'Robert Hooke', desc: 'Découverte du mot cellule. En observant une fine tranche de liège avec un microscope, il voit de petites cavités et les appelle « cellules », comme les petites pièces des moines.' },
+    { title: '1674', subtitle: 'Antoni van Leeuwenhoek', desc: 'Observation des cellules vivantes. Grâce à des microscopes qu\'il améliore lui-même, il observe des bactéries, des protozoaires et des spermatozoïdes.' },
+    { title: '1831', subtitle: 'Robert Brown', desc: 'Découverte du noyau. Brown observe une petite structure présente dans les cellules végétales\u00a0: le noyau.' },
+    { title: '1838', subtitle: 'Matthias Schleiden', desc: 'Les végétaux sont constitués de cellules. Schleiden affirme que la cellule est l\'unité de base des plantes.' },
+    { title: '1839', subtitle: 'Theodor Schwann', desc: 'Les animaux sont constitués de cellules. Schwann montre que les animaux sont eux aussi constitués de cellules. La théorie cellulaire se forme.' },
+    { title: '1855', subtitle: 'Rudolf Virchow', desc: 'Les cellules proviennent d\'autres cellules.' },
+    { title: '1867-1934', subtitle: 'Marie Curie', desc: 'Une scientifique franco-polonaise célèbre pour ses recherches sur la radioactivité. Elle est la seule personne à avoir reçu deux prix Nobel dans deux sciences différentes.' },
+    { title: '1869', subtitle: 'Friedrich Miescher', desc: 'Découverte de l\'ADN.' },
+    { title: '1931', subtitle: 'Ernst Ruska et Max Knoll', desc: 'Premier microscope électronique.' },
+    { title: '1953', subtitle: 'James Watson, Francis Crick, Rosalind Franklin et Maurice Wilkins', desc: 'Découverte de la structure de l\'ADN.' },
+  ];
+
+  const shaft = document.getElementById('arrow-shaft');
+  const list = document.getElementById('events');
+
+  events.forEach((ev, i) => {
+    /* arrow label */
+    const link = document.createElement('a');
+    link.className = 'arrow-event';
+    link.textContent = ev.title;
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      document.getElementById(`event-${i}`).scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+    });
+    shaft.appendChild(link);
+
+    /* event card */
+    const li = document.createElement('li');
+    li.className = 'event';
+    li.id = `event-${i}`;
+    li.innerHTML = `
+      <span class="event-label">${ev.title}</span>
+      ${ev.subtitle ? `<h3>${ev.subtitle}</h3>` : ''}
+      ${ev.desc ? `<p>${ev.desc}</p>` : ''}
+    `;
+    list.appendChild(li);
+  });
+
+  /* highlight active arrow label on scroll */
+  const cards = document.querySelectorAll('.event');
+  const links = document.querySelectorAll('.arrow-event');
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      const idx = Array.from(cards).indexOf(e.target);
+      if (e.isIntersecting) {
+        links.forEach(l => l.classList.remove('active'));
+        links[idx].classList.add('active');
+      }
+    });
+  }, { root: list, rootMargin: '0px -50% 0px 0px', threshold: 0 });
+
+  cards.forEach(c => observer.observe(c));
+</script>
+</body>
+</html>
