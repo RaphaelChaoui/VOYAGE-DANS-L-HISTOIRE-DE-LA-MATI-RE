@@ -429,7 +429,7 @@
       border-bottom: 1px solid var(--border-strong);
       display: flex;
       align-items: center;
-      justify-content: space-around;
+      justify-content: space-between;
       padding: 0 10px;
       overflow-x: auto;
       scrollbar-width: none;
@@ -572,24 +572,86 @@
       font-weight: 600;
     }
 
-    /* Key Words & Definitions Glossary on each slide */
+    /* Key Words & Definitions Glossary Dropdown on each slide */
     .event-glossary {
       margin-top: 18px;
-      background: rgba(18, 18, 22, 0.78);
+      background: rgba(18, 18, 22, 0.85);
       border: 1px solid var(--border);
       border-radius: 12px;
-      padding: 14px 18px;
+      padding: 11px 16px;
+      transition: border-color 0.2s ease, background 0.2s ease;
+    }
+    .event-glossary:hover {
+      border-color: rgba(56, 189, 248, 0.32);
+      background: rgba(24, 24, 30, 0.92);
+    }
+    .event-glossary[open] {
+      border-color: rgba(56, 189, 248, 0.28);
+      background: rgba(18, 18, 22, 0.94);
     }
     .glossary-heading {
       display: flex;
       align-items: center;
-      gap: 7px;
+      justify-content: space-between;
+      gap: 10px;
       font-size: 0.72rem;
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.08em;
       color: var(--accent);
+      margin-bottom: 0;
+      cursor: pointer;
+      user-select: none;
+      list-style: none;
+    }
+    .glossary-heading::-webkit-details-marker {
+      display: none;
+    }
+    .event-glossary[open] .glossary-heading {
       margin-bottom: 10px;
+      padding-bottom: 9px;
+      border-bottom: 1px solid var(--border);
+    }
+    .glossary-heading-left {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+    }
+    .glossary-count-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(56, 189, 248, 0.14);
+      border: 1px solid rgba(56, 189, 248, 0.28);
+      color: var(--accent);
+      font-size: 0.65rem;
+      font-weight: 600;
+      padding: 1px 7px;
+      border-radius: 9999px;
+      letter-spacing: 0;
+    }
+    .glossary-toggle-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      color: var(--text-secondary);
+      font-size: 0.68rem;
+      font-weight: 500;
+      text-transform: none;
+      letter-spacing: 0.01em;
+    }
+    .glossary-toggle-text::before {
+      content: "Afficher";
+    }
+    .event-glossary[open] .glossary-toggle-text::before {
+      content: "Masquer";
+    }
+    .glossary-chevron {
+      transition: transform 0.22s ease;
+      color: var(--accent);
+    }
+    .event-glossary[open] .glossary-chevron {
+      transform: rotate(180deg);
     }
     .glossary-grid {
       display: grid;
@@ -1163,12 +1225,16 @@
     }
     .event-glossary {
       margin-top: 14px;
-      padding: 12px 16px;
+      padding: 10px 16px;
       border-radius: 11px;
     }
     .glossary-heading {
       font-size: 0.68rem;
-      margin-bottom: 8px;
+      margin-bottom: 0;
+    }
+    .event-glossary[open] .glossary-heading {
+      margin-bottom: 9px;
+      padding-bottom: 8px;
     }
     .glossary-grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1445,7 +1511,11 @@
       }
       .glossary-heading {
         font-size: 0.62rem;
-        margin-bottom: 5px;
+        margin-bottom: 0;
+      }
+      .event-glossary[open] .glossary-heading {
+        margin-bottom: 6px;
+        padding-bottom: 6px;
       }
       .glossary-grid {
         grid-template-columns: minmax(0, 1fr);
@@ -1516,7 +1586,7 @@
     </nav>
 
     <div class="header-actions">
-      <span class="event-counter" id="event-counter">01 / 12</span>
+      <span class="event-counter" id="event-counter">01 / 16</span>
       <button class="nav-btn" id="btn-prev" title="Événement précédent (Flèche Gauche)">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
       </button>
@@ -1615,7 +1685,8 @@
         "term": "Loi de Hubble",
         "def": "Observation montrant que plus une galaxie est lointaine, plus elle s'éloigne vite, prouvant l'expansion de l'espace."
       }
-    ]
+    ],
+    "animKey": "bb"
   },
   {
     "title": "1590",
@@ -1654,11 +1725,39 @@
         "term": "Oculaire",
         "def": "Lentille proche de l'œil de l'observateur, qui agrandit à nouveau l'image formée par l'objectif."
       }
+    ],
+    "animKey": "janssen"
+  },
+  {
+    "title": "1609",
+    "era": "Étape 03 · XVIIᵉ siècle",
+    "subtitle": "Galilée",
+    "animKey": "galilee",
+    "desc": "Galilée améliore la lunette astronomique pour observer le ciel et crée l'« occhiolino », un instrument à deux lentilles qui agrandit 30 fois les petits objets.",
+    "bubbles": [
+      "En 1609, le savant italien <strong>Galilée</strong> perfectionne la <strong>lunette astronomique</strong> et devient le premier à l'utiliser pour observer le ciel : il découvre les cratères de la Lune et les lunes de Jupiter.",
+      "Il utilise aussi ses lentilles pour observer de très petits objets de près. Cet appareil, appelé <strong>« occhiolino »</strong> (« petit œil »), associe une <strong>lentille divergente</strong> et une <strong>lentille convergente</strong>.",
+      "Grâce à cette combinaison de deux lentilles, l'instrument de Galilée <strong>agrandit 30 fois (×30)</strong> l'objet observé, faisant progresser à la fois l'astronomie et la microscopie."
+    ],
+    "photos": [],
+    "glossary": [
+      {
+        "term": "Lunette astronomique",
+        "def": "Instrument optique composé de lentilles permettant d'observer les astres lointains dans le ciel."
+      },
+      {
+        "term": "Occhiolino (« petit œil »)",
+        "def": "Petit microscope construit par Galilée avec une lentille divergente et une lentille convergente, qui grossit 30 fois l'objet."
+      },
+      {
+        "term": "Lentille convergente / divergente",
+        "def": "Verres taillés qui rapprochent (convergente) ou écartent (divergente) les rayons lumineux pour agrandir l'image."
+      }
     ]
   },
   {
     "title": "1665",
-    "era": "Étape 03 · XVIIᵉ siècle",
+    "era": "Étape 04 · XVIIᵉ siècle",
     "subtitle": "Robert Hooke",
     "desc": "Découverte et introduction du terme « cellule ». En observant une fine tranche de liège avec son microscope, il remarque de petites cavités régulières.",
     "bubbles": [
@@ -1693,11 +1792,39 @@
         "term": "Micrographia",
         "def": "Ouvrage célèbre publié par Robert Hooke en 1665, premier traité illustré de gravures microscopiques."
       }
+    ],
+    "animKey": "hooke"
+  },
+  {
+    "title": "1668",
+    "era": "Étape 05 · XVIIᵉ siècle",
+    "subtitle": "Francesco Redi",
+    "animKey": "redi",
+    "desc": "Il réalise une expérience célèbre montrant que les asticots (larves) qui apparaissent sur la viande viennent des œufs pondus par les mouches, et non de la viande elle-même.",
+    "bubbles": [
+      "Autrefois, beaucoup pensaient que des êtres vivants comme les asticots naissaient tout seuls à partir de la viande morte : c'était la croyance en la <strong>génération spontanée</strong>.",
+      "En 1668, le médecin italien <strong>Francesco Redi</strong> place de la viande dans plusieurs bocaux : un bocal reste <strong>ouvert</strong>, un deuxième est recouvert d'une <strong>gaze fine</strong> (tissu aéré) et un troisième est <strong>fermé</strong>.",
+      "Les <strong>larves (asticots)</strong> n'apparaissent que dans le bocal ouvert où les <strong>mouches</strong> ont pu se poser pour <strong>pondre leurs œufs</strong>. Redi prouve ainsi que les asticots viennent des mouches et non de la viande."
+    ],
+    "photos": [],
+    "glossary": [
+      {
+        "term": "Génération spontanée",
+        "def": "Ancienne croyance erronée selon laquelle des êtres vivants pourraient naître tout seuls à partir de matière morte ou inerte."
+      },
+      {
+        "term": "Asticots (Larves)",
+        "def": "Petits vers blancs qui sortent des œufs pondus par les mouches avant de devenir eux-mêmes des mouches."
+      },
+      {
+        "term": "Expérience témoin",
+        "def": "Comparaison entre plusieurs bocaux (ouvert, avec gaze, fermé) permettant de prouver d'où viennent réellement les larves."
+      }
     ]
   },
   {
-    "title": "1674",
-    "era": "Étape 04 · XVIIᵉ siècle",
+    "title": "1678",
+    "era": "Étape 06 · XVIIᵉ siècle",
     "subtitle": "Antoni van Leeuwenhoek",
     "desc": "Première observation de cellules vivantes et de micro-organismes dans une simple goutte d'eau grâce à des lentilles d'une précision inégalée.",
     "bubbles": [
@@ -1728,46 +1855,12 @@
         "term": "Microbiologie",
         "def": "Science qui étudie les micro-organismes invisibles à l'œil nu, fondée grâce aux lettres de Leeuwenhoek."
       }
-    ]
-  },
-  {
-    "title": "1831",
-    "era": "Étape 05 · XIXᵉ siècle",
-    "subtitle": "Robert Brown",
-    "desc": "Découverte et désignation du noyau cellulaire. Brown identifie une structure circulaire constante au sein des cellules végétales.",
-    "bubbles": [
-      "<strong>Robert Brown</strong> est un éminent botaniste écossais du XIXᵉ siècle. En étudiant attentivement l'épiderme de différentes espèces d'orchidées et d'asclépiades au microscope, il remarque une tache opaque constante à l'intérieur de chaque cellule.",
-      "En 1831, il comprend qu'il ne s'agit pas d'un artefact mais d'un organite structural permanent, et le nomme <strong>noyau</strong> (<em>nucleus</em>).",
-      "Le noyau abrite l'information génétique (l'ADN) et orchestre la réplication ainsi que la synthèse des protéines. La découverte de Brown démontre que la cellule possède une organisation interne sophistiquée et organisée."
     ],
-    "photos": [
-      {
-        "src": "Photos/5(4).jpg",
-        "caption": "Portrait à l'huile de Robert Brown (1773-1858), découvreur du noyau cellulaire et du mouvement brownien."
-      },
-      {
-        "src": "Photos/5 (3).jpg",
-        "caption": "Micrographie électronique colorée d'une cellule végétale révélant le noyau, les chloroplastes et la vacuole."
-      }
-    ],
-    "glossary": [
-      {
-        "term": "Noyau (Nucleus)",
-        "def": "Organite central découvert par Brown en 1831 dans les cellules végétales ; il abrite l'ADN et dirige les activités cellulaires."
-      },
-      {
-        "term": "Organite",
-        "def": "Structure spécialisée située à l'intérieur de la cellule, assurant une fonction biologique précise (noyau, chloroplaste...)."
-      },
-      {
-        "term": "ADN",
-        "def": "Acide désoxyribonucléique ; molécule contenue dans le noyau qui porte l'information génétique héréditaire."
-      }
-    ]
+    "animKey": "leeu"
   },
   {
     "title": "1838",
-    "era": "Étape 06 · XIXᵉ siècle",
+    "era": "Étape 07 · XIXᵉ siècle",
     "subtitle": "Matthias Schleiden",
     "desc": "Tous les végétaux sont constitués de cellules. Schleiden pose le premier pilier universel de la théorie cellulaire pour le règne végétal.",
     "bubbles": [
@@ -1806,11 +1899,12 @@
         "term": "Chloroplaste",
         "def": "Organite propre aux cellules végétales permettant la photosynthèse grâce à la chlorophylle."
       }
-    ]
+    ],
+    "animKey": "schleiden"
   },
   {
     "title": "1839",
-    "era": "Étape 07 · XIXᵉ siècle",
+    "era": "Étape 08 · XIXᵉ siècle",
     "subtitle": "Theodor Schwann",
     "desc": "Tous les animaux sont constitués de cellules. Schwann unifie la biologie : tous les êtres vivants partagent la même unité fondamentale.",
     "bubbles": [
@@ -1845,11 +1939,12 @@
         "term": "Cellules de Schwann",
         "def": "Cellules formant la gaine protectrice autour des fibres nerveuses, nommées en hommage à Theodor Schwann."
       }
-    ]
+    ],
+    "animKey": "schwann"
   },
   {
     "title": "1855",
-    "era": "Étape 08 · XIXᵉ siècle",
+    "era": "Étape 09 · XIXᵉ siècle",
     "subtitle": "Rudolf Virchow",
     "desc": "Toute cellule provient d'une cellule préexistante. Virchow achève la théorie cellulaire en écartant définitivement la génération spontanée.",
     "bubbles": [
@@ -1884,12 +1979,67 @@
         "term": "Pathologie cellulaire",
         "def": "Discipline fondée par Virchow montrant que les maladies résultent d'altérations au niveau des cellules."
       }
+    ],
+    "animKey": "virchow"
+  },
+  {
+    "title": "1862",
+    "era": "Étape 10 · XIXᵉ siècle",
+    "subtitle": "Louis Pasteur",
+    "animKey": "pasteur",
+    "desc": "Grâce à ses expériences avec des flacons à col de cygne, Louis Pasteur réfute définitivement la théorie de la génération spontanée.",
+    "bubbles": [
+      "Au XIXᵉ siècle, certains scientifiques croient encore que les microbes naissent tout seuls dans les liquides. En 1862, le savant français <strong>Louis Pasteur</strong> imagine une expérience décisive avec des <strong>flacons à col de cygne</strong>.",
+      "Il fait bouillir un bouillon nutritif dans ces flacons au col long et recourbé pour tuer tous les microbes. L'air peut entrer, mais les poussières et les microbes restent <strong>piégés dans le coude du col</strong> : le liquide reste intact.",
+      "Si l'on casse le col du flacon, les poussières de l'air tombent dans le bouillon et les microbes se multiplient. Pasteur <strong>invalide la génération spontanée</strong> : la matière inerte ne donne jamais naissance toute seule à un être vivant."
+    ],
+    "photos": [],
+    "glossary": [
+      {
+        "term": "Flacon à col de cygne",
+        "def": "Ballon en verre au tube long et recourbé utilisé par Pasteur : il laisse passer l'air mais bloque les poussières et les microbes."
+      },
+      {
+        "term": "Stérilisation",
+        "def": "Chauffage du bouillon à haute température pour détruire tous les micro-organismes présents au départ."
+      },
+      {
+        "term": "Matière inerte",
+        "def": "Matière non vivante (eau, roche, bouillon stérilisé) qui ne peut pas créer la vie toute seule."
+      }
     ]
   },
   {
-    "title": "1867-1934",
-    "era": "Étape 09 · Tournant du XXᵉ siècle",
-    "subtitle": "Marie Curie",
+    "title": "1869",
+    "era": "Étape 11 · XIXᵉ siècle",
+    "subtitle": "Dimitri Mendeleïev",
+    "animKey": "mendeleiev",
+    "desc": "Il crée la première version du tableau périodique des éléments chimiques, organisant les briques fondamentales de toute la matière.",
+    "bubbles": [
+      "En 1869, le chimiste russe <strong>Dimitri Mendeleïev</strong> cherche à mettre de l'ordre parmi tous les éléments chimiques connus qui composent la matière de l'Univers (hydrogène, carbone, oxygène, fer...).",
+      "Il crée la première version du <strong>tableau périodique des éléments chimiques</strong> en les classant par masse atomique croissante et en regroupant dans une même colonne ceux qui ont des comportements chimiques semblables.",
+      "Son tableau est si logique qu'il laisse des <strong>cases vides</strong> pour des éléments qui n'avaient pas encore été découverts à son époque, en devinant avec justesse leurs propriétés."
+    ],
+    "photos": [],
+    "glossary": [
+      {
+        "term": "Élément chimique",
+        "def": "Type d'atome fondamental (comme l'oxygène O, le carbone C ou l'or Au) qui sert de brique pour construire toute la matière."
+      },
+      {
+        "term": "Tableau périodique",
+        "def": "Tableau créé par Mendeleïev en 1869 qui classe tous les éléments chimiques par masse et par famille de propriétés."
+      },
+      {
+        "term": "Cases vides prédites",
+        "def": "Emplacements laissés libres par Mendeleïev pour des éléments encore inconnus en 1869 (comme le gallium ou le germanium), découverts quelques années plus tard."
+      }
+    ]
+  },
+  {
+    "title": "1898",
+    "era": "Étape 12 · Tournant du XXᵉ siècle",
+    "subtitle": "Marie et Pierre Curie",
     "desc": "Pionnière de la radioactivité, découverte du polonium et du radium, ouvrant l'exploration de la radiothérapie et des effets ionisants sur les cellules.",
     "bubbles": [
       "<strong>Marie Curie</strong> est une physicienne et chimiste franco-polonaise visionnaire. En étudiant les rayonnements de l'uranium, elle isole deux éléments inconnus : le <strong>polonium</strong> et le <strong>radium</strong>.",
@@ -1923,118 +2073,114 @@
         "term": "Curiethérapie",
         "def": "Traitement médical utilisant des sources radioactives pour détruire sélectivement les cellules tumorales."
       }
-    ]
+    ],
+    "animKey": "curie"
   },
   {
-    "title": "1869",
-    "era": "Étape 10 · XIXᵉ siècle",
-    "subtitle": "Friedrich Miescher",
-    "desc": "Découverte de la « nucléine ». Miescher isole pour la toute première fois la molécule qui s'avérera être l'ADN.",
+    "title": "1911",
+    "era": "Étape 13 · XXᵉ siècle",
+    "subtitle": "Ernest Rutherford",
+    "animKey": "rutherford",
+    "desc": "Il propose un nouveau modèle de l'atome constitué d'un petit noyau central dense entouré d'électrons en mouvement dans un grand espace vide.",
     "bubbles": [
-      "Dans son laboratoire de Tübingen, le jeune médecin suisse <strong>Friedrich Miescher</strong> étudie la composition chimique du noyau des globules blancs prélevés sur des pansements chirurgicaux souillés.",
-      "En 1869, il réussit à précipiter une substance acide jusque-là inconnue, riche en phosphore et résistante aux enzymes de digestion des protéines. Située exclusivement au cœur du noyau, il la nomme <strong>« nucléine »</strong>.",
-      "Sans le savoir immédiatement, Miescher vient d'isoler chimiquement l'<strong>acide désoxyribonucléique (ADN)</strong>, la macromolécule porteuse de tout le code génétique de la cellule."
+      "En 1911, le physicien <strong>Ernest Rutherford</strong> bombarde une très fine feuille d'or avec un faisceau de petites particules positives. À sa grande surprise, presque toutes traversent la feuille comme s'il n'y avait rien, mais quelques-unes rebondissent en arrière.",
+      "Il comprend alors que l'atome est composé essentiellement de <strong>vide</strong> et que presque toute sa masse est concentrée dans un tout petit <strong>noyau central</strong> chargé positivement.",
+      "Rutherford propose ainsi son célèbre <strong>modèle de l'atome</strong> : un noyau central dense, autour duquel tournent des <strong>électrons</strong> chargés négativement."
     ],
-    "photos": [
-      {
-        "src": "Photos/10.jpg",
-        "caption": "Photographie d'époque du biochimiste suisse Friedrich Miescher à Bâle."
-      }
-    ],
+    "photos": [],
     "glossary": [
       {
-        "term": "Nucléine",
-        "def": "Substance acide riche en phosphore isolée par Miescher en 1869 dans le noyau des globules blancs ; c'est la première extraction de l'ADN."
+        "term": "Atome",
+        "def": "Brique minuscule qui compose toute la matière (solides, liquides, gaz et êtres vivants)."
       },
       {
-        "term": "Globule blanc (Leucocyte)",
-        "def": "Cellule du système immunitaire dotée d'un grand noyau, utilisée par Miescher pour extraire la nucléine."
+        "term": "Noyau atomique",
+        "def": "Cœur central minuscule, très dense et positif de l'atome, découvert par Rutherford en 1911."
       },
       {
-        "term": "Phosphore (P)",
-        "def": "Élément chimique abondant dans la nucléine (absent des protéines soufrées), prouvant sa nature moléculaire unique."
-      }
-    ]
-  },
-  {
-    "title": "1931",
-    "era": "Étape 11 · XXᵉ siècle",
-    "subtitle": "Ernst Ruska et Max Knoll",
-    "desc": "Invention du microscope électronique en transmission. La limite de diffraction de la lumière visible est franchie.",
-    "bubbles": [
-      "Les ingénieurs allemands <strong>Ernst Ruska</strong> et <strong>Max Knoll</strong> révolutionnent l'optique en remplaçant la lumière visible par un faisceau d'électrons accélérés, guidés par des lentilles électromagnétiques.",
-      "Comme la longueur d'onde des électrons est des milliers de fois plus courte que celle des photons, le <strong>microscope électronique</strong> permet d'atteindre des grossissements vertigineux, au-delà de 100 000 fois.",
-      "Pour la première fois, les biologistes peuvent observer l'ultrastructure interne des cellules : mitochondries, ribosomes, membrane plasmique et virus. Ruska recevra le Prix Nobel de Physique en 1986."
-    ],
-    "photos": [
-      {
-        "src": "Photos/11.jpg",
-        "caption": "Portrait d'Ernst Ruska (1906-1988), lauréat du Prix Nobel de physique en 1986."
-      },
-      {
-        "src": "Photos/11 (4).jpg",
-        "caption": "Max Knoll et Ernst Ruska ajustant le premier prototype de microscope électronique en transmission (1931)."
-      },
-      {
-        "src": "Photos/11 (2).jpg",
-        "caption": "Ernst Ruska présentant les plans techniques de la colonne électromagnétique du microscope."
-      },
-      {
-        "src": "Photos/11 (3).jpg",
-        "caption": "Ernst Ruska devant une console moderne de microscopie électronique à balayage et transmission."
-      }
-    ],
-    "glossary": [
-      {
-        "term": "Microscope électronique (MET)",
-        "def": "Microscope utilisant un faisceau d'électrons accélérés et des lentilles électromagnétiques au lieu de la lumière visible."
-      },
-      {
-        "term": "Limite de diffraction",
-        "def": "Barrière physique empêchant un microscope optique classique de distinguer des détails inférieurs à environ 200 nm."
-      },
-      {
-        "term": "Ultrastructure",
-        "def": "Architecture interne microscopique de la cellule (mitochondries, ribosomes, membranes) révélée grâce aux électrons."
+        "term": "Électrons",
+        "def": "Particules très légères chargées négativement qui tournent autour du noyau central de l'atome."
       }
     ]
   },
   {
-    "title": "1953",
-    "era": "Étape 12 · XXᵉ siècle",
-    "subtitle": "Watson, Crick, Franklin et Wilkins",
-    "desc": "Découverte de la structure en double hélice de l'ADN. Le mystère du code moléculaire de la vie est enfin élucidé.",
+    "title": "1915",
+    "era": "Étape 14 · XXᵉ siècle",
+    "subtitle": "Albert Einstein",
+    "animKey": "einstein1915",
+    "desc": "Il présente sa théorie de la relativité générale, qui transforme notre compréhension de la gravité en l'expliquant par la courbure de l'espace et du temps.",
     "bubbles": [
-      "À l'université de Cambridge, <strong>James Watson</strong> et <strong>Francis Crick</strong> résolvent l'architecture tridimensionnelle de l'ADN, s'appuyant de manière cruciale sur les clichés de diffraction des rayons X de la biophysicienne <strong>Rosalind Franklin</strong> (notamment le célèbre « Cliché 51 »).",
-      "La structure révélée est une <strong>double hélice</strong> antiparallèle, stabilisée par des paires de bases complémentaires spécifiques (Adénine avec Thymine, Cytosine avec Guanine).",
-      "Cette configuration géométrique explique d'emblée le secret de la transmission héréditaire : chaque brin sert de matrice pour dupliquer fidèlement l'information lors de la division cellulaire."
+      "En 1915, le physicien <strong>Albert Einstein</strong> présente sa théorie la plus célèbre : la <strong>relativité générale</strong>, qui bouleverse notre façon de comprendre la gravité.",
+      "Avant lui, on voyait la gravité comme une force invisible qui tire les objets à distance. Einstein montre que l'espace et le temps forment une sorte de toile souple appelée l'<strong>espace-temps</strong>.",
+      "Un objet très lourd, comme le Soleil ou une planète, <strong>creuse et courbe l'espace autour de lui</strong> (comme une boule lourde sur un trampoline). C'est cette courbure qui guide le mouvement des planètes et de la lumière."
     ],
-    "photos": [
-      {
-        "src": "Photos/12 (2).jpg",
-        "caption": "James Watson et Francis Crick devant leur modèle moléculaire tridimensionnel en tige de métal (1953)."
-      },
-      {
-        "src": "Photos/12 (3).jpg",
-        "caption": "Le célèbre « Cliché 51 » de diffraction des rayons X obtenu par Rosalind Franklin et Raymond Gosling en 1952."
-      },
-      {
-        "src": "Photos/12.jpg",
-        "caption": "Détail de la maquette physique originale de la double hélice assemblée au laboratoire Cavendish."
-      }
-    ],
+    "photos": [],
     "glossary": [
       {
-        "term": "Double hélice",
-        "def": "Architecture en deux brins antiparallèles enroulés en spirale et complémentaires de la molécule d'ADN."
+        "term": "Relativité générale",
+        "def": "Théorie présentée par Albert Einstein en 1915 qui explique la gravité par la déformation de l'espace et du temps."
       },
       {
-        "term": "Cliché 51",
-        "def": "Célèbre photographie de diffraction aux rayons X obtenue par Rosalind Franklin en 1952, dont la croix en « X » prouva la forme hélicoïdale."
+        "term": "Gravité",
+        "def": "Phénomène qui fait que les objets ayant une masse s'attirent et maintiennent les planètes en orbite autour des étoiles."
       },
       {
-        "term": "Paires de bases (A–T, C–G)",
-        "def": "Associations chimiques spécifiques (Adénine avec Thymine, Cytosine avec Guanine) permettant de copier fidèlement l'ADN."
+        "term": "Courbure de l'espace-temps",
+        "def": "Déformation de l'espace autour d'un astre massif, comparable au creux formé par une boule lourde sur une toile tendue."
+      }
+    ]
+  },
+  {
+    "title": "1919",
+    "era": "Étape 15 · XXᵉ siècle",
+    "subtitle": "Arthur Eddington et Albert Einstein",
+    "animKey": "eddington1919",
+    "desc": "Une observation réalisée lors d'une éclipse solaire totale confirme que la lumière des étoiles est bien déviée par la gravité du Soleil.",
+    "bubbles": [
+      "Pour vérifier la théorie d'<strong>Albert Einstein</strong>, l'astronome britannique <strong>Arthur Eddington</strong> profite d'une <strong>éclipse totale du Soleil</strong> en mai 1919.",
+      "Pendant quelques minutes, la Lune cache complètement la lumière éblouissante du Soleil, ce qui permet de photographier les étoiles situées juste derrière le bord solaire.",
+      "En comparant ces clichés, Eddington observe que la position apparente des étoiles est légèrement décalée : la <strong>lumière est bien déviée par la gravité du Soleil</strong>. C'est la grande confirmation de la relativité générale."
+    ],
+    "photos": [],
+    "glossary": [
+      {
+        "term": "Éclipse solaire",
+        "def": "Moment où la Lune passe exactement devant le Soleil et cache sa lumière, rendant visibles les étoiles proches du bord solaire."
+      },
+      {
+        "term": "Déviation de la lumière",
+        "def": "Courbure de la trajectoire d'un rayon lumineux lorsqu'il passe près d'un astre très massif comme le Soleil."
+      },
+      {
+        "term": "Position apparente",
+        "def": "Endroit où l'on voit l'étoile depuis la Terre, légèrement décalé par rapport à sa position réelle à cause de la courbure de la lumière."
+      }
+    ]
+  },
+  {
+    "title": "1929",
+    "era": "Étape 16 · XXᵉ siècle",
+    "subtitle": "Edwin Hubble",
+    "animKey": "hubble1929",
+    "desc": "Il établit une relation entre la distance des galaxies et leur vitesse d'éloignement, apportant une preuve majeure de l'expansion de l'Univers.",
+    "bubbles": [
+      "En 1929, l'astronome américain <strong>Edwin Hubble</strong> utilise le grand télescope du mont Wilson pour étudier de nombreuses galaxies situées très loin de notre Voie lactée.",
+      "En analysant leur lumière, il découvre que les galaxies s'éloignent de nous et établit une règle simple : <strong>plus une galaxie est loin, plus sa vitesse d'éloignement est grande</strong>.",
+      "Cette relation entre la distance et la vitesse (la <strong>loi de Hubble</strong>) apporte une preuve directe que l'<strong>Univers est en expansion</strong> : l'espace grandit continuellement."
+    ],
+    "photos": [],
+    "glossary": [
+      {
+        "term": "Galaxie",
+        "def": "Immense ensemble regroupant des milliards d'étoiles, de gaz et de poussières maintenus ensemble par la gravité."
+      },
+      {
+        "term": "Vitesse d'éloignement",
+        "def": "Vitesse à laquelle une galaxie s'écarte des autres à mesure que l'espace de l'Univers se dilate."
+      },
+      {
+        "term": "Expansion de l'Univers",
+        "def": "Agrandissement continu de l'espace entre les galaxies au cours du temps, prouvé par les observations d'Edwin Hubble en 1929."
       }
     ]
   }
@@ -2042,7 +2188,7 @@
 
   /* ANIMATIONS HTML FOR EVENTS 0-4 */
   const animations = {
-    0: `
+    bb: `
       <div class="anim-header">
         <div class="anim-title"><span class="anim-badge"></span> Simulation Cosmologique</div>
         <span class="anim-tag" id="bb-time-badge">t = 0.0 Ga</span>
@@ -2056,7 +2202,7 @@
       </div>
       <p class="anim-caption">L'espace lui-même se dilate : les galaxies s'éloignent les unes des autres proportionnellement à leur distance (<strong>loi de Hubble</strong>).</p>
     `,
-    1: `
+    janssen: `
       <div class="anim-header">
         <div class="anim-title"><span class="anim-badge"></span> Système Optique des Janssen</div>
         <span class="anim-tag" id="janssen-step-tag">3. Deux lentilles combinées (×10)</span>
@@ -2071,7 +2217,7 @@
       </div>
       <p class="anim-caption">Une loupe seule ne grossit que modérément. La révolution des Janssen : <strong>combiner deux lentilles</strong> pour multiplier la puissance d'agrandissement.</p>
     `,
-    2: `
+    hooke: `
       <div class="anim-header">
         <div class="anim-title"><span class="anim-badge"></span> Oculaire de Hooke (1665)</div>
         <span class="anim-tag" id="hooke-tag">Mise au point : Nette</span>
@@ -2085,7 +2231,7 @@
       </div>
       <p class="anim-caption">En observant les cavités de liège mort rappelant les <strong>chambres des moines</strong>, Robert Hooke invente le terme <em>« cellule »</em>.</p>
     `,
-    3: `
+    leeu: `
       <div class="anim-header">
         <div class="anim-title"><span class="anim-badge"></span> Goutte d'Eau Microscopique</div>
         <span class="anim-tag" id="leeu-count-badge">Animalcules vivants</span>
@@ -2099,7 +2245,7 @@
       </div>
       <p class="anim-caption">Grâce à ses lentilles artisanales ultra-puissantes, Leeuwenhoek découvre les <strong>premiers organismes vivants</strong> invisibles à l'œil nu.</p>
     `,
-    4: `
+    brown: `
       <div class="anim-header">
         <div class="anim-title"><span class="anim-badge"></span> Découverte du Noyau</div>
         <span class="anim-tag" id="brown-step-tag">1. Tissu : un noyau par cellule</span>
@@ -2114,7 +2260,7 @@
       </div>
       <p class="anim-caption">Robert Brown découvre que chaque cellule végétale renferme un même élément central : le <strong>noyau</strong>.</p>
     `,
-    5: `
+    schleiden: `
       <div class="anim-header">
         <div class="anim-title"><span class="anim-badge"></span> Tous les Végétaux = Cellules</div>
         <span class="anim-tag" id="schleiden-tag">1. Feuille : tissu photosynthétique</span>
@@ -2129,7 +2275,7 @@
       </div>
       <p class="anim-caption">En observant chaque organe au microscope, Schleiden prouve que <strong>toute plante est une communauté de cellules</strong>.</p>
     `,
-    6: `
+    schwann: `
       <div class="anim-header">
         <div class="anim-title"><span class="anim-badge"></span> Unification du Règne Vivant</div>
         <span class="anim-tag" id="schwann-tag">1. Tissus animaux (Cartilage & Muscle)</span>
@@ -2144,7 +2290,7 @@
       </div>
       <p class="anim-caption">Schwann démontre que les <strong>animaux sont aussi formés de cellules</strong> : la cellule devient l'unité universelle de tout le vivant.</p>
     `,
-    7: `
+    virchow: `
       <div class="anim-header">
         <div class="anim-title"><span class="anim-badge"></span> Division Cellulaire (Virchow)</div>
         <span class="anim-tag" id="virchow-tag">1. Cellule mère préexistante</span>
@@ -2160,7 +2306,7 @@
       </div>
       <p class="anim-caption"><em>« Omnis cellula e cellula »</em> — aucune cellule ne naît du néant : toute cellule provient de la <strong>division d'une cellule préexistante</strong>.</p>
     `,
-    8: `
+    curie: `
       <div class="anim-header">
         <div class="anim-title"><span class="anim-badge"></span> Radioactivité & Curiethérapie</div>
         <span class="anim-tag" id="curie-tag">1. Découverte du Polonium & du Radium</span>
@@ -2175,7 +2321,7 @@
       </div>
       <p class="anim-caption">Marie Curie isole le <strong>polonium</strong> et le <strong>radium</strong>, dont les rayonnements permettent de détruire sélectivement les cellules tumorales.</p>
     `,
-    9: `
+    miescher: `
       <div class="anim-header">
         <div class="anim-title"><span class="anim-badge"></span> Découverte de la « Nucléine »</div>
         <span class="anim-tag" id="miescher-tag">1. Globule blanc intact</span>
@@ -2190,7 +2336,7 @@
       </div>
       <p class="anim-caption">En éliminant les protéines du cytoplasme, Miescher isole du cœur du noyau la <strong>« nucléine »</strong> riche en phosphore (l'ADN).</p>
     `,
-    10: `
+    ruska: `
       <div class="anim-header">
         <div class="anim-title"><span class="anim-badge"></span> Optique vs Microscope Électronique</div>
         <span class="anim-tag" id="ruska-tag">1. Lumière visible (×1 500)</span>
@@ -2205,7 +2351,7 @@
       </div>
       <p class="anim-caption">Le faisceau d'électrons à longueur d'onde ultra-courte franchit la limite de la lumière et dévoile <strong>mitochondries, ribosomes et membranes</strong>.</p>
     `,
-    11: `
+    dna: `
       <div class="anim-header">
         <div class="anim-title"><span class="anim-badge"></span> Structure & Duplication de l'ADN</div>
         <span class="anim-tag" id="dna-tag">2. Double hélice (paires A-T et C-G)</span>
@@ -2219,7 +2365,120 @@
         <button class="anim-btn" id="btn-dna-rep">🔀 3. Duplication</button>
       </div>
       <p class="anim-caption">Du <strong>Cliché 51</strong> de Rosalind Franklin à la <strong>double hélice</strong> (A–T, C–G) de Watson et Crick : chaque brin sert de matrice pour copier le code génétique.</p>
-    `
+    `,
+    galilee: `
+      <div class="anim-header">
+        <div class="anim-title"><span class="anim-badge"></span> Lunette &amp; Occhiolino de Galilée (1609)</div>
+        <span class="anim-tag" id="galilee-tag">1. Occhiolino : grossissement ×30</span>
+      </div>
+      <div class="anim-stage">
+        <canvas id="canvas-galilee" width="460" height="270" style="cursor: pointer;"></canvas>
+      </div>
+      <div class="anim-controls">
+        <button class="anim-btn active" id="btn-galilee-micro">🔍 1. Occhiolino (Objet ×30)</button>
+        <button class="anim-btn" id="btn-galilee-astro">🔭 2. Lunette astronomique (Ciel)</button>
+      </div>
+      <p class="anim-caption">Avec une <strong>lentille divergente</strong> et une <strong>lentille convergente</strong>, Galilée observe le ciel et agrandit <strong>30 fois (×30)</strong> les petits objets.</p>
+  `,
+    redi: `
+      <div class="anim-header">
+        <div class="anim-title"><span class="anim-badge"></span> Expérience des Bocaux de Redi (1668)</div>
+        <span class="anim-tag" id="redi-tag">Comparaison des 3 bocaux</span>
+      </div>
+      <div class="anim-stage">
+        <canvas id="canvas-redi" width="460" height="270" style="cursor: pointer;"></canvas>
+      </div>
+      <div class="anim-controls">
+        <button class="anim-btn active" id="btn-redi-all">🧪 1. Les 3 bocaux</button>
+        <button class="anim-btn" id="btn-redi-open">🥩 2. Bocal ouvert</button>
+        <button class="anim-btn" id="btn-redi-gauze">🕸️ 3. Gaze &amp; Fermé</button>
+      </div>
+      <p class="anim-caption">Les <strong>asticots</strong> n'apparaissent que si les <strong>mouches</strong> peuvent pondre leurs œufs sur la viande : ils ne naissent pas de la viande elle-même.</p>
+  `,
+    pasteur: `
+      <div class="anim-header">
+        <div class="anim-title"><span class="anim-badge"></span> Flacon à Col de Cygne de Pasteur (1862)</div>
+        <span class="anim-tag" id="pasteur-tag">1. Col intact : bouillon stérile</span>
+      </div>
+      <div class="anim-stage">
+        <canvas id="canvas-pasteur" width="460" height="270" style="cursor: pointer;"></canvas>
+      </div>
+      <div class="anim-controls">
+        <button class="anim-btn active" id="btn-pasteur-intact">🦢 1. Col de cygne intact (Stérile)</button>
+        <button class="anim-btn" id="btn-pasteur-broken">💥 2. Col cassé (Microbes)</button>
+      </div>
+      <p class="anim-caption">Le col en « S » bloque les poussières et les microbes de l'air : <strong>la matière inerte ne crée jamais la vie toute seule</strong>.</p>
+  `,
+    mendeleiev: `
+      <div class="anim-header">
+        <div class="anim-title"><span class="anim-badge"></span> Tableau Périodique de Mendeleïev (1869)</div>
+        <span class="anim-tag" id="mendeleiev-tag">1. Classement par familles chimiques</span>
+      </div>
+      <div class="anim-stage">
+        <canvas id="canvas-mendeleiev" width="460" height="270" style="cursor: pointer;"></canvas>
+      </div>
+      <div class="anim-controls">
+        <button class="anim-btn active" id="btn-mendel-table">📊 1. Familles d'éléments</button>
+        <button class="anim-btn" id="btn-mendel-gaps">❓ 2. Cases vides prédites</button>
+      </div>
+      <p class="anim-caption">Mendeleïev classe les <strong>éléments chimiques</strong> par masse et propriétés, en laissant des <strong>cases vides</strong> pour les éléments encore inconnus.</p>
+  `,
+    rutherford: `
+      <div class="anim-header">
+        <div class="anim-title"><span class="anim-badge"></span> Atome de Rutherford (1911)</div>
+        <span class="anim-tag" id="rutherford-tag">1. Modèle : noyau central &amp; électrons</span>
+      </div>
+      <div class="anim-stage">
+        <canvas id="canvas-rutherford" width="460" height="270" style="cursor: pointer;"></canvas>
+      </div>
+      <div class="anim-controls">
+        <button class="anim-btn active" id="btn-ruth-model">⚛️ 1. Noyau &amp; Électrons</button>
+        <button class="anim-btn" id="btn-ruth-gold">✨ 2. Expérience de la feuille d'or</button>
+      </div>
+      <p class="anim-caption">L'atome possède un petit <strong>noyau central positif</strong> très dense, entouré d'<strong>électrons</strong> qui gravitent dans un grand espace vide.</p>
+  `,
+    einstein1915: `
+      <div class="anim-header">
+        <div class="anim-title"><span class="anim-badge"></span> Relativité Générale d'Einstein (1915)</div>
+        <span class="anim-tag" id="einstein-tag">Courbure de l'espace-temps</span>
+      </div>
+      <div class="anim-stage">
+        <canvas id="canvas-einstein1915" width="460" height="270" style="cursor: pointer;"></canvas>
+      </div>
+      <div class="anim-controls">
+        <button class="anim-btn active" id="btn-ein-normal">☀️ 1. Masse du Soleil</button>
+        <button class="anim-btn" id="btn-ein-heavy">🌟 2. Masse très lourde (Forte courbure)</button>
+      </div>
+      <p class="anim-caption">La <strong>gravité</strong> n'est pas un fil invisible : la masse des astres <strong>courbe la toile de l'espace-temps</strong> et guide l'orbite des planètes.</p>
+  `,
+    eddington1919: `
+      <div class="anim-header">
+        <div class="anim-title"><span class="anim-badge"></span> Éclipse d'Eddington &amp; Einstein (1919)</div>
+        <span class="anim-tag" id="eddington-tag">1. Éclipse : lumière déviée par le Soleil</span>
+      </div>
+      <div class="anim-stage">
+        <canvas id="canvas-eddington1919" width="460" height="270" style="cursor: pointer;"></canvas>
+      </div>
+      <div class="anim-controls">
+        <button class="anim-btn active" id="btn-edd-eclipse">🌑 1. Avec gravité (Éclipse 1919)</button>
+        <button class="anim-btn" id="btn-edd-straight">📏 2. Sans déviation (Ligne droite)</button>
+      </div>
+      <p class="anim-caption">Lors de l'<strong>éclipse solaire de 1919</strong>, Eddington observe que la <strong>lumière des étoiles est déviée par la gravité du Soleil</strong>.</p>
+  `,
+    hubble1929: `
+      <div class="anim-header">
+        <div class="anim-title"><span class="anim-badge"></span> Loi de Hubble &amp; Expansion (1929)</div>
+        <span class="anim-tag" id="hubble-tag">1. Vitesse selon la distance des galaxies</span>
+      </div>
+      <div class="anim-stage">
+        <canvas id="canvas-hubble1929" width="460" height="270" style="cursor: pointer;"></canvas>
+      </div>
+      <div class="anim-controls">
+        <button class="anim-btn active" id="btn-hubble-view">🌌 1. Éloignement des galaxies</button>
+        <button class="anim-btn" id="btn-hubble-graph">📈 2. Graphique Distance / Vitesse</button>
+      </div>
+      <p class="anim-caption"><strong>Edwin Hubble</strong> prouve que <strong>plus une galaxie est éloignée, plus elle s'éloigne vite</strong> : c'est la preuve de l'expansion de l'Univers.</p>
+  `
   };
 
   /* STATE FOR GALLERIES & LIGHTBOX */
@@ -2249,11 +2508,13 @@
     shaft.appendChild(link);
 
     // Event Slide
-    const hasAnim = Boolean(animations[i]);
-    const animHTML = animations[i] || '';
+    const animKey = ev.animKey || i;
+    const hasAnim = Boolean(animations[animKey]);
+    const animHTML = animations[animKey] || '';
+    const hasPhotos = Array.isArray(ev.photos) && ev.photos.length > 0;
 
-    // Gallery HTML
-    const galleryHTML = `
+    // Gallery HTML (only when event has photos)
+    const galleryHTML = hasPhotos ? `
       <div class="gallery-view" id="gallery-view-${i}">
         <div class="gallery-viewer" onclick="openLightbox(${i})">
           <img class="gallery-main-img" id="gallery-main-${i}" src="${ev.photos[0].src}" alt="${ev.photos[0].caption}">
@@ -2274,7 +2535,7 @@
           `).join('')}
         </div>
       </div>
-    `;
+    ` : '';
 
     // Right-column Media Stage
     let mediaStageHTML = '';
@@ -2287,19 +2548,23 @@
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
                 Simulation
               </button>
+              ${hasPhotos ? `
               <button class="media-tab-btn" data-tab-event="${i}" data-tab-target="photos" onclick="switchMediaTab(${i}, 'photos')">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
                 Photos (${ev.photos.length})
               </button>
+              ` : ''}
             </div>
             <span class="media-count-tag">Interactif</span>
           </div>
           <div class="anim-view" id="media-anim-${i}">
             ${animHTML}
           </div>
+          ${hasPhotos ? `
           <div class="gallery-box" id="media-photos-${i}" style="display: none;">
             ${galleryHTML}
           </div>
+          ` : ''}
         </div>
       `;
     } else {
@@ -2330,11 +2595,18 @@
             ${ev.bubbles.map(b => `<div class="event-bubble">${b}</div>`).join('')}
           </div>
           ${ev.glossary && ev.glossary.length ? `
-            <div class="event-glossary">
-              <div class="glossary-heading">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
-                Mots-clés &amp; Définitions
-              </div>
+            <details class="event-glossary">
+              <summary class="glossary-heading">
+                <span class="glossary-heading-left">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
+                  <span>Mots-clés &amp; Définitions</span>
+                  <span class="glossary-count-pill">${ev.glossary.length}</span>
+                </span>
+                <span class="glossary-toggle-label">
+                  <span class="glossary-toggle-text"></span>
+                  <svg class="glossary-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </span>
+              </summary>
               <div class="glossary-grid">
                 ${ev.glossary.map(g => `
                   <div class="glossary-item">
@@ -2343,7 +2615,7 @@
                   </div>
                 `).join('')}
               </div>
-            </div>
+            </details>
           ` : ''}
         </div>
         ${mediaStageHTML}
@@ -5493,6 +5765,1128 @@
     canvas.addEventListener('click', () => {
       setMode(mode === 'photo51' ? 'helix' : (mode === 'helix' ? 'rep' : 'photo51'));
     });
+  })();
+
+
+
+  /* ── NEW ENGINE 1: GALILÉE (1609 : OCCHIOLINO ×30 & LUNETTE ASTRONOMIQUE) ── */
+  (function initGalilee() {
+    const cData = getDPRCanvas('canvas-galilee', 460, 270);
+    if (!cData) return;
+    const { canvas, ctx, w, h } = cData;
+
+    let mode = 'micro'; // 'micro' (Occhiolino x30) | 'astro' (Lunette astronomique)
+    let time = 0;
+
+    function draw() {
+      time += 0.03;
+      ctx.fillStyle = '#030712';
+      ctx.fillRect(0, 0, w, h);
+
+      // Left Panel: Optical Tube Diagram (x: 12..255)
+      ctx.fillStyle = 'rgba(12, 18, 36, 0.9)';
+      ctx.strokeStyle = 'rgba(56, 189, 248, 0.35)';
+      ctx.lineWidth = 1.2;
+      ctx.beginPath(); ctx.roundRect(12, 12, 244, 246, 8); ctx.fill(); ctx.stroke();
+
+      ctx.fillStyle = '#38bdf8';
+      ctx.font = 'bold 9px Segoe UI, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText(mode === 'micro' ? 'SYSTÈME OPTIQUE : « OCCHIOLINO »' : 'SYSTÈME OPTIQUE : LUNETTE DE GALILÉE', 134, 28);
+
+      const ty = 128;
+      // Brass tube
+      ctx.fillStyle = 'rgba(217, 119, 6, 0.16)';
+      ctx.strokeStyle = '#f59e0b';
+      ctx.lineWidth = 1.8;
+      ctx.beginPath(); ctx.roundRect(45, ty - 26, 175, 52, 4); ctx.fill(); ctx.stroke();
+
+      // Lens 1 (Left - Divergent concave lens near eye)
+      const l1x = 64;
+      ctx.fillStyle = 'rgba(56, 189, 248, 0.28)';
+      ctx.strokeStyle = '#38bdf8';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(l1x - 5, ty - 24);
+      ctx.lineTo(l1x + 5, ty - 24);
+      ctx.quadraticCurveTo(l1x + 1, ty, l1x + 5, ty + 24);
+      ctx.lineTo(l1x - 5, ty + 24);
+      ctx.quadraticCurveTo(l1x - 1, ty, l1x - 5, ty - 24);
+      ctx.fill(); ctx.stroke();
+
+      // Lens 2 (Right - Convergent convex lens towards object/sky)
+      const l2x = 198;
+      ctx.fillStyle = 'rgba(52, 211, 153, 0.28)';
+      ctx.strokeStyle = '#34d399';
+      ctx.beginPath();
+      ctx.ellipse(l2x, ty, 6, 24, 0, 0, Math.PI * 2);
+      ctx.fill(); ctx.stroke();
+
+      // Light rays passing through both lenses
+      ctx.strokeStyle = 'rgba(250, 204, 21, 0.75)';
+      ctx.lineWidth = 1.4;
+      [-14, 0, 14].forEach(ry => {
+        ctx.beginPath();
+        ctx.moveTo(238, ty + ry * (mode === 'micro' ? 0.45 : 1.0));
+        ctx.lineTo(l2x, ty + ry);
+        ctx.lineTo(l1x, ty + ry * 0.55);
+        ctx.lineTo(28, ty + ry * 0.85);
+        ctx.stroke();
+      });
+
+      // Observer eye icon on the left
+      ctx.strokeStyle = '#e2e8f0';
+      ctx.lineWidth = 1.6;
+      ctx.beginPath();
+      ctx.moveTo(32, ty - 8); ctx.lineTo(22, ty); ctx.lineTo(32, ty + 8);
+      ctx.stroke();
+      ctx.fillStyle = '#38bdf8';
+      ctx.beginPath(); ctx.arc(27, ty, 3, 0, Math.PI * 2); ctx.fill();
+
+      drawLabelPill(ctx, 74, ty - 44, '1. Lentille divergente', '#38bdf8', 'center');
+      drawLabelPill(ctx, 188, ty + 46, '2. Lentille convergente', '#34d399', 'center');
+      drawLabelPill(ctx, 134, 234, mode === 'micro' ? 'Agrandit 30 fois (×30) l\'objet' : 'Permet d\'observer le ciel', '#f59e0b', 'center');
+
+      // Right Panel: What Galilée Sees (x: 266..448)
+      const rx = 266, ry = 12, rw = 182, rh = 246;
+      const vcx = rx + rw / 2, vcy = ry + rh / 2 + 4;
+
+      ctx.fillStyle = '#050811';
+      ctx.strokeStyle = 'rgba(56, 189, 248, 0.35)';
+      ctx.lineWidth = 1.2;
+      ctx.beginPath(); ctx.roundRect(rx, ry, rw, rh, 8); ctx.fill(); ctx.stroke();
+
+      ctx.fillStyle = '#38bdf8';
+      ctx.font = 'bold 9px Segoe UI, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText(mode === 'micro' ? 'VUE RAPPROCHÉE (×30)' : 'OBSERVATION DU CIEL (1609)', vcx, 28);
+
+      // Circular ocular field of view
+      const fovR = 66;
+      ctx.save();
+      ctx.beginPath(); ctx.arc(vcx, vcy, fovR, 0, Math.PI * 2); ctx.clip();
+
+      if (mode === 'micro') {
+        // Warm illuminated microscope field showing a tiny insect detail magnified 30x
+        const bg = ctx.createRadialGradient(vcx, vcy, 5, vcx, vcy, fovR);
+        bg.addColorStop(0, '#1e293b');
+        bg.addColorStop(1, '#090d16');
+        ctx.fillStyle = bg;
+        ctx.fillRect(vcx - fovR, vcy - fovR, fovR * 2, fovR * 2);
+
+        // Magnified compound insect eye & antenna segments (30x)
+        ctx.fillStyle = 'rgba(245, 158, 11, 0.28)';
+        ctx.strokeStyle = '#fbbf24';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.ellipse(vcx, vcy + 6, 36, 26, 0, 0, Math.PI * 2);
+        ctx.fill(); ctx.stroke();
+
+        // Facets / honeycomb details invisible to naked eye
+        ctx.strokeStyle = 'rgba(253, 224, 71, 0.5)';
+        ctx.lineWidth = 1;
+        for (let gx = -22; gx <= 22; gx += 11) {
+          for (let gy = -10; gy <= 18; gy += 10) {
+            ctx.beginPath();
+            ctx.arc(vcx + gx, vcy + gy, 4, 0, Math.PI * 2);
+            ctx.stroke();
+          }
+        }
+        // Fine hairs / antennae
+        ctx.strokeStyle = '#fde047';
+        ctx.lineWidth = 1.8;
+        ctx.beginPath();
+        ctx.moveTo(vcx - 16, vcy - 16);
+        ctx.quadraticCurveTo(vcx - 28, vcy - 42, vcx - 42, vcy - 46);
+        ctx.moveTo(vcx + 16, vcy - 16);
+        ctx.quadraticCurveTo(vcx + 28, vcy - 42, vcx + 42, vcy - 46);
+        ctx.stroke();
+      } else {
+        // Night sky: Moon craters & Jupiter with its moons
+        ctx.fillStyle = '#02040a';
+        ctx.fillRect(vcx - fovR, vcy - fovR, fovR * 2, fovR * 2);
+
+        // Moon with craters (top left of FOV)
+        const mx = vcx - 20, my = vcy - 18, mr = 24;
+        ctx.fillStyle = '#e2e8f0';
+        ctx.beginPath(); ctx.arc(mx, my, mr, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = '#94a3b8';
+        [[-7, -6, 5], [6, 4, 6], [-4, 10, 4], [8, -9, 3.5]].forEach(([cxOff, cyOff, cr]) => {
+          ctx.beginPath(); ctx.arc(mx + cxOff, my + cyOff, cr, 0, Math.PI * 2); ctx.fill();
+        });
+
+        // Jupiter & 4 Galilean moons (bottom right of FOV)
+        const jx = vcx + 18, jy = vcy + 28;
+        ctx.fillStyle = '#f59e0b';
+        ctx.beginPath(); ctx.arc(jx, jy, 10, 0, Math.PI * 2); ctx.fill();
+        [-32, -19, 18, 30].forEach((mOff, idx) => {
+          const ox = jx + mOff * Math.cos(time * 0.5 + idx);
+          ctx.fillStyle = '#fef08a';
+          ctx.beginPath(); ctx.arc(ox, jy - mOff * 0.18, 2.2, 0, Math.PI * 2); ctx.fill();
+        });
+      }
+      ctx.restore();
+
+      // Ocular rim
+      ctx.strokeStyle = '#38bdf8';
+      ctx.lineWidth = 2.5;
+      ctx.beginPath(); ctx.arc(vcx, vcy, fovR, 0, Math.PI * 2); ctx.stroke();
+
+      drawLabelPill(ctx, vcx, 234, mode === 'micro' ? 'Détails agrandis 30×' : 'Cratères lunaires & Jupiter', '#38bdf8', 'center');
+
+      requestAnimationFrame(draw);
+    }
+    requestAnimationFrame(draw);
+
+    const bM = document.getElementById('btn-galilee-micro');
+    const bA = document.getElementById('btn-galilee-astro');
+    const tag = document.getElementById('galilee-tag');
+
+    function setMode(m) {
+      mode = m;
+      if (bM) bM.classList.toggle('active', m === 'micro');
+      if (bA) bA.classList.toggle('active', m === 'astro');
+      if (tag) tag.textContent = m === 'micro' ? '1. Occhiolino : grossissement ×30' : '2. Lunette astronomique : le ciel';
+    }
+    if (bM) bM.addEventListener('click', () => setMode('micro'));
+    if (bA) bA.addEventListener('click', () => setMode('astro'));
+    canvas.addEventListener('click', () => setMode(mode === 'micro' ? 'astro' : 'micro'));
+  })();
+
+  /* ── NEW ENGINE 2: FRANCESCO REDI (1668 : EXPÉRIENCE DES BOCAUX DE VIANDE & MOUCHES) ── */
+  (function initRedi() {
+    const cData = getDPRCanvas('canvas-redi', 460, 270);
+    if (!cData) return;
+    const { canvas, ctx, w, h } = cData;
+
+    let focusMode = 'all'; // 'all' | 'open' | 'gauze'
+    let time = 0;
+
+    function drawJar(x, y, type, highlight) {
+      const jw = 106, jh = 132;
+      const left = x - jw / 2, top = y - jh / 2;
+
+      // Highlight aura
+      ctx.fillStyle = highlight ? 'rgba(15, 23, 42, 0.95)' : 'rgba(15, 23, 42, 0.45)';
+      ctx.strokeStyle = highlight ? (type === 'open' ? '#f43f5e' : '#10b981') : 'rgba(148, 163, 184, 0.25)';
+      ctx.lineWidth = highlight ? 2 : 1.2;
+
+      // Glass jar body
+      ctx.beginPath();
+      ctx.roundRect(left, top, jw, jh, [4, 4, 14, 14]);
+      ctx.fill();
+      ctx.stroke();
+
+      // Meat at the bottom of the jar
+      const my = top + jh - 26;
+      ctx.fillStyle = '#be123c';
+      ctx.strokeStyle = '#fda4af';
+      ctx.lineWidth = 1.5;
+      ctx.beginPath();
+      ctx.ellipse(x, my, 34, 13, 0, 0, Math.PI * 2);
+      ctx.fill(); ctx.stroke();
+
+      // Top cover according to jar type
+      if (type === 'gauze') {
+        // Fine gauze net on top
+        ctx.strokeStyle = '#38bdf8';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(left - 5, top); ctx.lineTo(left + jw + 5, top);
+        ctx.stroke();
+        ctx.setLineDash([2, 2]);
+        ctx.beginPath();
+        ctx.moveTo(left - 4, top + 3); ctx.lineTo(left + jw + 4, top + 3);
+        ctx.stroke();
+        ctx.setLineDash([]);
+      } else if (type === 'sealed') {
+        // Airtight cork / lid
+        ctx.fillStyle = '#78350f';
+        ctx.strokeStyle = '#f59e0b';
+        ctx.lineWidth = 1.6;
+        ctx.beginPath();
+        ctx.roundRect(left - 4, top - 10, jw + 8, 12, 3);
+        ctx.fill(); ctx.stroke();
+      }
+
+      // Flies & Maggots (Asticots)
+      if (type === 'open') {
+        // Flies flying inside the open jar down to the meat
+        for (let f = 0; f < 3; f++) {
+          const fx = x + Math.sin(time * 2.2 + f * 2.1) * 24;
+          const fy = top + 20 + ((Math.sin(time * 1.5 + f) + 1) * 0.5) * 65;
+          ctx.fillStyle = '#e2e8f0';
+          ctx.beginPath(); ctx.ellipse(fx - 3, fy - 2, 3.5, 1.8, -0.4, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.ellipse(fx + 3, fy - 2, 3.5, 1.8, 0.4, 0, Math.PI * 2); ctx.fill();
+          ctx.fillStyle = '#0f172a';
+          ctx.beginPath(); ctx.arc(fx, fy, 2.8, 0, Math.PI * 2); ctx.fill();
+        }
+        // White maggots (asticots/larves) wriggling on the meat
+        ctx.strokeStyle = '#fef08a';
+        ctx.lineWidth = 3;
+        ctx.lineCap = 'round';
+        [[-16, -3], [-4, 2], [8, -4], [18, 1], [-8, -6]].forEach(([lx, ly], idx) => {
+          const wiggle = Math.sin(time * 4 + idx) * 2;
+          ctx.beginPath();
+          ctx.moveTo(x + lx - 4, my + ly);
+          ctx.quadraticCurveTo(x + lx, my + ly + wiggle, x + lx + 4, my + ly);
+          ctx.stroke();
+        });
+      } else {
+        // Flies stay outside above the gauze / lid
+        for (let f = 0; f < 2; f++) {
+          const fx = x + Math.cos(time * 2 + f * 3) * 22;
+          const fy = top - 20 + Math.sin(time * 3 + f) * 5;
+          ctx.fillStyle = '#e2e8f0';
+          ctx.beginPath(); ctx.ellipse(fx - 3, fy - 2, 3.5, 1.8, -0.4, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.ellipse(fx + 3, fy - 2, 3.5, 1.8, 0.4, 0, Math.PI * 2); ctx.fill();
+          ctx.fillStyle = '#0f172a';
+          ctx.beginPath(); ctx.arc(fx, fy, 2.8, 0, Math.PI * 2); ctx.fill();
+        }
+        if (type === 'gauze') {
+          // Tiny eggs/larvae stuck on top of the gauze, NOT on the meat
+          ctx.fillStyle = '#fef08a';
+          [-10, 0, 12].forEach(ex => {
+            ctx.beginPath(); ctx.arc(x + ex, top - 2, 1.8, 0, Math.PI * 2); ctx.fill();
+          });
+        }
+      }
+    }
+
+    function draw() {
+      time += 0.035;
+      ctx.fillStyle = '#030712';
+      ctx.fillRect(0, 0, w, h);
+
+      drawLabelPill(ctx, w / 2, 18, 'EXPÉRIENCE DE REDI (1668) : D\'OÙ VIENNENT LES ASTICOTS ?', '#38bdf8', 'center');
+
+      const yJar = 138;
+      drawJar(82,  yJar, 'open',   focusMode === 'all' || focusMode === 'open');
+      drawJar(230, yJar, 'gauze',  focusMode === 'all' || focusMode === 'gauze');
+      drawJar(378, yJar, 'sealed', focusMode === 'all' || focusMode === 'gauze');
+
+      // Labels under each jar
+      drawLabelPill(ctx, 82,  222, '1. Bocal ouvert', '#f43f5e', 'center');
+      drawLabelPill(ctx, 82,  244, 'Mouches → Asticots', '#fbbf24', 'center');
+
+      drawLabelPill(ctx, 230, 222, '2. Bocal avec gaze', '#38bdf8', 'center');
+      drawLabelPill(ctx, 230, 244, '0 asticot sur la viande', '#10b981', 'center');
+
+      drawLabelPill(ctx, 378, 222, '3. Bocal fermé', '#10b981', 'center');
+      drawLabelPill(ctx, 378, 244, '0 asticot sur la viande', '#10b981', 'center');
+
+      requestAnimationFrame(draw);
+    }
+    requestAnimationFrame(draw);
+
+    const bAll = document.getElementById('btn-redi-all');
+    const bOpn = document.getElementById('btn-redi-open');
+    const bGze = document.getElementById('btn-redi-gauze');
+    const tag  = document.getElementById('redi-tag');
+
+    function setMode(m) {
+      focusMode = m;
+      [bAll, bOpn, bGze].forEach(b => { if (b) b.classList.remove('active'); });
+      if (m === 'all' && bAll) bAll.classList.add('active');
+      if (m === 'open' && bOpn) bOpn.classList.add('active');
+      if (m === 'gauze' && bGze) bGze.classList.add('active');
+      if (tag) {
+        tag.textContent = m === 'all'
+          ? 'Comparaison des 3 bocaux'
+          : (m === 'open' ? 'Bocal ouvert : les mouches pondent' : 'Bocaux protégés : aucun asticot');
+      }
+    }
+    if (bAll) bAll.addEventListener('click', () => setMode('all'));
+    if (bOpn) bOpn.addEventListener('click', () => setMode('open'));
+    if (bGze) bGze.addEventListener('click', () => setMode('gauze'));
+    canvas.addEventListener('click', () => {
+      setMode(focusMode === 'all' ? 'open' : (focusMode === 'open' ? 'gauze' : 'all'));
+    });
+  })();
+
+  /* ── NEW ENGINE 3: LOUIS PASTEUR (1862 : FLACONS À COL DE CYGNE) ── */
+  (function initPasteur() {
+    const cData = getDPRCanvas('canvas-pasteur', 460, 270);
+    if (!cData) return;
+    const { canvas, ctx, w, h } = cData;
+
+    let broken = false;
+    let time = 0;
+
+    function draw() {
+      time += 0.03;
+      ctx.fillStyle = '#030712';
+      ctx.fillRect(0, 0, w, h);
+
+      const fx = 155, fy = 165, fr = 64;
+
+      // Sterile vs Contaminated Broth inside the round flask
+      ctx.save();
+      ctx.beginPath();
+      ctx.arc(fx, fy, fr - 3, 0, Math.PI * 2);
+      ctx.clip();
+
+      ctx.fillStyle = broken ? 'rgba(132, 204, 22, 0.35)' : 'rgba(245, 158, 11, 0.25)';
+      ctx.fillRect(fx - fr, fy - 4, fr * 2, fr + 10);
+
+      // Liquid surface wave
+      ctx.strokeStyle = broken ? '#84cc16' : '#fbbf24';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(fx - fr, fy - 4);
+      ctx.lineTo(fx + fr, fy - 4);
+      ctx.stroke();
+
+      // If broken, draw multiplying microbes inside the broth
+      if (broken) {
+        for (let m = 0; m < 16; m++) {
+          const mx = fx + Math.sin(time * 1.4 + m * 1.7) * 42;
+          const my = fy + 14 + Math.cos(time * 1.8 + m * 2.3) * 24;
+          ctx.fillStyle = '#a3e635';
+          ctx.beginPath(); ctx.arc(mx, my, 2.6, 0, Math.PI * 2); ctx.fill();
+        }
+      }
+      ctx.restore();
+
+      // Glass flask bulb outline
+      ctx.strokeStyle = '#38bdf8';
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      ctx.arc(fx, fy, fr, -Math.PI * 0.38, Math.PI * 1.38);
+      ctx.stroke();
+
+      if (!broken) {
+        // S-shaped Swan Neck tube (Col de cygne)
+        ctx.strokeStyle = '#38bdf8';
+        ctx.lineWidth = 14;
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+        ctx.beginPath();
+        ctx.moveTo(fx, fy - fr + 2);
+        ctx.bezierCurveTo(fx, 35, fx + 95, 25, fx + 105, 95);
+        ctx.bezierCurveTo(fx + 115, 155, fx + 185, 145, fx + 195, 78);
+        ctx.stroke();
+
+        // Inner hollow of swan neck tube
+        ctx.strokeStyle = '#030712';
+        ctx.lineWidth = 8;
+        ctx.beginPath();
+        ctx.moveTo(fx, fy - fr + 2);
+        ctx.bezierCurveTo(fx, 35, fx + 95, 25, fx + 105, 95);
+        ctx.bezierCurveTo(fx + 115, 155, fx + 185, 145, fx + 195, 78);
+        ctx.stroke();
+
+        // Dust & microbes trapped in the lower U-bend (around x: fx+138, y: 128)
+        for (let d = 0; d < 9; d++) {
+          const dx = fx + 128 + (d % 4) * 6 + Math.sin(time * 2 + d) * 1.5;
+          const dy = 122 + Math.floor(d / 4) * 4;
+          ctx.fillStyle = '#f43f5e';
+          ctx.beginPath(); ctx.arc(dx, dy, 2.3, 0, Math.PI * 2); ctx.fill();
+        }
+
+        // Leader line to trapped dust
+        ctx.strokeStyle = '#f43f5e';
+        ctx.lineWidth = 1.4;
+        ctx.beginPath();
+        ctx.moveTo(fx + 140, 134);
+        ctx.lineTo(fx + 170, 175);
+        ctx.stroke();
+
+        drawLabelPill(ctx, w / 2, 18, '1. FLACON À COL DE CYGNE INTACT : BOUILLON STÉRILE', '#10b981', 'center');
+        drawLabelPill(ctx, fx + 170, 188, 'Microbes piégés dans le coude', '#f43f5e', 'center');
+        drawLabelPill(ctx, fx, fy + 26, 'Bouillon pur (0 microbe)', '#10b981', 'center');
+      } else {
+        // Broken short vertical neck
+        ctx.strokeStyle = '#38bdf8';
+        ctx.lineWidth = 14;
+        ctx.beginPath();
+        ctx.moveTo(fx, fy - fr + 2);
+        ctx.lineTo(fx, 68);
+        ctx.stroke();
+
+        ctx.strokeStyle = '#030712';
+        ctx.lineWidth = 8;
+        ctx.beginPath();
+        ctx.moveTo(fx, fy - fr + 2);
+        ctx.lineTo(fx, 65);
+        ctx.stroke();
+
+        // Falling microbes from open air directly into the flask
+        for (let p = 0; p < 7; p++) {
+          const py = 38 + ((time * 38 + p * 18) % 120);
+          const px = fx + Math.sin(p * 2) * 3;
+          ctx.fillStyle = '#f43f5e';
+          ctx.beginPath(); ctx.arc(px, py, 2.5, 0, Math.PI * 2); ctx.fill();
+        }
+
+        drawLabelPill(ctx, w / 2, 18, '2. COL CASSÉ : LES MICROBES DE L\'AIR TOMBENT DANS LE LIQUIDE', '#f43f5e', 'center');
+        drawLabelPill(ctx, fx + 155, 105, 'Col cassé : plus de barrière', '#f43f5e', 'center');
+        drawLabelPill(ctx, fx + 155, 145, 'Les microbes viennent de l\'air !', '#fbbf24', 'center');
+        drawLabelPill(ctx, fx, fy + 26, 'Bouillon contaminé', '#f43f5e', 'center');
+      }
+
+      drawLabelPill(ctx, w / 2, 248, 'Conclusion de Pasteur : La génération spontanée n\'existe pas', '#38bdf8', 'center');
+
+      requestAnimationFrame(draw);
+    }
+    requestAnimationFrame(draw);
+
+    const bI = document.getElementById('btn-pasteur-intact');
+    const bB = document.getElementById('btn-pasteur-broken');
+    const tag = document.getElementById('pasteur-tag');
+
+    function setBroken(val) {
+      broken = val;
+      if (bI) bI.classList.toggle('active', !val);
+      if (bB) bB.classList.toggle('active', val);
+      if (tag) tag.textContent = !val ? '1. Col intact : bouillon stérile' : '2. Col cassé : entrée des microbes';
+    }
+    if (bI) bI.addEventListener('click', () => setBroken(false));
+    if (bB) bB.addEventListener('click', () => setBroken(true));
+    canvas.addEventListener('click', () => setBroken(!broken));
+  })();
+
+  /* ── NEW ENGINE 4: DIMITRI MENDELEÏEV (1869 : TABLEAU PÉRIODIQUE DES ÉLÉMENTS) ── */
+  (function initMendeleiev() {
+    const cData = getDPRCanvas('canvas-mendeleiev', 460, 270);
+    if (!cData) return;
+    const { canvas, ctx, w, h } = cData;
+
+    let showGaps = false;
+    let time = 0;
+
+    // 7 columns x 3 rows excerpt of Mendeleev's classification
+    const rows = [
+      [
+        { sym: 'Li', mass: '7',  col: '#f43f5e' },
+        { sym: 'Be', mass: '9',  col: '#fb923c' },
+        { sym: 'B',  mass: '11', col: '#facc15' },
+        { sym: 'C',  mass: '12', col: '#34d399' },
+        { sym: 'N',  mass: '14', col: '#38bdf8' },
+        { sym: 'O',  mass: '16', col: '#818cf8' },
+        { sym: 'F',  mass: '19', col: '#c084fc' }
+      ],
+      [
+        { sym: 'Na', mass: '23', col: '#f43f5e' },
+        { sym: 'Mg', mass: '24', col: '#fb923c' },
+        { sym: 'Al', mass: '27', col: '#facc15' },
+        { sym: 'Si', mass: '28', col: '#34d399' },
+        { sym: 'P',  mass: '31', col: '#38bdf8' },
+        { sym: 'S',  mass: '32', col: '#818cf8' },
+        { sym: 'Cl', mass: '35.5', col: '#c084fc' }
+      ],
+      [
+        { sym: 'K',  mass: '39', col: '#f43f5e' },
+        { sym: 'Ca', mass: '40', col: '#fb923c' },
+        { sym: '?',  mass: '68', col: '#facc15', predicted: 'Gallium (Ga)' },
+        { sym: '?',  mass: '72', col: '#34d399', predicted: 'Germanium (Ge)' },
+        { sym: 'As', mass: '75', col: '#38bdf8' },
+        { sym: 'Se', mass: '79', col: '#818cf8' },
+        { sym: 'Br', mass: '80', col: '#c084fc' }
+      ]
+    ];
+
+    function draw() {
+      time += 0.04;
+      ctx.fillStyle = '#030712';
+      ctx.fillRect(0, 0, w, h);
+
+      drawLabelPill(
+        ctx, w / 2, 18,
+        showGaps ? 'CASES VIDES LAISSÉES PAR MENDELEÏEV POUR LES ÉLÉMENTS INCONNUS' : 'TABLEAU DE MENDELEÏEV (1869) : CLASSEMENT PAR MASSE & FAMILLE',
+        '#38bdf8', 'center'
+      );
+
+      const startX = 25, startY = 44;
+      const cellW = 54, cellH = 50, gap = 6;
+
+      rows.forEach((row, rIdx) => {
+        row.forEach((el, cIdx) => {
+          const x = startX + cIdx * (cellW + gap);
+          const y = startY + rIdx * (cellH + gap);
+          const isGap = Boolean(el.predicted);
+          const pulse = isGap && showGaps ? (0.5 + 0.5 * Math.sin(time * 3)) : 0;
+
+          ctx.fillStyle = isGap && showGaps
+            ? 'rgba(250, 204, 21, 0.25)'
+            : 'rgba(15, 23, 42, 0.9)';
+          ctx.strokeStyle = isGap && showGaps ? '#facc15' : el.col;
+          ctx.lineWidth = isGap && showGaps ? 2.5 + pulse : 1.5;
+
+          ctx.beginPath();
+          ctx.roundRect(x, y, cellW, cellH, 7);
+          ctx.fill();
+          ctx.stroke();
+
+          // Atomic mass top-right
+          ctx.fillStyle = '#94a3b8';
+          ctx.font = '8px Consolas, monospace';
+          ctx.textAlign = 'right';
+          ctx.fillText(el.mass, x + cellW - 5, y + 12);
+
+          // Chemical symbol center
+          ctx.fillStyle = isGap ? '#fde047' : '#ffffff';
+          ctx.font = 'bold 16px Segoe UI, sans-serif';
+          ctx.textAlign = 'center';
+          ctx.fillText(isGap && !showGaps ? '?' : el.sym, x + cellW / 2, y + 33);
+
+          // Bottom family color bar
+          ctx.fillStyle = el.col;
+          ctx.fillRect(x + 6, y + cellH - 6, cellW - 12, 3);
+        });
+      });
+
+      if (!showGaps) {
+        drawLabelPill(ctx, w / 2, 224, 'Même colonne (même couleur) = mêmes propriétés chimiques', '#34d399', 'center');
+        drawLabelPill(ctx, w / 2, 248, 'Les masses atomiques augmentent de gauche à droite (7 → 80)', '#94a3b8', 'center');
+      } else {
+        drawLabelPill(ctx, w / 2, 224, 'Case « ? (68) » → prédite en 1869, découverte en 1875 (Gallium)', '#facc15', 'center');
+        drawLabelPill(ctx, w / 2, 248, 'Case « ? (72) » → prédite en 1869, découverte en 1886 (Germanium)', '#34d399', 'center');
+      }
+
+      requestAnimationFrame(draw);
+    }
+    requestAnimationFrame(draw);
+
+    const bT = document.getElementById('btn-mendel-table');
+    const bG = document.getElementById('btn-mendel-gaps');
+    const tag = document.getElementById('mendeleiev-tag');
+
+    function setGaps(val) {
+      showGaps = val;
+      if (bT) bT.classList.toggle('active', !val);
+      if (bG) bG.classList.toggle('active', val);
+      if (tag) tag.textContent = !val ? '1. Classement par familles chimiques' : '2. Cases vides : éléments prédits';
+    }
+    if (bT) bT.addEventListener('click', () => setGaps(false));
+    if (bG) bG.addEventListener('click', () => setGaps(true));
+    canvas.addEventListener('click', () => setGaps(!showGaps));
+  })();
+
+  /* ── NEW ENGINE 5: ERNEST RUTHERFORD (1911 : MODÈLE DE L'ATOME & FEUILLE D'OR) ── */
+  (function initRutherford() {
+    const cData = getDPRCanvas('canvas-rutherford', 460, 270);
+    if (!cData) return;
+    const { canvas, ctx, w, h } = cData;
+    const cx = w / 2, cy = h / 2;
+
+    let mode = 'model'; // 'model' | 'gold'
+    let time = 0;
+
+    // Alpha particles for Gold Foil mode
+    const alphas = Array.from({ length: 14 }, (_, i) => ({
+      x: (i * 34) % w,
+      y0: 46 + (i % 7) * 28
+    }));
+
+    function draw() {
+      time += 0.035;
+      ctx.fillStyle = '#030712';
+      ctx.fillRect(0, 0, w, h);
+
+      if (mode === 'model') {
+        // 1. Rutherford's Planetary Model of the Atom
+        drawLabelPill(ctx, cx, 18, 'MODÈLE DE L\'ATOME DE RUTHERFORD (1911)', '#38bdf8', 'center');
+
+        // Empty space indicator circle
+        ctx.fillStyle = 'rgba(56, 189, 248, 0.04)';
+        ctx.strokeStyle = 'rgba(56, 189, 248, 0.18)';
+        ctx.setLineDash([4, 4]);
+        ctx.lineWidth = 1.2;
+        ctx.beginPath(); ctx.arc(cx, cy, 94, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+        ctx.setLineDash([]);
+
+        // 3 Tilted electron orbits
+        const orbits = [
+          { rx: 88, ry: 34, rot: 0.35, speed: 1.4 },
+          { rx: 88, ry: 34, rot: -0.95, speed: 1.7 },
+          { rx: 88, ry: 34, rot: 1.57, speed: 1.2 }
+        ];
+
+        orbits.forEach((orb, idx) => {
+          ctx.save();
+          ctx.translate(cx, cy);
+          ctx.rotate(orb.rot);
+          ctx.strokeStyle = 'rgba(56, 189, 248, 0.35)';
+          ctx.lineWidth = 1.4;
+          ctx.beginPath();
+          ctx.ellipse(0, 0, orb.rx, orb.ry, 0, 0, Math.PI * 2);
+          ctx.stroke();
+
+          // Orbiting negative electron (-)
+          const a = time * orb.speed + idx * 2.1;
+          const ex = Math.cos(a) * orb.rx;
+          const ey = Math.sin(a) * orb.ry;
+
+          ctx.fillStyle = '#38bdf8';
+          ctx.beginPath(); ctx.arc(ex, ey, 6, 0, Math.PI * 2); ctx.fill();
+          ctx.fillStyle = '#030712';
+          ctx.font = 'bold 10px Consolas, monospace';
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          ctx.fillText('-', ex, ey + 0.5);
+          ctx.textBaseline = 'alphabetic';
+          ctx.restore();
+        });
+
+        // Tiny dense positive central nucleus (+)
+        const glow = ctx.createRadialGradient(cx, cy, 2, cx, cy, 28);
+        glow.addColorStop(0, 'rgba(244, 63, 94, 0.75)');
+        glow.addColorStop(1, 'transparent');
+        ctx.fillStyle = glow;
+        ctx.beginPath(); ctx.arc(cx, cy, 28, 0, Math.PI * 2); ctx.fill();
+
+        // Cluster of protons/neutrons in central nucleus
+        [[-5, -4], [5, -4], [0, 5], [-6, 3], [6, 3], [0, -1]].forEach(([nx, ny], i) => {
+          ctx.fillStyle = i % 2 === 0 ? '#f43f5e' : '#fb7185';
+          ctx.beginPath(); ctx.arc(cx + nx, cy + ny, 5.5, 0, Math.PI * 2); ctx.fill();
+        });
+        ctx.fillStyle = '#ffffff';
+        ctx.font = 'bold 10px Consolas, monospace';
+        ctx.textAlign = 'center';
+        ctx.fillText('+', cx, cy + 3);
+
+        drawLabelPill(ctx, cx + 125, cy - 55, 'Électrons (-) en orbite', '#38bdf8', 'center');
+        drawLabelPill(ctx, cx - 130, cy + 52, 'Grand espace vide', '#94a3b8', 'center');
+        drawLabelPill(ctx, cx, 248, 'Noyau central (+) minuscule et très dense', '#f43f5e', 'center');
+
+      } else {
+        // 2. Gold Foil Experiment (Expérience de la feuille d'or)
+        drawLabelPill(ctx, cx, 18, 'EXPÉRIENCE DE LA FEUILLE D\'OR DE RUTHERFORD', '#f59e0b', 'center');
+
+        // Gold foil vertical band
+        ctx.fillStyle = 'rgba(245, 158, 11, 0.14)';
+        ctx.strokeStyle = '#f59e0b';
+        ctx.lineWidth = 1.5;
+        ctx.fillRect(cx - 14, 34, 28, 195);
+
+        // Large empty gold atom circle
+        ctx.strokeStyle = 'rgba(250, 204, 21, 0.35)';
+        ctx.setLineDash([4, 4]);
+        ctx.beginPath(); ctx.arc(cx, cy, 78, 0, Math.PI * 2); ctx.stroke();
+        ctx.setLineDash([]);
+
+        // Tiny dense nucleus at center
+        ctx.fillStyle = '#f43f5e';
+        ctx.beginPath(); ctx.arc(cx, cy, 11, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = '#ffffff';
+        ctx.font = 'bold 10px Consolas, monospace';
+        ctx.textAlign = 'center';
+        ctx.fillText('+', cx, cy + 3);
+
+        // Alpha particles streaming from left to right
+        alphas.forEach(p => {
+          p.x = (p.x + 3.2) % w;
+          const dy = p.y0 - cy;
+          let drawX = p.x;
+          let drawY = p.y0;
+
+          // If particle aims right at the central nucleus (|dy| < 14), deflect strongly!
+          if (Math.abs(dy) < 14 && p.x > cx - 12) {
+            const distPast = p.x - (cx - 12);
+            drawX = (cx - 12) - distPast * 0.85;
+            drawY = p.y0 + (dy >= 0 ? 1 : -1) * distPast * 0.55;
+          }
+
+          ctx.fillStyle = Math.abs(dy) < 14 ? '#f43f5e' : '#34d399';
+          ctx.beginPath(); ctx.arc(drawX, drawY, 3.5, 0, Math.PI * 2); ctx.fill();
+        });
+
+        drawLabelPill(ctx, 115, 224, '99% traversent le vide', '#34d399', 'center');
+        drawLabelPill(ctx, 335, 224, 'Quelques-unes rebondissent sur le noyau', '#f43f5e', 'center');
+      }
+
+      requestAnimationFrame(draw);
+    }
+    requestAnimationFrame(draw);
+
+    const bM = document.getElementById('btn-ruth-model');
+    const bG = document.getElementById('btn-ruth-gold');
+    const tag = document.getElementById('rutherford-tag');
+
+    function setMode(m) {
+      mode = m;
+      if (bM) bM.classList.toggle('active', m === 'model');
+      if (bG) bG.classList.toggle('active', m === 'gold');
+      if (tag) tag.textContent = m === 'model' ? '1. Modèle : noyau central & électrons' : '2. Expérience de la feuille d\'or';
+    }
+    if (bM) bM.addEventListener('click', () => setMode('model'));
+    if (bG) bG.addEventListener('click', () => setMode('gold'));
+    canvas.addEventListener('click', () => setMode(mode === 'model' ? 'gold' : 'model'));
+  })();
+
+  /* ── NEW ENGINE 6: ALBERT EINSTEIN (1915 : RELATIVITÉ GÉNÉRALE & ESPACE-TEMPS) ── */
+  (function initEinstein1915() {
+    const cData = getDPRCanvas('canvas-einstein1915', 460, 270);
+    if (!cData) return;
+    const { canvas, ctx, w, h } = cData;
+    const cx = w / 2, cy = h / 2 - 8;
+
+    let heavy = false;
+    let wellDepth = 46;
+    let time = 0;
+
+    function projectPoint(gx, gz) {
+      const dist = Math.hypot(gx, gz);
+      const sink = wellDepth * Math.exp(-(dist * dist) / (heavy ? 5200 : 4200));
+      const px = cx + (gx - gz) * 0.88;
+      const py = cy + (gx + gz) * 0.36 + sink;
+      return { x: px, y: py };
+    }
+
+    function draw() {
+      time += 0.03;
+      const targetDepth = heavy ? 78 : 44;
+      wellDepth += (targetDepth - wellDepth) * 0.08;
+
+      ctx.fillStyle = '#030712';
+      ctx.fillRect(0, 0, w, h);
+
+      drawLabelPill(ctx, cx, 18, 'RELATIVITÉ GÉNÉRALE (1915) : LA MASSE COURBE L\'ESPACE-TEMPS', '#38bdf8', 'center');
+
+      // Draw warped 3D spacetime fabric grid
+      const range = 135;
+      const step = 18;
+      ctx.strokeStyle = heavy ? 'rgba(168, 85, 247, 0.45)' : 'rgba(56, 189, 248, 0.4)';
+      ctx.lineWidth = 1.2;
+
+      for (let gx = -range; gx <= range; gx += step) {
+        ctx.beginPath();
+        for (let gz = -range; gz <= range; gz += 9) {
+          const pt = projectPoint(gx, gz);
+          if (gz === -range) ctx.moveTo(pt.x, pt.y);
+          else ctx.lineTo(pt.x, pt.y);
+        }
+        ctx.stroke();
+      }
+      for (let gz = -range; gz <= range; gz += step) {
+        ctx.beginPath();
+        for (let gx = -range; gx <= range; gx += 9) {
+          const pt = projectPoint(gx, gz);
+          if (gx === -range) ctx.moveTo(pt.x, pt.y);
+          else ctx.lineTo(pt.x, pt.y);
+        }
+        ctx.stroke();
+      }
+
+      // Central massive star sitting in the spacetime well
+      const centerPt = projectPoint(0, 0);
+      const starR = heavy ? 24 : 18;
+      const starGlow = ctx.createRadialGradient(centerPt.x, centerPt.y - starR * 0.4, 3, centerPt.x, centerPt.y, starR * 2);
+      starGlow.addColorStop(0, '#ffffff');
+      starGlow.addColorStop(0.35, heavy ? '#f43f5e' : '#f59e0b');
+      starGlow.addColorStop(1, 'transparent');
+      ctx.fillStyle = starGlow;
+      ctx.beginPath(); ctx.arc(centerPt.x, centerPt.y - starR * 0.3, starR * 2, 0, Math.PI * 2); ctx.fill();
+
+      ctx.fillStyle = heavy ? '#f43f5e' : '#fbbf24';
+      ctx.beginPath(); ctx.arc(centerPt.x, centerPt.y - starR * 0.3, starR, 0, Math.PI * 2); ctx.fill();
+
+      // Planet orbiting along the curved spacetime valley
+      const orbR = 92;
+      const pGx = Math.cos(time * (heavy ? 1.5 : 1.0)) * orbR;
+      const pGz = Math.sin(time * (heavy ? 1.5 : 1.0)) * orbR;
+      const pPt = projectPoint(pGx, pGz);
+
+      ctx.fillStyle = '#38bdf8';
+      ctx.strokeStyle = '#ffffff';
+      ctx.lineWidth = 1.5;
+      ctx.beginPath(); ctx.arc(pPt.x, pPt.y - 5, 7, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+
+      drawLabelPill(ctx, cx, 224, heavy ? 'Masse très lourde → Courbure profonde (forte gravité)' : 'Le Soleil courbe l\'espace-temps autour de lui', heavy ? '#f43f5e' : '#fbbf24', 'center');
+      drawLabelPill(ctx, cx, 248, 'La planète suit la pente de l\'espace courbé (orbite)', '#38bdf8', 'center');
+
+      requestAnimationFrame(draw);
+    }
+    requestAnimationFrame(draw);
+
+    const bN = document.getElementById('btn-ein-normal');
+    const bH = document.getElementById('btn-ein-heavy');
+    const tag = document.getElementById('einstein-tag');
+
+    function setHeavy(val) {
+      heavy = val;
+      if (bN) bN.classList.toggle('active', !val);
+      if (bH) bH.classList.toggle('active', val);
+      if (tag) tag.textContent = !val ? '1. Masse du Soleil' : '2. Masse très lourde : forte courbure';
+    }
+    if (bN) bN.addEventListener('click', () => setHeavy(false));
+    if (bH) bH.addEventListener('click', () => setHeavy(true));
+    canvas.addEventListener('click', () => setHeavy(!heavy));
+  })();
+
+  /* ── NEW ENGINE 7: ARTHUR EDDINGTON & ALBERT EINSTEIN (1919 : ÉCLIPSE SOLAIRE) ── */
+  (function initEddington1919() {
+    const cData = getDPRCanvas('canvas-eddington1919', 460, 270);
+    if (!cData) return;
+    const { canvas, ctx, w, h } = cData;
+
+    let deflected = true;
+    let time = 0;
+
+    function draw() {
+      time += 0.03;
+      ctx.fillStyle = '#030712';
+      ctx.fillRect(0, 0, w, h);
+
+      drawLabelPill(ctx, w / 2, 18, 'OBSERVATION D\'EDDINGTON LORS DE L\'ÉCLIPSE SOLAIRE (1919)', '#38bdf8', 'center');
+
+      const sunX = 230, sunY = 148;
+      const realStarX = 68, realStarY = 128;
+      const appStarX = 68, appStarY = 62;
+      const earthX = 402, earthY = 152;
+
+      // 1. Eclipsed Sun in the center (Moon covering the Sun, corona visible)
+      const corona = ctx.createRadialGradient(sunX, sunY, 22, sunX, sunY, 58);
+      corona.addColorStop(0, 'rgba(253, 224, 71, 0.85)');
+      corona.addColorStop(0.45, 'rgba(245, 158, 11, 0.25)');
+      corona.addColorStop(1, 'transparent');
+      ctx.fillStyle = corona;
+      ctx.beginPath(); ctx.arc(sunX, sunY, 58, 0, Math.PI * 2); ctx.fill();
+
+      // Moon disc blocking the Sun during total eclipse
+      ctx.fillStyle = '#090d16';
+      ctx.strokeStyle = '#fde047';
+      ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.arc(sunX, sunY, 25, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+      drawLabelPill(ctx, sunX, sunY + 46, 'Soleil caché par la Lune (Éclipse)', '#fbbf24', 'center');
+
+      // 2. Earth & Eddington's telescope on the right
+      ctx.fillStyle = '#38bdf8';
+      ctx.strokeStyle = '#bae6fd';
+      ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.arc(earthX, earthY, 16, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+      drawLabelPill(ctx, earthX - 10, earthY + 34, 'Terre (Eddington)', '#38bdf8', 'center');
+
+      // 3. Real Star on the left
+      ctx.fillStyle = '#fde047';
+      ctx.beginPath(); ctx.arc(realStarX, realStarY, 6, 0, Math.PI * 2); ctx.fill();
+      drawLabelPill(ctx, realStarX + 18, realStarY + 22, 'Position réelle de l\'étoile', '#fde047', 'center');
+
+      if (deflected) {
+        // Apparent shifted star position (extension of bent ray from Earth)
+        ctx.strokeStyle = 'rgba(148, 163, 184, 0.55)';
+        ctx.lineWidth = 1.6;
+        ctx.setLineDash([4, 4]);
+        ctx.beginPath();
+        ctx.moveTo(earthX, earthY);
+        ctx.lineTo(sunX, sunY - 36);
+        ctx.lineTo(appStarX, appStarY);
+        ctx.stroke();
+        ctx.setLineDash([]);
+
+        // Ghost apparent star
+        ctx.fillStyle = '#38bdf8';
+        ctx.beginPath(); ctx.arc(appStarX, appStarY, 6, 0, Math.PI * 2); ctx.fill();
+        drawLabelPill(ctx, appStarX + 35, appStarY - 16, 'Position apparente (vue de la Terre)', '#38bdf8', 'center');
+
+        // Actual curved light ray bent by Sun's gravity
+        ctx.strokeStyle = '#fde047';
+        ctx.lineWidth = 2.6;
+        ctx.beginPath();
+        ctx.moveTo(realStarX, realStarY);
+        ctx.quadraticCurveTo(sunX, sunY - 42, earthX, earthY);
+        ctx.stroke();
+
+        // Moving photon along the curved ray
+        const t = (time * 0.45) % 1;
+        const px = (1 - t) * (1 - t) * realStarX + 2 * (1 - t) * t * sunX + t * t * earthX;
+        const py = (1 - t) * (1 - t) * realStarY + 2 * (1 - t) * t * (sunY - 42) + t * t * earthY;
+        ctx.fillStyle = '#ffffff';
+        ctx.beginPath(); ctx.arc(px, py, 4, 0, Math.PI * 2); ctx.fill();
+
+        drawLabelPill(ctx, w / 2, 245, 'Confirmation : La lumière est déviée par la gravité du Soleil !', '#10b981', 'center');
+      } else {
+        // Without gravitational deflection: straight ray blocked or straight line
+        ctx.strokeStyle = '#94a3b8';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(realStarX, realStarY);
+        ctx.lineTo(earthX, earthY);
+        ctx.stroke();
+
+        drawLabelPill(ctx, w / 2, 245, 'Sans gravité : la lumière irait en ligne droite sans déviation', '#94a3b8', 'center');
+      }
+
+      requestAnimationFrame(draw);
+    }
+    requestAnimationFrame(draw);
+
+    const bE = document.getElementById('btn-edd-eclipse');
+    const bS = document.getElementById('btn-edd-straight');
+    const tag = document.getElementById('eddington-tag');
+
+    function setDeflected(val) {
+      deflected = val;
+      if (bE) bE.classList.toggle('active', val);
+      if (bS) bS.classList.toggle('active', !val);
+      if (tag) tag.textContent = val ? '1. Éclipse : lumière déviée par le Soleil' : '2. Sans gravité : trajet en ligne droite';
+    }
+    if (bE) bE.addEventListener('click', () => setDeflected(true));
+    if (bS) bS.addEventListener('click', () => setDeflected(false));
+    canvas.addEventListener('click', () => setDeflected(!deflected));
+  })();
+
+  /* ── NEW ENGINE 8: EDWIN HUBBLE (1929 : LOI DE HUBBLE & EXPANSION DE L'UNIVERS) ── */
+  (function initHubble1929() {
+    const cData = getDPRCanvas('canvas-hubble1929', 460, 270);
+    if (!cData) return;
+    const { canvas, ctx, w, h } = cData;
+
+    let mode = 'view'; // 'view' | 'graph'
+    let time = 0;
+
+    const galaxies = [
+      { name: 'Galaxie A (Proche)',   baseX: 145, y: 78,  speed: 1.0, col: '#38bdf8', vText: 'v = 500 km/s' },
+      { name: 'Galaxie B (Moyenne)',  baseX: 215, y: 138, speed: 2.0, col: '#fbbf24', vText: 'v = 1 000 km/s' },
+      { name: 'Galaxie C (Lointaine)', baseX: 285, y: 198, speed: 3.2, col: '#f43f5e', vText: 'v = 1 600 km/s' }
+    ];
+
+    function drawSpiralGalaxy(x, y, col) {
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.rotate(time * 0.8);
+      ctx.strokeStyle = col;
+      ctx.lineWidth = 2.2;
+      for (let arm = 0; arm < 2; arm++) {
+        ctx.beginPath();
+        for (let a = 0; a < 3.5; a += 0.2) {
+          const r = a * 3.8;
+          const th = a + arm * Math.PI;
+          const gx = Math.cos(th) * r;
+          const gy = Math.sin(th) * r * 0.65;
+          if (a === 0) ctx.moveTo(gx, gy);
+          else ctx.lineTo(gx, gy);
+        }
+        ctx.stroke();
+      }
+      ctx.fillStyle = '#ffffff';
+      ctx.beginPath(); ctx.arc(0, 0, 3.5, 0, Math.PI * 2); ctx.fill();
+      ctx.restore();
+    }
+
+    function draw() {
+      time += 0.025;
+      ctx.fillStyle = '#030712';
+      ctx.fillRect(0, 0, w, h);
+
+      if (mode === 'view') {
+        drawLabelPill(ctx, w / 2, 18, 'OBSERVATION DE HUBBLE (1929) : ÉLOIGNEMENT DES GALAXIES', '#38bdf8', 'center');
+
+        // Observer (Voie lactée / Terre) on the left
+        const ox = 52;
+        ctx.fillStyle = 'rgba(56, 189, 248, 0.15)';
+        ctx.strokeStyle = '#38bdf8';
+        ctx.lineWidth = 1.8;
+        ctx.beginPath(); ctx.roundRect(16, 46, 72, 174, 8); ctx.fill(); ctx.stroke();
+
+        ctx.fillStyle = '#ffffff';
+        ctx.font = 'bold 9px Segoe UI, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('TERRE', ox, 128);
+        ctx.fillStyle = '#38bdf8';
+        ctx.font = '8px Segoe UI, sans-serif';
+        ctx.fillText('(Télescope)', ox, 142);
+
+        const cycle = (time * 18) % 85;
+
+        galaxies.forEach(g => {
+          const gx = g.baseX + cycle * (g.speed * 0.35);
+
+          // Distance dashed line from Earth
+          ctx.strokeStyle = 'rgba(148, 163, 184, 0.3)';
+          ctx.lineWidth = 1.2;
+          ctx.setLineDash([3, 3]);
+          ctx.beginPath(); ctx.moveTo(88, g.y); ctx.lineTo(gx - 18, g.y); ctx.stroke();
+          ctx.setLineDash([]);
+
+          // Galaxy icon
+          drawSpiralGalaxy(gx, g.y, g.col);
+
+          // Velocity arrow (longer for farther galaxies!)
+          const arrowLen = 22 * g.speed;
+          ctx.strokeStyle = g.col;
+          ctx.lineWidth = 2.6;
+          ctx.beginPath();
+          ctx.moveTo(gx + 16, g.y);
+          ctx.lineTo(gx + 16 + arrowLen, g.y);
+          ctx.lineTo(gx + 10 + arrowLen, g.y - 5);
+          ctx.moveTo(gx + 16 + arrowLen, g.y);
+          ctx.lineTo(gx + 10 + arrowLen, g.y + 5);
+          ctx.stroke();
+
+          drawLabelPill(ctx, gx, g.y - 22, g.name + ' · ' + g.vText, g.col, 'center');
+        });
+
+        drawLabelPill(ctx, w / 2, 246, 'Loi de Hubble : Plus une galaxie est loin, plus elle s\'éloigne vite !', '#10b981', 'center');
+
+      } else {
+        // Hubble's Graph: Distance (x) vs Vitesse d'éloignement (y)
+        drawLabelPill(ctx, w / 2, 18, 'LOI DE HUBBLE : RELATION ENTRE DISTANCE ET VITESSE', '#38bdf8', 'center');
+
+        const gx0 = 78, gy0 = 212, gw = 330, gh = 162;
+
+        // Axes
+        ctx.strokeStyle = '#94a3b8';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(gx0, gy0 - gh);
+        ctx.lineTo(gx0, gy0);
+        ctx.lineTo(gx0 + gw, gy0);
+        ctx.stroke();
+
+        ctx.fillStyle = '#e2e8f0';
+        ctx.font = 'bold 9.5px Segoe UI, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('Distance de la galaxie →', gx0 + gw / 2, gy0 + 20);
+
+        ctx.save();
+        ctx.translate(28, gy0 - gh / 2);
+        ctx.rotate(-Math.PI / 2);
+        ctx.fillText('Vitesse d\'éloignement →', 0, 0);
+        ctx.restore();
+
+        // Linear Hubble law line
+        ctx.strokeStyle = '#38bdf8';
+        ctx.lineWidth = 2.5;
+        ctx.beginPath();
+        ctx.moveTo(gx0, gy0);
+        ctx.lineTo(gx0 + gw - 20, gy0 - gh + 16);
+        ctx.stroke();
+
+        // 3 Galaxy data points along the line
+        [
+          { f: 0.25, label: 'Galaxie A (Proche)',    col: '#38bdf8' },
+          { f: 0.55, label: 'Galaxie B (Moyenne)',   col: '#fbbf24' },
+          { f: 0.86, label: 'Galaxie C (Lointaine)', col: '#f43f5e' }
+        ].forEach(pt => {
+          const px = gx0 + (gw - 20) * pt.f;
+          const py = gy0 - (gh - 16) * pt.f;
+          ctx.fillStyle = pt.col;
+          ctx.beginPath(); ctx.arc(px, py, 6, 0, Math.PI * 2); ctx.fill();
+          drawLabelPill(ctx, px, py - 18, pt.label, pt.col, 'center');
+        });
+
+        drawLabelPill(ctx, w / 2, 248, 'Preuve directe de l\'expansion de l\'Univers', '#10b981', 'center');
+      }
+
+      requestAnimationFrame(draw);
+    }
+    requestAnimationFrame(draw);
+
+    const bV = document.getElementById('btn-hubble-view');
+    const bG = document.getElementById('btn-hubble-graph');
+    const tag = document.getElementById('hubble-tag');
+
+    function setMode(m) {
+      mode = m;
+      if (bV) bV.classList.toggle('active', m === 'view');
+      if (bG) bG.classList.toggle('active', m === 'graph');
+      if (tag) tag.textContent = m === 'view' ? '1. Vitesse selon la distance des galaxies' : '2. Graphique Distance / Vitesse';
+    }
+    if (bV) bV.addEventListener('click', () => setMode('view'));
+    if (bG) bG.addEventListener('click', () => setMode('graph'));
+    canvas.addEventListener('click', () => setMode(mode === 'view' ? 'graph' : 'view'));
   })();
 
 </script>
